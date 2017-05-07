@@ -17,7 +17,7 @@ import entity.Application;
 public class ApplicationDAO
 {
 	/**
-	 * 		投递简历
+	 * 		投递简历快睡吧可不是
 	*/
 	public void add(Application application)
 	{
