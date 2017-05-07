@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts 
+
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- Recruitment ,,, -->
+	<!-- 验证码 -->
+	<package name="code" extends="struts-default,json-default">
+		<action name="SecurityCodeImageAction" class="code.SecurityCodeImageAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		<action name="validator" class="code.CodeAction">
+			<result type="json"></result>
+		</action>
+<!-- 注销操作在struts_personal。xml     -->
+<!-- 模糊查询搜索框和 查看具体的招聘信息内容  在 -struts_enterprise.xml 中-->
+	</package>
+	<include file="struts_admin.xml"/>
+	<include file="struts_personal.xml"/>
+	<include file="struts_enterprise.xml"/>
+</struts>    

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts 
+
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources"   value="messages_zh_CN"></constant>
+	<constant name="struts.il8n.encoding" value="GBK"></constant>
+	<package name="action1" extends="struts-default,json-default">
+<!-- 用户注册 -->
+		<action name="registerC" class="action.PersonalinformationAction" >
+			<result name="OK">/Login.jsp</result>
+			<result name="input">/jsp/Personal/LoginAndRegister/RegisterP.jsp
+			</result>
+		</action>
+		<!-- 用户登录 -->
+		<action name="loginC" class="action.PersonalinformationAction">
+			<result name="OK">/index2.jsp</result>
+			<result name="ERROR">/error.jsp</result>
+		</action>
+		<!--查看简历 -->
+		<action name="re" class="action.ResumeAction">
+			<result name="ERROR">/error.jsp</result>
+			<result name="SUCCESS">/jsp/Personal/jsp/Personal/resume/mys.jsp
+			</result>
+			<result name="OK" type="redirectAction">look</result>
+		</action>
+
+		<!-- 查看用户的所有简历 -->
+		<action name="look" class="action.ResumeAction">
+			<result>/index.jsp</result>
+			<result name="ERROR">/error.jsp</result>
+			<result name="OK">/jsp/Personal/resume/mys.jsp</result>
+		</action>
+		<!-- 查看用户的某条具体简历 -->
+		<action name="lookResume" class="action.ResumeAction">
+			<result>index.jsp</result>
+			<result name="OK">/jsp/Personal/resume/lookResume.jsp</result>
+		</action>
+		<!-- 点击编辑 跳转到更新简历页面 -->
+		<action name="lookOfupdate" class="action.ResumeAction">
+			<result name="ERROR">error.jsp</result>
+			<result name="OK">/jsp/Personal/resume/upResume.jsp</result>
+		</action>
+		<!-- 更新某条简历 -->
+		<action name="update" class="action.ResumeAction">
+			<result name="ERROR">/error.jsp</result>
+			<result name="SUCCESS" type="redirectAction">look</result>
+		</action>
+		<!-- 删除单条简历 -->
+		<action name="delresume" class="action.ResumeAction">
+			<result name="ERROR">/error.jsp</result>
+			<result name="SUCCESS" type="redirectAction">look</result>
+		</action>
+		<!-- 查看用户个人信息 -->
+		<action name="lookpersoninformation" class="action.PersonalinformationAction">
+			<result name="ERROR">/error.jsp</result>
+			<result name="OK">/jsp/Personal/information/lookperson.jsp</result>
+		</action>
+		<!-- 点击编辑按钮操作 跳转到可编辑界面 -->
+		<action name="beforeupdateperson" class="action.PersonalinformationAction">
+			<result name="ERROR">/error.jsp</result>
+			<result name="OK">/jsp/Personal/information/updateperson.jsp
+			</result>
+		</action>
+		<!-- 确认修改个人信息按钮 -->
+		<action name="afterupdteperson" class="action.UploadAction">
+			<!-- 配置fileUpload的拦截器 -->
+        	<interceptor-ref name="fileUpload">
+           <!-- 配置允许上传的文件类型 -->
+           <param name="allowedTypes">image/bmp,image/gif,image/jpg,image/png,image/jpeg,image/pjpeg</param>
+           <!-- 配置允许上传的文件大小 -->
+           <param name="maximumSize">2000000</param>
+        </interceptor-ref>
+        <interceptor-ref name="defaultStack"></interceptor-ref>   			
+		    <param name="savePath">/personPicture</param>
+			<result name="ERROR">/error.jsp</result>
+			<result name="OK">jsp/newOK.jsp</result>
+			<result name="input">/jsp/Personal/information/updateperson.jsp</result>
+		</action>
+	    <!-- 选择简历进行投递 -->
+		<action name="selectOneResumetosend" class="action.ResumeAction">
+			<result name="error">/error.jsp</result>
+			<result name="OK">/jsp/Personal/recruitment/selectOne.jsp</result>
+		</action>
+		<!-- 下载简历 -->
+		<action name="downloadResume" class="action.DownloadAction" >				
+					<result name="success" type="stream" >										
+					<param name="inputName">file</param>
+					<param name="contentType">text/plain</param>
+					<param name="contentDisposition">attachment;filename="resume.doc"</param>
+					<param name="bufferSize">4096</param>
+				</result>
+		</action>
+		<!-- 获取下载链接 -->
+		<action name="downloadbefore" class="action.ResumeAction" method="getTargetFile">				
+					<result name="success" type="chain" >downloadResume</result>
+		</action>
+		<!-- 注销 -->
+		<action name="cancelC" class="action.PersonalinformationAction">
+			<result name="ERROR">/error.jsp</result>
+			<result name="OK" type="redirect">/index2.jsp</result>
+		</action>
+	</package>
+</struts>

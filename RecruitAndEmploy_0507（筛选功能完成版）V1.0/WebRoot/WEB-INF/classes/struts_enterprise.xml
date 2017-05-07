@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts 
+
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources"   value="messages_zh_CN"></constant>
+	<constant name="struts.il8n.encoding" value="GBK"></constant>
+	<package name="action" extends="struts-default,json-default">
+	
+		<!-- 企业上传pic -->
+		<action name="uploadPic" class="action.PicUpAction" method="uploadPic">  
+		    <result name="success" type="chain">RegisterR</result>  
+		    <result name="error">/error.jsp</result>  
+		    <result name="input">/error.jsp</result>
+	    </action>   
+	    <!-- 企业注册 -->
+		<action name="RegisterR" class="action.RegisterAction" method="einformation">
+			<result name="OK">/jsp/Enterprise/LoginAndRegister/Wait.jsp</result>
+			<result name="input">/error.jsp
+			</result>
+		</action>
+		<!-- 企业登录 -->
+		<action name="Login" class="action.LoginAction">
+			<result name="OK">/index2.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ApplicationAction" class="action.ApplicationAction">
+			<result name="user2">/jsp/Enterprise/ApplicationJsp.jsp</result>
+			<result name="user1">/jsp/Personal/ApplicationforrJsp.jsp</result>
+			<result name="OK">/jsp/Personal/resume/lookResume.jsp</result>
+			<result name="error">/index2.jsp</result>
+			<result name="success">/jsp/information/Mys.jsp</result>
+		</action>
+		<!-- -?????? -->
+		<action name="Rec" class="action.RecruitmentAction">
+			<result name="look">/jsp/Enterprise/RecruitmentJsp.jsp</result>
+			<result name="tolook">/jsp/Enterprise/OK.jsp </result>
+			<result name="OK">jsp/newOK.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="Ei" class="action.EinformationAction">
+			<result name="OK">/jsp/Enterprise/Einformation.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 异步获取职位种类 -->
+		<action name="Lookkind1" class="action.RecruitmentAction" method="Lookkind1">
+			<result type="json"></result>
+		</action>
+		<!-- 异步获取 通过职位种类改变触发事件 -->
+		<action name="Lookposition" class="action.RecruitmentAction"
+
+			method="Lookposition">
+			<result name="success" type="json"></result>
+		</action>
+		
+		<!-- 模糊查询搜索框 获得内容list -->
+		<action name="searchjob" class="action.RecruitmentAction">
+			<result name="error">/error.jsp</result>
+			<result name="success">/jsp/Personal/recruitment/lookjob.jsp</result>
+		</action>
+		<!-- 查看具体的招聘信息内容 -->
+		<action name="lookRecuriment" class="action.RecruitmentAction">
+			<result name="error">/error.jsp</result>
+			<result name="success">/jsp/Personal/recruitment/lookoneR.jsp</result>
+		</action>
+		
+		<!-- 根据职位类型进行查看招聘信息 -->
+		<action name="SearchJobById" class="action.RecruitmentAction"
+			method="searchjobbyid">
+			<result name="error">/error.jsp</result>
+			<result name="success">/jsp/Personal/recruitment/lookjob.jsp</result>
+		</action>
+		<action name="SearchByposition" class="action.RecruitmentAction"
+			method="searchbyposition22">
+			
+		</action>
+		<action name="findjobByThreekey" class="action.RecruitmentAction"
+			method="findjobByThreekey">
+			
+		</action>
+		
+			
+	</package>
+</struts>
+

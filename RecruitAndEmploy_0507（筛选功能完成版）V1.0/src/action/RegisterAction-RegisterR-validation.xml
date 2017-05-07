@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+    "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+    
+<validators>
+ <field name="einformation.mailbox">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    <field-validator type="email">
+            <message>邮箱格式不正确</message>
+        </field-validator>
+   
+  </field> 
+   <field name="einformation.password">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>密码不能为空</message>
+    </field-validator>
+      <field-validator type="stringlength">
+            <!-- 为校验器指定参数实现不同的校验规则，minlength：最少长度 -->
+            <param name="minLength">6</param>
+            <message>密码长度不能少于6位</message>
+        </field-validator>
+   
+  </field> 
+  
+     <field name="einformation.address">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>地址不能为空</message>
+    </field-validator>
+   
+  </field> 
+       <field name="einformation.name">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>公司名不能为空</message>
+    </field-validator>
+   
+  </field> 
+ 
+       <field name="einformation.phone">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>联系方式不能为空</message>
+    </field-validator>
+      <field-validator type="regex">
+            <!-- 注意！2.3.15前的版本使用 expression 参数 -->
+            <param name="Expression"><![CDATA[\d{11}]]></param>
+            <message>电话号码格式不正确</message>
+        </field-validator>
+   
+  </field> 
+  
+        <field name=" einformation.BusinessLicense">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>营业执照不能为空</message>
+    </field-validator>
+   
+  </field> 
+  
+
+
+
+</validators>

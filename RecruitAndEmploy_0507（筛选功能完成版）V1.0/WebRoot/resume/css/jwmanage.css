@@ -1,0 +1,1534 @@
+.lcaidan {
+	width: 139px;
+	border: 1px solid #eeeeee;
+	background-color: #ffffff;
+}
+
+.lcaidan a {
+	text-decoration: none;
+}
+
+.lcaidan a:hover {
+	text-decoration: underline;
+}
+
+.caidan {
+	width: 139px;
+	height: 28px;
+	line-height: 28px;
+	border-bottom: 1px solid #eeeeee;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+	background-color: #1F84D4;
+	clear: both;
+	cursor: pointer;
+}
+
+.caidanselected {
+	background-color: #FF9900;
+}
+
+.caidan a {
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+}
+
+.caidan a:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+.cai2 {
+	text-align: left;
+	padding: 10px 0 10px 0;
+	width: 137px;
+	background-color: #ffffff;
+	display: none;
+}
+
+.cai2 a {
+	height: 25px;
+	display: block;
+	padding-left: 17px;
+}
+
+.cai2 a:hover {
+	color: #FF9A00;
+	text-decoration: none;
+}
+
+.caidan .caidan1 {
+	background: url(/images/v/jwicon.gif) no-repeat -153px -263px;
+	width: 24px;
+	height: 28px;
+	margin: 0 8px 0 8px;
+	float: left;
+}
+
+.caidan .caidan1select {
+	background-position: -153px -230px;
+}
+
+.caidan .caidan2 {
+	background: url(/images/v/jwicon.gif) no-repeat -182px -265px;
+	width: 19px;
+	height: 28px;
+	margin: 0 10px 0 10px;
+	float: left;
+}
+
+.caidan .caidan2select {
+	background-position: -182px -230px;
+}
+
+.caidan .caidan3 {
+	background: url(/images/v/jwicon.gif) no-repeat -207px -265px;
+	width: 16px;
+	height: 28px;
+	margin: 0 10px 0 10px;
+	float: left;
+}
+
+.caidan .caidan3select {
+	background-position: -207px -230px;
+}
+
+.caidan .caidan4 {
+	background: url(/images/v/jwicon.gif) no-repeat -229px -265px;
+	width: 16px;
+	height: 28px;
+	margin: 0 10px 0 12px;
+	float: left;
+}
+
+.caidan .caidan4select {
+	background-position: -229px -230px;
+}
+
+.caidan .caidan5 {
+	background: url(/images/v/jwicon.gif) no-repeat -251px -265px;
+	width: 19px;
+	height: 28px;
+	margin: 0 7px 0 11px;
+	float: left;
+}
+
+.caidan .caidan5select {
+	background-position: -251px -230px;
+}
+
+.caidan .caidan6 {
+	background: url(/images/v/jwicon.gif) no-repeat -273px -265px;
+	width: 21px;
+	height: 28px;
+	margin: 0 6px 0 10px;
+	float: left;
+}
+
+.caidan .caidan6select {
+	background-position: -273px -230px;
+}
+
+.caidan .caidan7 {
+	background: url(/images/v/jwicon.gif) no-repeat -299px -265px;
+	width: 22px;
+	height: 28px;
+	margin: 0 6px 0 10px;
+	float: left;
+}
+
+.caidan .caidan7select {
+	background-position: -299px -230px;
+}
+
+.caidan .caidan8 {
+	background: url(/images/v/jwicon.gif) no-repeat -325px -265px;
+	width: 14px;
+	height: 28px;
+	margin: 0 10px 0 13px;
+	float: left;
+}
+
+.caidan .caidan8select {
+	background-position: -325px -230px;
+}
+
+.caidan .caidan9 {
+	background: url(/images/v/jwicon.gif) no-repeat -396px -267px;
+	width: 17px;
+	height: 22px;
+	margin: 0 7px 0 13px;
+	float: left;
+}
+
+.caidan .caidan10 {
+	background: url(/images/v/jwicon.gif) no-repeat -125px -265px;
+	width: 22px;
+	height: 28px;
+	margin: 0 6px 0 10px;
+	float: left;
+}
+
+.caidan .caidan10select {
+	background-position: -125px -230px;
+}
+
+.caidan .caidan11 {
+	background: url(/images/v/jwicon.gif) no-repeat -125px -265px;
+	width: 22px;
+	height: 28px;
+	margin: 0 6px 0 10px;
+	float: left;
+}
+
+.caidan .caidan11select {
+	background-position: -125px -230px;
+}
+
+.dan {
+	height: 150px;
+	background-color: #FFFFFF;
+	border: 1px solid #eeeeee;
+	margin-bottom: 15px;
+	padding: 25px;
+}
+
+.dan .Qd {
+	height: 80px;
+	background: #eee;
+	margin-right: 15px;
+	text-align: center;
+	line-height: 22px;
+}
+
+.dan .Qd .Yqd {
+	width: 73px;
+	height: 56px;
+	background: #2182cc;
+	color: #fff;
+	text-align: center;
+	line-height: 56px;
+	display: inline-block;
+}
+
+.dan a {
+	text-decoration: none;
+}
+
+.dan a:hover {
+	text-decoration: underline;
+}
+
+.dan .resume {
+	overflow: hidden;
+	width: 215px;
+	height: 82px;
+	border: 1px dashed #eeeeee;
+	margin: 25px 10px 0 0;
+	cursor: pointer;
+}
+
+.dan .resume1 {
+	border: 1px solid #FD9A01;
+	position: relative;
+}
+
+.dan .resume1 a {
+	text-decoration: none;
+}
+
+.dan .resume1 a:hover {
+	text-decoration: underline;
+}
+
+.dan .resume1 .xuan {
+	width: 20px;
+	height: 20px;
+	background-color: #FD9A01;
+	color: #ffffff;
+	text-align: center;
+	float: left;
+}
+
+.dan .resume1 .shenhe {
+	color: #95CA00;
+	width: 40px;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.dan .resume1 .wshenhe {
+	color: #FD9A00;
+	width: 60px;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.dan .title {
+	color: #999;
+	line-height: 20px;
+	height: 20px;
+	position: relative;
+	font-size: 12px;
+}
+
+.dan .title a {
+	text-decoration: none;
+}
+
+.dan .title a:hover {
+	text-decoration: underline;
+}
+
+.dan .title .sign {
+	background: #FE9A00;
+	display: inline-block;
+	width: 4px;
+	height: 18px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.dan .title .ch {
+	color: #676767;
+	font-weight: bold;
+	margin-left: 15px;
+	font-size: 14px;
+}
+
+.dan .title .phone {
+	background: url(/images/v/jwicon.gif) no-repeat -112px -58px;
+	width: 22px;
+	height: 16px;
+	display: block;
+	margin-right: 10px;
+	margin-top: 3px;
+}
+
+.dan .caidanicon {
+	width: 134px;
+	height: 106px;
+	background-color: #F4F4F4;
+	margin-top: 20px;
+	margin-right: 55px;
+	padding-top: 28px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.dan .caidan1 {
+	background: url(/images/v/jwicon.gif) no-repeat 0 -3px;
+	width: 49px;
+	height: 49px;
+	display: block;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.dan .caidan2 {
+	background-position: -61px -1px;
+	width: 60px;
+	height: 48px;
+	display: block;
+}
+
+.dan .caidan3 {
+	background-position: -129px -2px;
+	width: 46px;
+	height: 48px;
+	display: block;
+}
+
+.dan .caidan4 {
+	background-position: -191px -1px;
+	width: 62px;
+	height: 49px;
+	display: block;
+}
+
+.dan .caidan5 {
+	background-position: -266px 0;
+	width: 32px;
+	height: 49px;
+	display: block;
+}
+
+.up {
+	background-color: #C4C3C1;
+	height: 20px;
+	text-align: center;
+	position: absolute;
+	width: 125px;
+	top: 135px;
+	left: 0;
+}
+
+.up a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.up a:hover {
+	text-decoration: underline;
+}
+
+.tongzhibox {
+	border-bottom: 1px solid #eeeeee;
+	border-left: 1px solid #eeeeee;
+	border-top: 1px solid #eeeeee;
+	width: 348px;
+	height: 78px;
+}
+
+.tongzhibox .tbox {
+	padding: 5px 10px 0 10px;
+	width: 95px;
+	font-size: 14px;
+	height: 73px;
+	border-right: 1px solid #eeeeee;
+}
+
+.tongzhibox .tbox .count {
+	font-weight: bold;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.tongzhibox .tbox .count a {
+	text-decoration: none;
+	color: #BFBFBF;
+}
+
+.tongzhibox .tbox .count a:hover {
+	text-decoration: underline;
+}
+
+.yangzheng {
+	width: 82px;
+	height: 22px;
+	background-color: #eeeeee;
+	margin-right: 10px;
+	margin-top: 15px;
+	position: relative;
+}
+
+.yangzheng a {
+	height: 22px;
+	line-height: 20px;
+	text-decoration: none;
+}
+
+.yangzheng a:hover {
+	text-decoration: underline;
+}
+
+.yangzheng .mobile {
+	background: url(/images/v/jwicon.gif) no-repeat -4px -56px;
+	width: 30px;
+	height: 20px;
+	display: block;
+	margin: 1px 3px 0 1px;
+}
+
+.yangzheng .email {
+	background: url(/images/v/jwicon.gif) no-repeat -38px -56px;
+	width: 30px;
+	height: 20px;
+	display: block;
+	margin: 1px 3px 0 1px;
+}
+
+.yangzheng .caibi {
+	background: url(/images/v/jwicon.gif) no-repeat -73px -56px;
+	width: 30px;
+	height: 20px;
+	display: block;
+	margin: 1px 3px 0 1px;
+}
+
+.yangzheng .sfz {
+	background: url(/images/v/jwicon.gif) no-repeat -7px -296px;
+	width: 16px;
+	height: 11px;
+	display: block;
+	margin: 5px 10px 0 8px;
+}
+
+.yangzheng .sfz1 {
+	background: url(/images/v/jwicon.gif) no-repeat -30px -296px;
+	width: 16px;
+	height: 11px;
+	display: block;
+	margin: 5px 10px 0 8px;
+}
+
+.yangzheng .edu {
+	background: url(/images/v/jwicon.gif) no-repeat -53px -296px;
+	width: 11px;
+	height: 18px;
+	display: block;
+	margin: 2px 10px 0 12px;
+}
+
+.yangzheng .edu1 {
+	background: url(/images/v/jwicon.gif) no-repeat -70px -296px;
+	width: 11px;
+	height: 18px;
+	display: block;
+	margin: 2px 10px 0 12px;
+}
+
+.yangzheng .wx_ico1 {
+	background: url(/Api_Login/Content/33.png) no-repeat -250px -350px;
+	width: 18px;
+	height: 18px;
+	display: block;
+	margin: 2px 3px 0 12px;
+}
+
+.yangzheng .wx_ico2 {
+	background: url(/Api_Login/Content/33.png) no-repeat -100px 1px;
+	width: 16px;
+	height: 18px;
+	display: block;
+	margin: 2px 5px 0 12px;
+}
+
+.yangzheng .new {
+	position: absolute;
+	right: -8px;
+	top: -5px;
+}
+
+.jobsbox {
+	padding-top: 18px;
+	width: 179px;
+	height: 100px;
+	margin-right: 17px;
+	border-bottom: 1px solid #eeeeee;
+	color: #666666;
+	line-height: 200%;
+}
+
+.jobsbox a {
+	text-decoration: none;
+	color: #666666;
+}
+
+.jobsbox a:hover {
+	text-decoration: underline;
+}
+
+.jobsbox .jobname {
+	font-size: 14px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.lcredit {
+	color: #FF9902;
+	font-weight: bold;
+	display: block;
+	float: left;
+	margin: 2px 0 0 8px;
+}
+
+.lcredit font {
+	font-size: 12px;
+}
+
+.sx {
+	background: url(/images/v/jwicon.gif) no-repeat -402px 0;
+	width: 111px;
+	height: 35px;
+	margin-top: 5px;
+	display: block;
+}
+
+.buyvip {
+	background: url(/images/v/jwicon.gif) no-repeat -119px -298px;
+	width: 131px;
+	height: 35px;
+	margin-top: 5px;
+	display: block;
+}
+
+.shezhiicon {
+	background: url(/images/v/jwicon.gif) no-repeat -142px -58px;
+	width: 14px;
+	height: 18px;
+	margin-right: 5px;
+}
+
+.huanicon {
+	background: url(/images/v/jwicon.gif) no-repeat -168px -57px;
+	width: 15px;
+	height: 18px;
+	margin: 0 5px 0 10px;
+}
+
+.addresume {
+	background: url(/images/v/jwicon.gif) no-repeat -198px -53px;
+	width: 140px;
+	height: 22px;
+	margin: 30px 0 0 35px;
+	display: block;
+}
+
+.progressbg_bar,.progress_bar {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: transparent url(/images/v/bar.png) no-repeat scroll 0 0;
+}
+
+.progressbg_bar {
+	width: 100px;
+	height: 10px;
+	vertical-align: middle;
+	background-position: 0 0;
+	display: inline-block;
+	margin-right: 5px;
+	line-height: 0;
+	font-size: 0;
+}
+
+.progress_bar {
+	height: 6px;
+	vertical-align: middle;
+	background-position: 0 -16px;
+	display: inline-block;
+	margin-top: 2px;
+	line-height: 0;
+	font-size: 0;
+}
+
+/*杞樉骞垮憡浣�*/
+.focus-silder {
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.focus-silder,.focus-silder .conbox div {
+	width: 306px;
+	height: 296px;
+	overflow: hidden;
+}
+
+.focus-silder .conbox div img {
+	display: block;
+	width: 306px;
+	height: 296px;
+	overflow: hidden;
+	border: 0;
+	z-index: 998;
+}
+
+.focus-silder .conbox {
+	position: absolute;
+}
+
+.focus-silder .switcher {
+	position: absolute;
+	width: 306px;
+	bottom: 5px;
+	right: 5px;
+	z-index: 99;
+	padding: 0 0 0 10px;
+	text-align: right;
+}
+
+.focus-silder .switcher a {
+	display: inline-block;
+	width: 20px;
+	height: 4px;
+	margin-right: 3px;
+	cursor: pointer;
+	overflow: hidden;
+	background: url(/images/v/i2.gif) no-repeat;
+}
+
+.focus-silder .switcher a.cur,.focus-silder .switcher a:hover {
+	background: url(/images/v/i1.gif) no-repeat;
+}
+/*鍒嗛〉鏍囬*/
+.caption {
+	height: 60px;
+	background-color: #FFFFFF;
+	line-height: 60px;
+	position: relative;
+	border: 1px solid #EEEEEE;
+	margin-bottom: 10px;
+}
+
+.caption em {
+	display: block;
+	position: absolute;
+	top: 22px;
+	left: 20px;
+	background-color: #FF9A00;
+	width: 5px;
+	height: 17px;
+}
+
+.caption label {
+	color: #FF950B;
+	margin-left: 35px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.caption .counts {
+	margin-left: 20px;
+	font-size: 12px;
+	color: #696969;
+}
+
+.caption .normal {
+	margin: 0px;
+}
+
+.caption .r {
+	font-size: 12px;
+	margin-right: 15px;
+}
+
+.innerbodywrapper {
+	width: 950px;
+	margin: 0;
+	padding: 20px 0 20px 0;
+	background-color: #FFFFFF;
+}
+/*琛ㄦ牸*/
+.DataTable {
+	margin: auto;
+	width: 95%;
+	font-size: 14px;
+}
+
+.DataTable a {
+	text-decoration: none;
+}
+
+.DataTable a:hover {
+	text-decoration: underline;
+}
+
+.DataTable .num {
+	color: orange;
+	font-weight: bold;
+}
+
+.DataTable .indextr1 {
+	background-color: #ffffff;
+}
+
+.DataTable .indextr2 {
+	background-color: #fafafa;
+}
+
+.DataTable .menu {
+	color: #3D94DB;
+	height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.DataTable td {
+	height: 40px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.DataTable .DataSign {
+	background: #f00;
+	border-radius: 25px;
+	color: #fff;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	width: 25px;
+	margin: auto;
+	display: block;
+}
+
+/*璇存槑*/
+.InfoTable {
+	background-color: #F7F7F7;
+	margin: auto;
+	width: 95%;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.InfoTable .shuoming {
+	width: 60px;
+	height: 24px;
+	background-color: #FE9901;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 24px;
+	font-weight: bold;
+	margin-left: 30px;
+}
+
+.InfoTable .content {
+	padding: 20px 30px 20px 30px;
+}
+
+.InfoTable .content a {
+	color: #fe9901;
+	margin: 0 5px;
+}
+
+.jwsearchbox {
+	z-index: 998;
+	position: absolute;
+	top: -55px;
+	right: 20px;
+	float: right;
+}
+
+/*鎸夐挳*/
+.JwButton {
+	background: url(/RecruitAndEmploy/resume/img/add.png) no-repeat;
+	border: 0;
+	height: 31px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.BtnDel {
+	width: 138px;
+}
+
+.BtnSearch {
+	background-position: 0 -41px;
+	width: 82px;
+}
+
+.BtnMoreSearch {
+	background-position: 0 -81px;
+	width: 82px;
+}
+
+.BtnConfirmEdit {
+	background-position: 0 -121px;
+	width: 109px;
+}
+
+.BtnReset {
+	background-position: 0 -161px;
+	width: 109px;
+}
+
+.BtnAddSearch {
+	background-position: 0 -241px;
+	width: 125px;
+}
+
+.BtnConfirmAdd {
+	background-position: 0 -281px;
+	width: 109px;
+}
+
+.BtnExchange {
+	background-position: 0 -321px;
+	width: 109px;
+}
+
+.BtnSubmit {
+	background-position: 0 -361px;
+	width: 109px;
+}
+
+.BtnSubmit1 {
+	background-position: 0 -201px;
+	width: 207px;
+}
+
+.BtnMuLU {
+	background-position: 0 -441px;
+	width: 124px;
+}
+
+.BtnTongBu {
+	background-position: 0 -401px;
+	width: 138px;
+}
+
+.BtnGuanzhu {
+	background-position: 0 -561px;
+	width: 109px;
+}
+
+.BtnShensu {
+	background-position: 0 -481px;
+	width: 109px;
+}
+
+.Btncancle {
+	background-position: 0 -521px;
+	width: 109px;
+}
+
+.BtnCopy {
+	background-position: 0 -601px;
+	width: 196px;
+}
+
+.BtnYaoqing {
+	background-position: 0 -641px;
+	width: 196px;
+}
+
+.AuditedIcon {
+	background: url("../resume/img/add.png");
+	background-position: 0 -688px;
+	width: 58px;
+	height: 58px;
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+}
+
+.UnAuditIcon {
+	background-position: 0 -755px;
+	width: 58px;
+	height: 58px;
+	position: absolute;
+	bottom: 10px;
+	right: 0;
+}
+
+.CreateResumeIcon {
+	background: url(/RecruitAndEmploy/resume/img/add.png) no-repeat;
+	background-position: -67px -688px;
+	width: 149px;
+	height: 148px;
+}
+
+.txtKeyWord {
+	width: 120px;
+	height: 29px;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.DropControl {
+	padding: 5px 0;
+	margin-right: 10px;
+	vertical-align: middle;
+	padding-left: 5px;
+}
+
+.ErrorDiv {
+	width: 650px;
+	margin: auto;
+	padding: 20px;
+}
+
+.ErrorDiv .Info {
+	width: 450px;
+	font-size: 14px;
+	text-align: left;
+	color: #666666;
+	padding-top: 40px;
+	margin-left: 20px;
+	height: 184px;
+}
+
+.ErrorDiv .Info a {
+	color: #fe9901;
+	text-decoration: underline;
+	margin: 0 5px;
+}
+
+.ErrorDiv .Info .n {
+	font-size: 14px;
+	background-color: orange;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding: 8px;
+	text-decoration: none;
+	text-align: center;
+	margin: 0;
+}
+
+/*绠�巻瀹屽杽搴�/
+/*璇勫垎*/
+.mark {
+	position: fixed;
+	_position: absolute;
+	top: 200px;
+	left: 1524px;
+	background-color: #F5F9FF;
+	width: 120px;
+	border: 1px double #eeeeee;
+}
+
+.mark .top {
+	padding-top: 15px;
+	background-color: #ffffff;
+	height: 35px;
+	text-align: center;
+	border-bottom: 1px double #eeeeee;
+}
+
+.mark .div {
+	background: url(/images/mark/1.gif) center left no-repeat;
+	background-color: #ffffff;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px double #eeeeee;
+	color: #666666;
+}
+
+.mark .div a {
+	color: #666666;
+}
+
+.mark .seleted {
+	background-color: #fafafa;
+}
+
+.mark .num {
+	float: left;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 0 0 0 10px;
+	width: 15px;
+}
+
+.mark .content {
+	cursor: pointer;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0 5px 0 5px;
+}
+
+.mark .false {
+	float: left;
+	background: url(/images/mark/false.gif) center left no-repeat;
+	width: 15px;
+}
+
+.mark .true {
+	float: left;
+	background: url(/images/mark/true.gif) center left no-repeat;
+	width: 15px;
+}
+
+.ListTab {
+	width: 950px;
+	overflow: hidden;
+}
+
+.ListTab a {
+	padding: 0 20px;
+	height: 38px;
+	line-height: 38px;
+	background: #fff;
+	font-size: 14px;
+	margin: 0 10px 7px 0;
+	text-decoration: none;
+}
+
+.ListTab a:hover,.ListTab .Selected {
+	height: 45px;
+	line-height: 45px;
+	margin: 0 10px 0 0;
+	color: #676767;
+	font-weight: bold;
+}
+
+.ResumeItem {
+	width: 385px;
+	height: 226px;
+	border: 1px dashed #ccc;
+	margin: 0 0 36px 36px;
+	padding: 15px;
+	position: relative;
+}
+
+.ResumeItem .Sign {
+	color: #fff;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	line-height: 20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ResumeItem .Top {
+	border-bottom: 1px solid #ccc;
+	height: 100px;
+	position: relative;
+}
+
+.ResumeItem .Top .Operating {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.ResumeItem .Top .Operating a {
+	margin-left: 10px;
+	text-decoration: none;
+}
+
+.ResumeItem .Top .Operating a:hover {
+	color: #fe9901;
+}
+
+.ResumeItem .Top .Info {
+	padding: 25px 0 10px;
+	height: 65px;
+	line-height: 20px;
+}
+
+.ResumeItem .Top .Info .Title {
+	font-weight: bold;
+	color: #1F84D4;
+	font-size: 22px;
+	height: 25px;
+	line-height: 25px;
+}
+
+.ResumeItem .Middle {
+	height: 80px;
+	padding: 10px 0;
+	line-height: 20px;
+}
+
+.ResumeItem .Bottom {
+	height: 26px;
+	line-height: 26px;
+}
+
+.ResumeItem .CreateResume {
+	background: url(/RecruitAndEmploy/resume/img/add.png);
+	background-size: cover;
+	height: 175px;
+	margin: 0 auto;
+	width: 148px;
+	text-align: center;
+	line-height: 18px;
+	font-family: 楷体;
+	font-size: 18px;
+}
+
+.ResumeItemChoose {
+	border: 1px solid #66CCFF;
+}
+
+.ResumeItemChoose .Sign {
+	background: #fe9901;
+}
+
+.ArtZt {
+	width: 306px;
+	height: 166px;
+	overflow: hidden;
+}
+
+.ArtZt a {
+	display: block;
+}
+
+.ArtZt a img {
+	width: 306px;
+	height: 136px;
+	border: 0;
+}
+
+.ArtZt a .Title {
+	height: 30px;
+	line-height: 30px;
+	background: #f6f6f6;
+	color: #2182CC;
+	text-align: center;
+	display: block;
+}
+
+.menuup {
+	background: url(/images/v/jwicon.gif) no-repeat -370px -229px;
+	width: 11px;
+	height: 29px;
+	display: block;
+	float: right;
+	margin-right: 8px;
+}
+
+.menudown {
+	background: url(/images/v/jwicon.gif) no-repeat -350px -229px;
+	width: 11px;
+	height: 29px;
+	display: block;
+	float: right;
+	margin-right: 8px;
+}
+
+/*璇存槑*/
+.InfoTable {
+	background-color: #F7F7F7;
+	margin: auto;
+	width: 95%;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.InfoTable .shuoming {
+	width: 60px;
+	height: 24px;
+	background-color: #ff9900;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 24px;
+	font-weight: bold;
+	margin-left: 30px;
+}
+
+.InfoTable .content {
+	padding: 20px 30px 20px 30px;
+	line-height: 22px;
+}
+
+.InfoTable .content a {
+	color: #1f84d4;
+	margin: 0 5px;
+}
+
+.KindnessTips {
+	color: #999;
+	padding: 0 20px;
+	margin: 20px 0;
+}
+
+.KindnessTips ol {
+	padding-left: 15px;
+	margin: 0;
+}
+
+.KindnessTips ol li {
+	list-style: decimal;
+	margin: 8px 0;
+}
+
+.ShieldList {
+	padding: 0 20px;
+	font-size: 14px;
+	margin-bottom: 40px;
+}
+
+.ShieldList .Title {
+	font-size: 20px;
+	color: #2182cc;
+	margin-bottom: 10px;
+}
+
+.ShieldList .EntList,.ShieldList .EntResultList {
+	padding: 0;
+	margin: 0;
+}
+
+.ShieldList .EntList li {
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #ccc;
+	width: 562px;
+	position: relative;
+	padding: 0 40px 0 20px;
+	font-size: 14px;
+	margin-top: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.ShieldList .EntList li i {
+	background: url(/images/v/closeicon.gif);
+	height: 10px;
+	position: absolute;
+	right: 10px;
+	top: 14px;
+	width: 15px;
+	cursor: pointer;
+}
+
+.ShieldList .SearchBox {
+	position: relative;
+}
+
+.ShieldList .SearchBox input {
+	border: 1px solid #ccc;
+	padding: 0 20px;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	width: 500px;
+	font-size: 14px;
+}
+
+.ShieldList .SearchBox .BtnSearch,.ShieldList .BtnAdd {
+	background: #2182cc;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	text-align: center;
+	float: left;
+	font-size: 14px;
+	width: 82px;
+	cursor: pointer;
+}
+
+.ShieldList .BtnAdd {
+	background: #ff9900;
+}
+
+.ShieldList .EntResultList {
+	border: solid #ccc;
+	border-width: 1px 1px 0 1px;
+	width: 623px;
+	display: none;
+}
+
+.ShieldList .EntResultList li {
+	border-bottom: 1px solid #ccc;
+	font-size: 14px;
+	height: 60px;
+	line-height: 60px;
+	overflow: hidden;
+	padding: 0 0 0 50px;
+	position: relative;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: relative;
+}
+
+.ShieldList .EntResultList li a {
+	text-decoration: none;
+}
+
+.ShieldList .EntResultList li a:hover {
+	color: #ff9900;
+}
+
+.ShieldList .EntResultList li input[type=checkbox] {
+	display: none;
+}
+
+.ShieldList .EntResultList li label {
+	background: #fff;
+	width: 20px;
+	height: 20px;
+	display: block;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	position: absolute;
+	left: 14px;
+	top: 19px;
+}
+
+.ShieldList .EntResultList li input[type=checkbox]:checked+label {
+	background: #56abe4;
+	border: 1px solid #56abe4;
+}
+
+.ShieldList .EntResultList li input[type=checkbox]:checked+label:after {
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	width: 6px;
+	height: 12px;
+	content: '';
+	position: absolute;
+	left: 7px;
+	top: 2px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.ShieldList .Key,.ShieldList .Count {
+	color: #f00;
+}
+
+.ShieldList .SearchResult {
+	padding: 10px 0;
+	display: none;
+}
+
+.ResOnTop .DataTable .menu,.ResOnTop .DataTable td {
+	height: 50px;
+	position: relative;
+}
+
+.ResOnTop .T1 {
+	text-align: center;
+	font-size: 16px;
+	line-height: 32px;
+	margin-top: 20px;
+}
+
+.ResOnTop .T2 {
+	font-size: 14px;
+	text-align: left;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.ResOnTop .T2 .Title {
+	color: #2182cc;
+	font-size: 16px;
+}
+
+.ResOnTop .T2 img {
+	width: 100%;
+	margin: 20px 0;
+	line-height: 24px;
+}
+
+.ResOnTop .T3 {
+	background: #f2f2f2;
+	font-size: 14px;
+	padding: 10px 20px;
+	margin: 0 20px 10px;
+	line-height: 22px;
+}
+
+.ResOnTop .T3 span {
+	color: #f00;
+	margin: 0 5px;
+}
+
+.ResOnTop .T3 a {
+	text-decoration: none;
+	color: #2182cc;
+}
+
+.ResOnTop .T4 {
+	background: #fff;
+	border-bottom: 1px dashed #ccc;
+	padding: 10px 20px 20px;
+}
+
+.ResOnTop .T4 span {
+	color: #ff9900;
+}
+
+.ResOnTop .GoToBuy {
+	height: 50px;
+	line-height: 50px;
+	background: #ff9900;
+	color: #fff;
+	text-align: center;
+	margin: 20px auto 5px;
+	width: 320px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.ResOnTop .BuyBox {
+	display: none;
+}
+
+.ResOnTop .BuyBox input[type=checkbox] {
+	display: none;
+}
+
+.ResOnTop .BuyBox label {
+	background: #fff;
+	width: 20px;
+	height: 20px;
+	display: block;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+
+.ResOnTop .BuyBox input[type=checkbox]:checked+label {
+	background: #56abe4;
+	border: 1px solid #56abe4;
+}
+
+.ResOnTop .BuyBox input[type=checkbox]:checked+label:after {
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	width: 6px;
+	height: 12px;
+	content: '';
+	position: absolute;
+	left: 7px;
+	top: 2px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.ResOnTop .BuyBox .OriginalPrice {
+	text-decoration: line-through;
+	color: #999;
+}
+
+.ResOnTop .StopTips {
+	background: #fff;
+	border: 1px solid #ccc;
+	width: 350px;
+	height: 180px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -111px 0 0 -176px;
+	display: none;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.ResOnTop .StopTips .CancelButton,.ResOnTop .StopTips .ComfirmButton {
+	width: 120px;
+}
+
+.BtnOperBar {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.BtnOperBar .CancelButton {
+	width: 198px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	border: 1px solid #ff9900;
+	color: #ff9900;
+	font-size: 14px;
+	background: #fff;
+	margin: 0 20px;
+	vertical-align: top;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.BtnOperBar .ComfirmButton {
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border: 1px solid #ff9900;
+	color: #fff;
+	font-size: 14px;
+	background: #ff9900;
+	margin: 0 20px;
+	vertical-align: top;
+	display: inline-block;
+	cursor: pointer;
+}

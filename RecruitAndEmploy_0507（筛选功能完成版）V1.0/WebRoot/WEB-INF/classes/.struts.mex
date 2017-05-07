@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="action" location="237,220" size="3430,1664">
+    <action name="uploadPic" location="69,77" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="RegisterR.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="lookEI" location="69,169" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="LookApply.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="Pass" location="69,269" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="myInformation.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="RegisterR" location="69,369" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="Wait.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="RegisterR.jsp" />
+      </result>
+    </action>
+    <action name="registerC" location="790,282" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="Login.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="RegisterP.jsp" />
+      </result>
+    </action>
+    <action name="Login" location="3275,282" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="index2.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="loginC" location="510,282" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="index2.jsp" />
+      </result>
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="LoginAdmin" location="69,469" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="myInformation.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="cancelC" location="69,569" size="150,62">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="index2.jsp" />
+      </result>
+    </action>
+    <action name="re" location="2505,271" size="150,83">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="SUCCESS">
+        <resourceEdge source="SUCCESS" routing="0" target="mys.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="look" namespace="" />
+      </result>
+    </action>
+    <action name="look" location="2750,271" size="150,83">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="mys.jsp" />
+      </result>
+    </action>
+    <action name="lookResume" location="2260,271" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="lookResume.jsp" />
+      </result>
+    </action>
+    <action name="lookOfupdate" location="1770,282" size="150,62">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="upResume.jsp" />
+      </result>
+    </action>
+    <action name="update" location="2750,107" size="150,62">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="SUCCESS">
+        <resourceEdge source="SUCCESS" routing="0" target="look" namespace="" />
+      </result>
+    </action>
+    <action name="delresume" location="3030,282" size="150,62">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="SUCCESS">
+        <resourceEdge source="SUCCESS" routing="0" target="look" namespace="" />
+      </result>
+    </action>
+    <action name="lookpersoninformation" location="1525,282" size="150,62">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="lookperson.jsp" />
+      </result>
+    </action>
+    <action name="beforeupdateperson" location="1280,282" size="150,62">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="updateperson.jsp" />
+      </result>
+    </action>
+    <action name="afterupdteperson" location="1035,282" size="150,83">
+      <result name="ERROR">
+        <resourceEdge source="ERROR" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="newOK.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="updateperson.jsp" />
+      </result>
+    </action>
+    <action name="ApplicationAction" location="510,121" size="150,104">
+      <result name="user2">
+        <resourceEdge source="user2" routing="0" target="ApplicationJsp.jsp" />
+      </result>
+      <result name="user1">
+        <resourceEdge source="user1" routing="0" target="ApplicationforrJsp.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="lookResume.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="searchjob" location="89,669" size="150,62">
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="lookjob.jsp" />
+      </result>
+    </action>
+    <action name="lookRecuriment" location="69,769" size="150,62">
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="lookoneR.jsp" />
+      </result>
+    </action>
+    <action name="selectOneResumetosend" location="69,869" size="150,62">
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="selectOne.jsp" />
+      </result>
+    </action>
+    <action name="SearchJobById" location="69,969" size="150,62">
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="lookjob.jsp" />
+      </result>
+    </action>
+    <action name="Rec" location="69,1069" size="150,104">
+      <result name="look">
+        <resourceEdge source="look" routing="0" target="RecruitmentJsp.jsp" />
+      </result>
+      <result name="tolook">
+        <resourceEdge source="tolook" routing="0" target="OK.jsp" />
+      </result>
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="newOK.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="Ei" location="69,1219" size="150,62">
+      <result name="OK">
+        <resourceEdge source="OK" routing="0" target="Einformation.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="Lookposition" location="69,1419" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="downloadResume" location="69,1519" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="downloadbefore" location="69,1619" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="downloadResume" namespace="" />
+      </result>
+    </action>
+    <action name="Lookkind1" location="69,1319" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <package name="code" location="62,650" size="224,214">
+    <action name="SecurityCodeImageAction" location="69,77" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="validator" location="69,169" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="index.jsp" path="/index.jsp" location="22,297" size="150,55" />
+  <webResource name="error.jsp" path="/error.jsp" location="3452,612" size="150,55" />
+  <webResource name="mys.jsp" path="resume/mys.jsp" location="2927,612" size="150,55" />
+  <webResource name="index.jsp" path="index.jsp" location="2437,752" size="150,55" />
+  <webResource name="lookResume.jsp" path="resume/lookResume.jsp" location="2192,682" size="150,55" />
+  <webResource name="RegisterR.jsp" path="/jsp/Enterprise/LoginAndRegister/RegisterR.jsp" location="212,1100" size="150,55" />
+  <webResource name="LookApply.jsp" path="/jsp/Admin/LookApply.jsp" location="62,1850" size="150,55" />
+  <webResource name="myInformation.jsp" path="/jsp/Admin/myInformation.jsp" location="353,1850" size="150,55" />
+  <webResource name="Wait.jsp" path="/jsp/Enterprise/LoginAndRegister/Wait.jsp" location="53,2000" size="150,55" />
+  <webResource name="Login.jsp" path="/Login.jsp" location="53,950" size="150,55" />
+  <webResource name="RegisterP.jsp" path="/jsp/Personal/LoginAndRegister/RegisterP.jsp" location="353,2000" size="150,55" />
+  <webResource name="index2.jsp" path="/index2.jsp" location="50,1100" size="150,55" />
+  <webResource name="mys.jsp" path="/jsp/Personal/jsp/Personal/resume/mys.jsp" location="50,2150" size="150,55" />
+  <webResource name="mys.jsp" path="/jsp/Personal/resume/mys.jsp" location="350,2150" size="150,55" />
+  <webResource name="lookResume.jsp" path="/jsp/Personal/resume/lookResume.jsp" location="50,2300" size="150,55" />
+  <webResource name="error.jsp" path="error.jsp" location="50,1250" size="150,55" />
+  <webResource name="upResume.jsp" path="/jsp/Personal/resume/upResume.jsp" location="650,2000" size="150,55" />
+  <webResource name="lookperson.jsp" path="/jsp/Personal/information/lookperson.jsp" location="650,2150" size="150,55" />
+  <webResource name="updateperson.jsp" path="/jsp/Personal/information/updateperson.jsp" location="350,2300" size="150,55" />
+  <webResource name="newOK.jsp" path="jsp/newOK.jsp" location="50,1400" size="150,55" />
+  <webResource name="ApplicationJsp.jsp" path="/jsp/Enterprise/ApplicationJsp.jsp" location="650,2300" size="150,55" />
+  <webResource name="ApplicationforrJsp.jsp" path="/jsp/Personal/ApplicationforrJsp.jsp" location="50,2450" size="150,55" />
+  <webResource name="lookjob.jsp" path="/jsp/Personal/recruitment/lookjob.jsp" location="350,2450" size="150,55" />
+  <webResource name="lookoneR.jsp" path="/jsp/Personal/recruitment/lookoneR.jsp" location="650,2450" size="150,55" />
+  <webResource name="selectOne.jsp" path="/jsp/Personal/recruitment/selectOne.jsp" location="50,2600" size="150,55" />
+  <webResource name="RecruitmentJsp.jsp" path="/jsp/Enterprise/RecruitmentJsp.jsp" location="350,2600" size="150,55" />
+  <webResource name="OK.jsp" path="/jsp/Enterprise/OK.jsp" location="50,1550" size="150,55" />
+  <webResource name="Einformation.jsp" path="/jsp/Enterprise/Einformation.jsp" location="650,2600" size="150,55" />
+  <webResource name="upResume.jsp" path="resume/upResume.jsp" location="1947,612" size="150,55" />
+  <webResource name="updateperson.jsp" path="information/updateperson.jsp" location="1457,612" size="150,55" />
+  <webResource name="lookperson.jsp" path="information/lookperson.jsp" location="1702,612" size="150,55" />
+  <webResource name="login.jsp" path="information/login.jsp" location="967,612" size="150,55" />
+  <webResource name="ApplicationJsp.jsp" path="/ApplicationJsp.jsp" location="687,122" size="150,55" />
+  <webResource name="ApplicationforrJsp.jsp" path="/ApplicationforrJsp.jsp" location="442,122" size="150,55" />
+  <webResource name="hh.jsp" path="hh.jsp" location="197,52" size="150,55" />
+</Struts2Diagram>
+
