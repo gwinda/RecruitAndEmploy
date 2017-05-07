@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import common.DataBaseConn;
+import entity.AERR;
 import entity.Application;
 
 
@@ -176,6 +177,467 @@ public class ApplicationDAO
 		
 		return applications;
 	}
+	
+	//一个特殊的存在
+	public List<AERR> findNewsBySDN(int idE)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ?";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idE);
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	public List<AERR> findNewsBySDN(int idE,String days)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ? and startTime> ?  ";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idE);
+			ps.setString(2, days);
+
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				System.out.println("非空...........................");
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				System.out.println(rs.getInt(8)+"ok........................");
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	public List<AERR> findNewsBySDN(String daye,int idE)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where startTime< ? and idEnterpriseInformation= ?" +
+					"";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, daye);
+			ps.setInt(2, idE);
+
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	
+	public List<AERR> findNewsBySDN(int idE,String days,String daye)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ? and startTime> ? and startTime< ?";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idE);
+			ps.setString(2, days);
+			ps.setString(3, daye);
+		
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	
+	public List<AERR> findNewsBySDN(int id,int idr)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ? and idEnterpriseRecruitment= ? ";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, idr);
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	public List<AERR> findNewsBySDN(int idi,int idr,String days)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ? and startTime> ? and idEnterpriseRecruitment= ? ";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idi);
+			ps.setString(2, days);
+			ps.setInt(3, idr);
+			
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	public List<AERR> findNewsBySDN(String daye,int idi,int idr)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ?" +
+					" and startTime<? and idEnterpriseRecruitment=? ";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idi);
+			ps.setString(2, daye);
+			ps.setInt(3, idr);
+			
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	public List<AERR> findNewsBySDN(int idi,String days,String daye,int idr)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ?" +
+					" and startTime>? and startTime<? and idEnterpriseRecruitment=? ";
+			
+			conn = DataBaseConn.getCon();
+			if (idr==0){sql="select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where idEnterpriseInformation= ?" +
+					" and startTime>? and startTime<? and idEnterpriseRecruitment>? ";}
+			if(days.equals("")){days="0001-01-01 00:00:00";}
+			if(daye.equals("")){daye="9999-01-01 00:00:00";}
+			ps = conn.prepareStatement(sql);
+		
+			
+			
+			ps.setInt(1, idi);
+			ps.setString(2, days);
+			ps.setString(3, daye);
+			ps.setInt(4, idr);
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	
+	public List<AERR> findNewsBySDN(String state,int id,String days,String daye,int idr)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		List<AERR> aerrs = new ArrayList<AERR>();
+		ResultSet rs = null;
+		
+		try
+		{
+			
+			
+			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where vstate = ? and idEnterpriseInformation= ?" +
+					" and startTime>? and startTime<? and idEnterpriseRecruitment=?";
+			
+			conn = DataBaseConn.getCon();
+			
+			if (idr==0){sql="select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
+					" from view2 where vstate = ? and idEnterpriseInformation= ?" +
+					" and startTime>? and startTime<? and idEnterpriseRecruitment>?";}
+			if(days.equals("")){days="0001-01-01 00:00:00";}
+			if(daye.equals("")){daye="9999-01-01 00:00:00";}
+			
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, state);
+			ps.setInt(2, id);
+			ps.setString(3, days);
+			ps.setString(4, daye);
+			ps.setInt(5, idr);
+			
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next())
+			{
+				AERR aerr = new AERR();
+				aerr.setVtime(rs.getString(1));
+				aerr.setVstate(rs.getString(2)); 
+				aerr.setEiname(rs.getString(3));
+				aerr.setEcname(rs.getString(4));
+				aerr.setStartTime(rs.getString(5));
+				aerr.setEndtime(rs.getString(6));
+				aerr.setRname(rs.getString(7));
+				aerr.setIdEnterpriseRecruitment(rs.getInt(8));
+				aerr.setIdResume(rs.getInt(9));
+				aerrs.add(aerr);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过state查找......", e);
+		}
+		
+		return aerrs;
+	}
+	
 	public List<Application> findNewsByState(String state,int id)
 	{
 		Connection conn = null;
@@ -207,6 +669,7 @@ public class ApplicationDAO
 				application.setIdResume(rs.getInt(4));
 				application.setIdEnterpriseRecruitment(rs.getInt(5));
 				applications.add(application);
+				
 				
 			}
 		}
