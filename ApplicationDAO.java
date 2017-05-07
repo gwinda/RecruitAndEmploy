@@ -37,7 +37,7 @@ public class ApplicationDAO
 			ps.setString(2, application.getState());
 			ps.setInt(3, application.getIdResume());
 			ps.setInt(4, application.getIdEnterpriseRecruitment());
-			System.out.println("add Q");
+			System.out.println("ad¶¥¶¥¶¥¶¥Q");
 			ps.executeUpdate();
 			System.out.println("add OK");
 			
