@@ -16,7 +16,7 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 	    <!-- 企业注册 -->
 		<action name="RegisterR" class="action.RegisterAction" method="einformation">
 			<result name="OK">/jsp/Enterprise/LoginAndRegister/Wait.jsp</result>
-			<result name="input">/error.jsp
+			<result name="input">/jsp/Enterprise/LoginAndRegister/RegisterR.jsp
 			</result>
 		</action>
 		<!-- 企业登录 -->

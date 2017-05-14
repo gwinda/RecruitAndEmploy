@@ -36,67 +36,110 @@ public class ApplicationAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
 	public String allopration() throws Exception {
-		
+
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		System.out.println(request.getParameter("checkboxnew"));
-		String values=request.getParameter("checkboxnew");
-		String mybutton=request.getParameter("mybutton");
+		String values = request.getParameter("checkboxnew");
+		String mybutton = request.getParameter("mybutton");
 		System.out.println(mybutton);
 		System.out.println("进入批量操作");
-		List<Point> pt =null;
-		if(values !=null&&values.length()>=0)
-		{
-			pt= new ArrayList<Point>();
-			String[] ptValues =values.split(",");
-			for(int i=0;i<ptValues.length/2;i++)
-			{
-				Point point=new Point();
-				point.setX(Integer.parseInt(ptValues[2*i]));
-				point.setY(Integer.parseInt(ptValues[1+(2*i)]));
+		List<Point> pt = null;
+		if (values != null && values.length() >= 0) {
+			pt = new ArrayList<Point>();
+			String[] ptValues = values.split(",");
+			for (int i = 0; i < ptValues.length / 2; i++) {
+				Point point = new Point();
+				point.setX(Integer.parseInt(ptValues[2 * i]));
+				point.setY(Integer.parseInt(ptValues[1 + (2 * i)]));
 				pt.add(point);
 			}
 			ApplicationDAO applicationdao = new ApplicationDAO();
-			
-			if(mybutton.equals("1"))
-			{
-				for(int i=0;i<pt.size();i++)
-				{
+
+			if (mybutton.equals("1")) {
+				for (int i = 0; i < pt.size(); i++) {
 					System.out.println(pt.get(i).getX());
 					System.out.println(pt.get(i).getY());
-					applicationdao.updateApplication("邀请", pt.get(i).getX(), pt.get(i).getY());
+					applicationdao.updateApplication("邀请", pt.get(i).getX(), pt
+							.get(i).getY());
 				}
-			}
-			else if(mybutton.equals("2")){
-				
-				for(int i=0;i<pt.size();i++)
-				{
+			} else if (mybutton.equals("2")) {
+
+				for (int i = 0; i < pt.size(); i++) {
 					System.out.println(pt.get(i).getX());
 					System.out.println(pt.get(i).getY());
-					applicationdao.updateApplication("拒绝", pt.get(i).getX(), pt.get(i).getY());
+					applicationdao.updateApplication("拒绝", pt.get(i).getX(), pt
+							.get(i).getY());
 				}
+			} else if (mybutton.equals("3")) {
+				// ---批量下载专用位------------------------------------------
+				String download = "已下载至download";
+
+				for (int i = 0; i < pt.size(); i++) {
+					ResumeDAO daoresume = new ResumeDAO();
+					PersonalinformationDAO daoPersonalinformation = new PersonalinformationDAO();
+
+					// Personalinformation person= (Personalinformation)
+					// session.getAttribute("OnePerson");
+					Personalinformation person = daoPersonalinformation
+							.lookOne(daoresume.OnesearchByID(pt.get(i).getX())
+									.getIdPersonalInformation());
+					System.out.println(daoresume
+							.OnesearchByID(pt.get(i).getX())
+							.getIdPersonalInformation()
+							+ "...............");
+					// Resume resume= (Resume)
+					// session.getAttribute("Oneresume");
+					Resume resume = daoresume.OnesearchByID(pt.get(i).getX());
+
+					System.out.println(person.getName());
+					String name = UUID.randomUUID() + person.getName() + ".doc";
+					String savePath = ServletActionContext.getRequest()
+							.getRealPath("/download") + "\\" + name;
+					System.out.println(savePath);
+					DocUtil docUtil = new DocUtil();
+					Map<String, Object> dataMap = new HashMap<String, Object>();
+					dataMap.put("name", person.getName());
+					dataMap.put("phone", person.getPhone());
+					dataMap.put("sex", person.getSex());
+					dataMap.put("householdRegiste",
+							person.getHouseholdRegister());
+					dataMap.put("education", person.getEducation());
+					dataMap.put("school", person.getSchool());
+					dataMap.put("birth", person.getBirth());
+					dataMap.put("mailbox", person.getMailbox());
+					dataMap.put("hobby", resume.getHobby());
+					// dataMap.put("firstExamTime", "12:41:17-12:44:38");
+					String add = ServletActionContext.getRequest().getRealPath(
+							"/personPicture")
+							+ "\\" + person.getPicture();
+					dataMap.put("picture", docUtil.getImageStr(add));
+					System.out.println(docUtil.getImageStr(add));
+					dataMap.put("politicalStatus", person.getPoliticalStatus());
+					dataMap.put("nation", person.getNation());
+					dataMap.put("address", person.getAddress());
+					dataMap.put("awardSituation", resume.getAwardSituation());
+					dataMap.put("HandsOnBackground",
+							resume.getHandsOnBackground());
+					// dataMap.put("secondPic3",
+					// docUtil.getImageStr("D:\\Img\\secondPic3.png"));
+					docUtil.createDoc(dataMap, "2678", savePath);
+					ActionContext.getContext().getSession()
+							.put("savePath", name);
+
+				}
+				request.setAttribute("download", download);
+
+			} else {
 			}
-	        else if(mybutton.equals("3")){
-	        	//---批量下载专用位------------------------------------------
-	        	
-	        	
-	        	
-			}
-	        else{}
-			
-			
-			
+
 		}
 		System.out.println(pt);
-		
-		
-		
-		
-		
-	return "user2";
+
+		return "user2";
 	}
+
 	public String lookResumeByR() throws Exception {
 
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -179,7 +222,6 @@ public class ApplicationAction extends ActionSupport {
 		return "error";
 	}
 
-
 	public String selectRecruit() throws Exception {
 		// TODO 自动生成的方法存根
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -256,30 +298,26 @@ public class ApplicationAction extends ActionSupport {
 
 			System.out.println(result);
 		}
-        if(paging(ByID)!=null)
-        {
-		ByID=paging(ByID).get("1");
-		
-		System.out.println("分割成功-----------------------------");
-        }
-        String selectRecruitname="不限";
-        String daysname="不限";
-        String dayename="不限";
-        int select =Integer.parseInt(selectRecruit);
-        if(select!=0)
-        {
-        	RecruitmentDAO edao=new RecruitmentDAO();
-        	selectRecruitname=edao.getrecruitment(select).getName();
-        }
-        if(!days.equals(""))
-        {
-        	daysname=days;
-        }
-        if(!daye.equals(""))
-        {
-        	dayename=daye;
-        }
-       
+		if (paging(ByID) != null) {
+			ByID = paging(ByID).get("1");
+
+			System.out.println("分割成功-----------------------------");
+		}
+		String selectRecruitname = "不限";
+		String daysname = "不限";
+		String dayename = "不限";
+		int select = Integer.parseInt(selectRecruit);
+		if (select != 0) {
+			RecruitmentDAO edao = new RecruitmentDAO();
+			selectRecruitname = edao.getrecruitment(select).getName();
+		}
+		if (!days.equals("")) {
+			daysname = days;
+		}
+		if (!daye.equals("")) {
+			dayename = daye;
+		}
+
 		System.out.println(ByID);
 		session.removeAttribute("selectRecruit");
 		session.removeAttribute("days");
@@ -290,7 +328,7 @@ public class ApplicationAction extends ActionSupport {
 		session.setAttribute("selectRecruit", selectRecruit);
 		session.setAttribute("days", days);
 		session.setAttribute("daye", daye);
-		
+
 		session.setAttribute("selectRecruitname", selectRecruitname);
 		session.setAttribute("daysname", daysname);
 		session.setAttribute("dayename", dayename);
@@ -355,83 +393,82 @@ public class ApplicationAction extends ActionSupport {
 		// return "error";
 	}
 
-	public HashMap<String, List<AERR>> paging(List<AERR> aerr) {  
-		  
-		HashMap<String, List<AERR>> hashmap=new HashMap<String, List<AERR>>();   
-		int part=1;
-		
-		if(null!=aerr&&aerr.size()>0){  
-		int pointsDataLimit = 10;//限制条数  
-		Integer size = aerr.size();  
-		//判断是否有必要分批  
-		
-		if(pointsDataLimit<size){  
-		 part = size/pointsDataLimit;//分批数  
-		System.out.println("共有 ： "+size+"条，！"+" 分为 ："+part+"批");  
-		//
-		for (int i = 1; i < part+1; i++) {  
-		//1000条  
-		List<AERR> listPage = aerr.subList(0+pointsDataLimit*(i-1), pointsDataLimit*i);
-		 String s = Integer.toString(i);
-		 System.out.println(s);
-		hashmap.put(s,listPage);   
-		 System.out.println(hashmap.get(s));
-		System.out.println(listPage);  
-		//剔除  
-		//aerr.subList(0, pointsDataLimit).clear();  
-		} //------------------------------------- 
-		  
-		if(!aerr.isEmpty()){
-		System.out.println(aerr);//表示最后剩下的数据  
-		}  
-		else{}
+	public HashMap<String, List<AERR>> paging(List<AERR> aerr) {
+
+		HashMap<String, List<AERR>> hashmap = new HashMap<String, List<AERR>>();
+		int part = 1;
+
+		if (null != aerr && aerr.size() > 0) {
+			int pointsDataLimit = 10;// 限制条数
+			Integer size = aerr.size();
+			// 判断是否有必要分批
+
+			if (pointsDataLimit < size) {
+				part = size / pointsDataLimit;// 分批数
+				System.out.println("共有 ： " + size + "条，！" + " 分为 ：" + part
+						+ "批");
+				//
+				for (int i = 1; i < part + 1; i++) {
+					// 1000条
+					List<AERR> listPage = aerr.subList(0 + pointsDataLimit
+							* (i - 1), pointsDataLimit * i);
+					String s = Integer.toString(i);
+					System.out.println(s);
+					hashmap.put(s, listPage);
+					System.out.println(hashmap.get(s));
+					System.out.println(listPage);
+					// 剔除
+					// aerr.subList(0, pointsDataLimit).clear();
+				} // -------------------------------------
+
+				if (!aerr.isEmpty()) {
+					System.out.println(aerr);// 表示最后剩下的数据
+				} else {
+				}
+			}
+
+			else {
+				hashmap.put("1", aerr);
+				System.out.println(aerr);
+			}
+		} else {
+			System.out.println("没有数据!!!");
 		}
-		
-		else{
-		hashmap.put("1",aerr);   	
-		System.out.println(aerr);
-		}  
-		}else{
-		System.out.println("没有数据!!!"); 
-		} 
-		
-		
-		int i=1;
+
+		int i = 1;
 		String key = Integer.toString(i);
-		 System.out.println(key);
-		 System.out.println(hashmap);
+		System.out.println(key);
+		System.out.println(hashmap);
 		System.out.println(hashmap.get(key));
-		int nowpage=1;
+		int nowpage = 1;
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		session.setAttribute("hashmap", hashmap);
-		session.setAttribute("mysize",part);
+		session.setAttribute("mysize", part);
 		request.setAttribute("nowpage", nowpage);
 		return hashmap;
-		}	
-	
+	}
+
 	public String pagination() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
-		List<AERR> aerr=null;
-		HashMap<String, List<AERR>> hashmap=(HashMap<String, List<AERR>>) session.getAttribute("hashmap");
-		int size=hashmap.size();
+		List<AERR> aerr = null;
+		HashMap<String, List<AERR>> hashmap = (HashMap<String, List<AERR>>) session
+				.getAttribute("hashmap");
+		int size = hashmap.size();
 		int page = Integer.parseInt(request.getParameter("page"));
-		String pr=null;
-		if(page<=0||page>size)
-		{
-			pr="页码不符合要求";
-		}
-		else{
-			
-			aerr=hashmap.get(request.getParameter("page"));
+		String pr = null;
+		if (page <= 0 || page > size) {
+			pr = "页码不符合要求";
+		} else {
+
+			aerr = hashmap.get(request.getParameter("page"));
 		}
 		request.setAttribute("pr", pr);
 		request.setAttribute("nowpage", page);
 		request.setAttribute("AERR", aerr);
 		return "user2";
 	}
-
 
 	public String execute() throws Exception {
 		// TODO 自动生成的方法存根
@@ -474,12 +511,12 @@ public class ApplicationAction extends ActionSupport {
 			System.out.println(days);
 			System.out.println(daye);
 
-			String state=null;
+			String state = null;
 			if (opera.equals("all")) {
 
 				aerr = applicationDAO.findNewsBySDN(id, days, daye,
 						selectRecruit);
-				state="全部";
+				state = "全部";
 			} else if (opera.equals("notsee")) {
 				// applications = applicationDAO.findNewsByState("未查看",id);
 				aerr = applicationDAO.findNewsBySDN("未查看", id, days, daye,
@@ -488,22 +525,22 @@ public class ApplicationAction extends ActionSupport {
 				java.util.List<Recruitment> recruitments = null;
 				recruitments = daoR.getrecruitmentsList(id);
 				session.setAttribute("recruitmentlist", recruitments);
-				state="未查看";
+				state = "未查看";
 			} else if (opera.equals("see")) {
 				// applications = applicationDAO.findNewsByState("已查看",id);
 				aerr = applicationDAO.findNewsBySDN("已查看", id, days, daye,
 						selectRecruit);
-				state="已查看";
+				state = "已查看";
 			} else if (opera.equals("invite")) {
 				// applications = applicationDAO.findNewsByState("邀请",id);
 				aerr = applicationDAO.findNewsBySDN("邀请", id, days, daye,
 						selectRecruit);
-				state="邀请";
+				state = "邀请";
 			} else if (opera.equals("refuse")) {
 				// applications = applicationDAO.findNewsByState("拒绝",id);
 				aerr = applicationDAO.findNewsBySDN("拒绝", id, days, daye,
 						selectRecruit);
-				state="拒绝";
+				state = "拒绝";
 			}
 			request.setAttribute("state", state);
 		} else {
@@ -524,7 +561,7 @@ public class ApplicationAction extends ActionSupport {
 		}
 		if (user == 2) {
 
-			if (aerr!=null) {
+			if (aerr != null) {
 				result = "-共找到" + aerr.size() + "条信息-";
 
 				for (int i = 0; i < aerr.size(); i++) {
@@ -536,8 +573,6 @@ public class ApplicationAction extends ActionSupport {
 							.println(aerr.get(i).getIdEnterpriseRecruitment());
 
 				}
-				
-				
 
 			} else {
 			}
@@ -548,12 +583,11 @@ public class ApplicationAction extends ActionSupport {
 
 			System.out.println(result);
 		}
-        if(paging(aerr)!=null)
-        {
-		aerr=paging(aerr).get("1");
-		
-		System.out.println("分割成功-----------------------------");
-        }
+		if (paging(aerr) != null) {
+			aerr = paging(aerr).get("1");
+
+			System.out.println("分割成功-----------------------------");
+		}
 
 		// ---------------------------------分页------------------------------------------------------
 		if (user == 1) {
@@ -570,8 +604,7 @@ public class ApplicationAction extends ActionSupport {
 			} else {
 			}
 		}
-		  
-		
+
 		request.setAttribute("applitionlist", applications);
 		session.setAttribute("result", result);
 		request.setAttribute("AERR", aerr);

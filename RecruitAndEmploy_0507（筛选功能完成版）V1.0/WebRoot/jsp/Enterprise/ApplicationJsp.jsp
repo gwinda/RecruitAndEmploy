@@ -148,6 +148,8 @@ my1 input[type="submit"] {
 		<input type="button" value="邀请" onclick="post(this);" id="mybutton"
 			name="mybutton" /> <input type="button" value="拒绝"
 			onclick="post(this);" name="button">
+			<input type="button" value="下载"
+			onclick="post(this);" name="button">
 	</div>
 
 	<div class="alignright">
@@ -244,6 +246,7 @@ my1 input[type="submit"] {
 		<hr>
 	</s:iterator>
 	<B><s:property value="#request.pr" /> </B>
+	 <B><s:property value="#request.download" /> </B>
 	<br>
 	<form action="ApplicationAction!pagination">
 		<my1> <s:if test="#request.AERR!= null">

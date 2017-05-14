@@ -2,6 +2,8 @@ package action;
 
 import java.net.URLEncoder;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +13,12 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dao.CollectionDAO;
 import dao.PersonalinformationDAO;
 
 
 
+import entity.Collection;
 import entity.Personalinformation;
 
 public class PersonalinformationAction extends ActionSupport{
@@ -180,5 +184,22 @@ public class PersonalinformationAction extends ActionSupport{
 		session.removeAttribute("mailbox");	
 		session.removeAttribute("userName");			
 		return "OK";
+	}
+	
+	public String lookMyCollection(){
+		try{
+			System.out.println("lookMyCollection");
+			int idFK= (Integer) session.getAttribute("IDFK");
+			System.out.println(idFK);
+			CollectionDAO dao=new CollectionDAO();
+			List<Collection> collectionlist= new ArrayList<Collection>();
+			collectionlist=dao.LookCollectionByIdPerson(idFK);
+			session.setAttribute ("collectionlist", collectionlist);			
+			return "success";
+		}catch(Exception e){			
+			e.printStackTrace();
+			return "error";
+		}
+		
 	}
 }

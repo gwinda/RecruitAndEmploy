@@ -172,7 +172,8 @@ function zhuxiao(){
 	           <a href="jsp/Personal/ResumeCreateJsp.jsp" target="rightlook">新建简历</a> &nbsp &nbsp 
 	           <a href="look.action" target="rightlook">查看所有简历</a> &nbsp &nbsp 
 	           <a href="ApplicationAction.action?opera=invite&user=1" target="rightlook">查看以投递简历</a> &nbsp &nbsp 
-	           <a href="lookpersoninformation!look.action?idFK=2" target="rightlook">查看个人基本信息</a>  &nbsp &nbsp    
+	           <a href="lookpersoninformation!look.action?idFK=${IDFK}" target="rightlook">查看个人基本信息</a>  &nbsp &nbsp  
+	           <a href="LookMyCollection.action?IDFK=${IDFK}" target="rightlook">查看我的收藏</a>  &nbsp &nbsp      
     	</c:when>
     	<c:otherwise>
            <a href="jsp/Enterprise/RecruitmentCreateJsp.jsp" target="rightlook">发布招聘</a> &nbsp &nbsp 

@@ -273,6 +273,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         else
             event.cancelBubble = true;
     }
+    
+    function zhuxiao(){
+	 if(confirm("你确信要注销吗？"))
+	{
+    //如果是true ，那么就把页面转向thcjp.cnblogs.com	 
+		 alert("ok");
+		 deleteCookie("userName","/","");//删除cookie
+		 window.location.href="cancelC!cancel.action";
+		 
+		 //window.location.replace("index2.jsp");
+	}else 
+	 {         //否则说明下了，赫赫	 
+	     	 
+	  }	 
+}
 </script>
 <!--/header-->
 <!--nav-->

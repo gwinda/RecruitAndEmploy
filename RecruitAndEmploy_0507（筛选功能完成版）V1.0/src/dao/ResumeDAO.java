@@ -137,6 +137,7 @@ public class ResumeDAO {
 				list.setAwardSituation(rs.getString(5));
 				list.setPosition(rs.getString(6));
 				list.setWorkingPlace(rs.getString(7));
+				list.setIdPersonalInformation(rs.getInt(8));
 				list.setCreateTime(rs.getTimestamp(9));
 				System.out.println("sucee");
 			}

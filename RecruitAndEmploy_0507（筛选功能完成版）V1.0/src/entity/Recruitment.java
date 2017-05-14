@@ -15,7 +15,13 @@ public class Recruitment {
 	private int salary;                      //月薪
 	private int number;
 	private int n;//招聘人数
-	
+	private int sumcount;//总数
+	public int getSumcount() {
+		return sumcount;
+	}
+	public void setSumcount(int sumcount) {
+		this.sumcount = sumcount;
+	}
 	public int getIdEnterpriseRecruitment() {
 		return idIdEnterpriseRecruitment;
 	}

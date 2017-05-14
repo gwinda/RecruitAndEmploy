@@ -100,5 +100,18 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result name="ERROR">/error.jsp</result>
 			<result name="OK" type="redirect">/index2.jsp</result>
 		</action>
+		<!-- -收藏操作 -->
+		<action name="Collection" class="action.RecruitmentAction" method="Collection">
+			<result name="success" type="json"></result>
+		</action>
+		<!-- 加载页面时判断该信息是否已收藏 -->
+		<action name="CollectionExist" class="action.RecruitmentAction" method="CollectionExist">
+			<result  type="json"></result>
+		</action>
+		<action name="LookMyCollection" class="action.PersonalinformationAction" method="lookMyCollection">
+			<result name="error">/error.jsp</result>
+			<result name="success" >/jsp/Personal/information/LookCollection.jsp</result>
+		</action>
+		
 	</package>
 </struts>

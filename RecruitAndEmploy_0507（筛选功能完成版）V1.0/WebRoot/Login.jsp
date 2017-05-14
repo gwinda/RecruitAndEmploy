@@ -36,49 +36,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 body{
 	padding:0;
 	margin:0;		
-	background:url("img/IT.jpg");
 	background-size:100%;
-	font-family:"黑体";	
-	font-weight:bold;
 	color:black;
 	}
 	
 #top{
 	width:100%;
 	height:30px;
-	
-	
-	}
+}
 #middle{
-	width:40%;	
-	margin:0 auto;
-	height:400px;	
+	padding-top:32px;
+	width:30%;	
+	margin-left:32%;	
+	height:300px;
+	
 	}
 #middle_center{
 	width:100%;
-	margin-left:80px;		
+	margin-left:50px;		
 	border-spacing:2px;
-	background-color: rgba(0,0, 0,0.1 );
-	border-radius:20px;
+	background-color: rgba(82, 117, 212, 0.2);
+	border-radius:10px;
+ 	box-shadow:3px 3px 3px 3px;  
 
 }
 #button{
 	font-size:16px;
 	text-align:center;
-	display:block;margin:0 auto;
+	display:block;
+	margin:0 auto;
 }
  .form{
-font-size:72px;
+font-size:25px;
 }
 .remmber{
-	margin-left:40px;
+	padding-left:60px;
+	
 }
 table{
 	margin:0 auto;
+	margin-bottom:11px;
 }
   #bottom_footer{
   margin-top:200px;
   }
+  td{
+  	padding: 3px;
+  }
+  .a_href{
+  	padding-left:57%;
+  }
+ .mytop{
+       padding-bottom:40px;
+       border-bottom: 3px solid #4b4b4b;
+       border-top: 0px solid #4b4b4b;
+       height:80px;
+       line-height:50px;   
+       margin-left: 15%;
+       margin-right: 15%;
+       color:#4b4b4b
+ }
 </style>
 <script src="js/jquery-1.11.3.js"></script>
  <script language="javascript" type="text/javascript" src="js/check.js"></script>
@@ -90,17 +107,18 @@ table{
     ${message}
     <%session.removeAttribute("message") ;%>
     <script type="text/javascript" src="js/vsoheader.js" charset="UTF-8"></script>
-<div id="top">
-	<h1><a href="index2.jsp">返回首页</a></h1>
+
+<div class="mytop" >
+<font size=15><B>珠海招聘网</B></font>
+简历多、覆盖广、互动强
 </div>
 
 <div id="middle">
 	<div id="middle_center" >
-		<h1  align="center">登录</h1>
+		
 		<form class="form" name="form" method="post" action="loginC!login.action" onsubmit="return turnto();" >
-		<br>
 	
-		<table border="0" align="center" >
+		<table border="0" align="center"  cellpadding="10">
 		
 		<tr>
 			<td>邮箱      :
@@ -113,8 +131,8 @@ table{
 			<td><font id="psd1_wrong" ></font></td>
 		</tr>
 		<tr align="center">
-			<td><label><input id="ID_type" name="ID_type" type="radio" value="person"  checked="checked" />个人</label> 
-			<label><input id="ID_type" name="ID_type" type="radio" value="company" />企业</label> </td>
+			<td><input id="ID_type" name="ID_type" type="radio" value="person"  checked="checked" />个人
+			<input id="ID_type" name="ID_type" type="radio" value="company" />企业 </td>
 			
 		</tr>
 		<tr>
@@ -122,24 +140,28 @@ table{
 			<input id="veryCode" name="veryCode" type="text" /> </td>
        			<td> <img src="SecurityCodeImageAction.action" id="Verify"  style="cursor:hand;" alt="看不清，换一张"/></td>
         					
-		</tr>	
+		</tr>
+		<br>	
 		<tr>
 	            <td></td>
 	            <td><div id="info"></div> </td>
 	    </tr>   
 		<tr align="center">
-			<td  class="remmber"><input type="checkbox" name="remberme" value="记住我">记住我</td> 			
+			<td  class="remmber"><input type="checkbox" name="remberme" value="记住我">记住我 &nbsp;
+			<input type="checkbox" name="remberme" value="自动登录">自动登录</td> 			
 		</tr>
 		
 		</table>
 			 <span id="button" >
 			<input type="submit" value="登录" onclick="return checklogin()" />
 			<input type="reset" value="重置" /></span>
-			<br>		
-			<a href="dd.jsp"  style="font-family:'楷体';border-line:none;align:'center';font-size:14pt">找回密码</a>
+			<br>
+			<div class="a_href">		
+			<a href="dd.jsp"  style="font-family:'楷体';border-line:none;align:'center';font-size:12pt">找回密码</a>
 		    <input type="hidden" value="bookingbeforeLogin" name="type">
-		   	<div><a href="jsp/Personal/LoginAndRegister/Register.jsp" style="font-family:'楷体';border-line:none;align:'center';font-size:14pt">还没注册？点我(用户)</a></div>
-		   	<div><a href="jsp/Enterprise/LoginAndRegister/RegisterR.jsp" style="font-family:'楷体';border-line:none;align:'center';font-size:14pt">还没注册？点我(企业)</a></div>
+		   	<div><a href="jsp/Personal/LoginAndRegister/Register.jsp" style="font-family:'楷体';border-line:none;align:'center';font-size:12pt">还没注册？点我(用户)</a>
+		   <a href="jsp/Enterprise/LoginAndRegister/RegisterR.jsp" style="font-family:'楷体';border-line:none;align:'center';font-size:12pt">还没注册？点我(企业)</a></div>
+			</div>
 		</form>
 		
 	</div>

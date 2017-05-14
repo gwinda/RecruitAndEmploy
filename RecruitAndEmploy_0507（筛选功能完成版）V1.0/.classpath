@@ -6,6 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.struts2.MYECLIPSE_STRUTS21_CORE"/>
-	<classpathentry kind="lib" path="D:/mysql-connector-java-5.1.16-bin.jar"/>
+	<classpathentry kind="lib" path="E:/java 架包/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

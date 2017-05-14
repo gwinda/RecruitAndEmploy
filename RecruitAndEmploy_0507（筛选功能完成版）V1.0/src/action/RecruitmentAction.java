@@ -21,13 +21,12 @@ import entity.Einformation;
 import entity.Industry;
 import entity.Job;
 import entity.Recruitment;
-import entity.Resume;
+import entity.Collection;
 import dao.ApplicationDAO;
+import dao.CollectionDAO;
 import dao.EinformationDAO;
 import dao.PositionDao;
 import dao.RecruitmentDAO;
-import dao.ResumeDAO;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -238,6 +237,7 @@ public class RecruitmentAction extends ActionSupport{
 			List<Recruitment> Recruitmentlist=new ArrayList<Recruitment>();
 			Recruitmentlist=dao.getrecruitmentsList(eid);
 			ctx.getSession().put("jobmess", list);
+			System.out.println(list.getIdEnterpriseRecruitment());
 			session.setAttribute("jobmess", list);
 			session.setAttribute("einformation", einformation);
 			session.setAttribute("Recruitmentlist", Recruitmentlist);
@@ -293,17 +293,18 @@ public class RecruitmentAction extends ActionSupport{
 		String positionkey= request.getParameter("positionkey");		
 		String workkey= request.getParameter("workkey")==null?null: request.getParameter("workkey");
 		String moneykey= request.getParameter("moneykey");
-		System.out.println(positionkey);
-		System.out.println(workkey);
-		System.out.println(moneykey);		
+		int pageNo=Integer.parseInt( request.getParameter("pageNo"));	
+		System.out.println(pageNo);
 		RecruitmentDAO dao= new RecruitmentDAO();
-		List<Recruitment> joblist=dao.searchbykey(positionkey,workkey, moneykey, 1);
+		List<Recruitment> joblist=dao.searchbykey(positionkey,workkey, moneykey, pageNo);
 		System.out.println(joblist);
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=utf-8"); 	 
 		//JSONArray jsonArray = JSONArray.fromObject(Industry); 
 		 JSONObject json = new JSONObject();
 		 json.put("jobkeylist", joblist);
+		 json.put("aa", joblist.size());
+		 json.put("bb", joblist.get(0).getSumcount());
 		 System.out.println(json.get("jobkeylist").toString());
 		 PrintWriter out = response.getWriter(); 
 		 out.print(json.toString());	
@@ -313,5 +314,56 @@ public class RecruitmentAction extends ActionSupport{
 			e.printStackTrace();
 		}
 		 return null;	
+	}
+
+	public String Collection() throws Exception{
+		PrintWriter out = response.getWriter(); 		
+		System.out.println("Collection()");
+		String recurimentid= request.getParameter("recurimentid");		
+		String idfk;
+		if(request.getParameter("idfk")==null){
+			out.print("null");			
+			out.flush();
+			return "success";
+		}
+		else{
+			idfk=request.getParameter("idfk");
+			Collection collection=new Collection();
+			collection.setIdPersonalInformation(Integer.parseInt(idfk));
+			collection.setIdEnterpriseRecruitment(Integer.parseInt(recurimentid));
+			CollectionDAO collectionDAO=new CollectionDAO();
+			collectionDAO.addCollection(collection);	
+			System.out.println("success");
+			 out.print("success");	
+			 out.flush();
+			return "success";
+		}
+	}
+	
+
+
+	public String CollectionExist() throws Exception  {
+		PrintWriter out = response.getWriter(); 		
+		System.out.println("CollectionExist()");
+		String recurimentid= request.getParameter("recurimentid");
+		String idfk=request.getParameter("idfk");
+		System.out.println(idfk);
+		Collection collection=new Collection();
+		collection.setIdPersonalInformation(Integer.parseInt(idfk));
+		collection.setIdEnterpriseRecruitment(Integer.parseInt(recurimentid));
+		CollectionDAO collectionDAO=new CollectionDAO();
+		boolean result=collectionDAO.CollectionExist(collection);
+		System.out.println(result);
+		if(result==true){
+		System.out.println("success");
+		out.print("success");	
+		out.flush();
+		}
+		else{
+			System.out.println("error");
+			out.print("error");
+			out.flush();
+		}		
+		return "success";
 	}
 }

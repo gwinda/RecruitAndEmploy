@@ -34,10 +34,6 @@
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/referer_getter.js"></script>
 <style type="text/css">
-body {
-	
-}
-
 .over {
 	width: 90%;
 	margin: 0 auto;
@@ -90,18 +86,15 @@ body {
 }
 
 .Pager {
-	width: 100px;
-	height: 40px;
-	display: block;
-	text-align: center;
-	margin: 0 auto;
+	float:left;
+	width: 80px;
+	height: 33px;	
+	text-align: center;	
 }
-
 #topline {
 	height: 27px;
 	padding: 10px 0;
 }
-
 #topline p {
 	float: left;
 	margin: 0;
@@ -199,11 +192,67 @@ text-align: left;
 }
 
 .middle_three {
-
-	float: right;
-	
+	display:block;
+	margin-right:200px;
+	padding-top:1px;
+	height:60px;	
+	float:right;
+}
+.middle_three  input{
+	margin-left:3px;
+	display:block;
 }
 </style>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		var idfk=$("#infk").val();
+		//alert(idfk);
+		if(idfk!=null&&idfk!=""){
+		$.ajax({
+				url:"CollectionExist.action",
+				type:"post",
+				data:"idfk="+idfk+"&recurimentid="+$("#idEnterpriseRecruitment").val(),
+				async:false,  
+                dataType:"text",   //接受数据格式             
+                error: function(){  
+                  alert("error");
+             	},  
+  				success: function(data){  				   
+				   		alert(data);
+				   		if(data.indexOf("error")){		   		
+					   		$("#collectionbtn").attr("value","已收藏");
+					   		$("#collectionbtn").attr({"disabled":"disabled"});
+				   		}               	
+             	}
+           });				
+		}
+	};
+	function collection(){
+		if($("#infk").val()==null||$("#infk").val()==""){
+			alert("账号未登录");			
+		}else{
+			var idfk=$("#infk").val();
+			alert($("#infk").val());
+			alert($("#idEnterpriseRecruitment").val());
+			$.ajax({
+				url:"Collection.action",
+				type:"post",
+				data:"idfk="+idfk+"&recurimentid="+$("#idEnterpriseRecruitment").val(),
+				async:false,  
+                dataType:"json",   //接受数据格式             
+                error: function(){  
+                  alert("error");
+             	},  
+				success: function(data){ 				   
+				   		alert("成功收藏");
+				   		$("#collectionbtn").attr("value","已收藏");
+				   		$("#collectionbtn").attr({"disabled":"disabled"});               	
+             	}
+           });				
+	}
+}
+</script>
 </head>
 
 <body>
@@ -230,16 +279,20 @@ text-align: left;
 
 		<!-- ----------------strat：具体招聘信息---------------- -->
 <div class="now">当前位置：<a href="indes2.jsp">首页</a>-><a  href="${einformation.address}">${einformation.name}公司</a>->招聘信息详情</div>
+		<div class="middle_three">
+			<input type="hidden" value="${IDFK}" name="infk" id="infk">
+			<input type="hidden" value="${jobmess.idEnterpriseRecruitment}" name="idEnterpriseRecruitment" id="idEnterpriseRecruitment">
+			
+				<%--  <a style="color:blue;text-decoration:none;background:#bdcabd;font-size:23px;border-radius:2px; border:2px solid  #bdcabd;" href="selectOneResumetosend.action?IDFK=${IDFK}" onclick="ckeck();return false;">投递简历</a> --%>
+				<input type="button" class="Pager" onclick="ckeck()" value="投递简历"> &nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<input type="button" class="Pager" onclick="collection()" id="collectionbtn" value="收藏">
+				<br>			
+			</div>
 		<div class="middle_left">
        
 			<h4 style="color:black">${jobmess.name}</h4>
-			<div class="middle_three">
-				<input type="hidden" value="${IDFK}" name="infk" id="infk">
-				<%--  <a style="color:blue;text-decoration:none;background:#bdcabd;font-size:23px;border-radius:2px; border:2px solid  #bdcabd;" href="selectOneResumetosend.action?IDFK=${IDFK}" onclick="ckeck();return false;">投递简历</a> --%>
-				<input type="button" class="Pager" onclick="ckeck()" value="投递简历">
-				<br>
-				<input type="button" class="Pager" value="收藏">
-			</div>
+			
 
 			<div class="middle_one">
 			
@@ -262,10 +315,10 @@ text-align: left;
 					</li>
 				</ul>
 			</div>
-			<br>
-			<div class="middle_two">
 			
-				<h4 style="color:#059BD8;background:#E1E3E4">职位要求</h4>
+			<div class="middle_two">
+				<h5 style="color:white;">aa</h5>
+				<h2 style="color:#059BD8;background:#E1E3E4">职位要求</h2>
 				<br>
 				<font color="black" style="font-size:18px;">
 					${jobmess.requirement}</font>
@@ -311,7 +364,7 @@ function ckeck(){
 	var id=document.getElementById("infk").value ;
 	var name=getCookie("userName");
 	//alert(name);
-	if(name.length==0){
+	if(name==""||name==null){
 		alert("未登录,请登录后再投递！");
 		return false;
 	}
@@ -325,7 +378,7 @@ function ckeck(){
 		return false;		
 	}	
 	
-		window.location.href="selectOneResumetosend.action?IDFK="+id;			
+	window.location.href="selectOneResumetosend.action?IDFK="+id;			
 }
 function getCookie(name)
 {

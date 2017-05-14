@@ -48,17 +48,18 @@ import="javax.imageio.*"
 		
 	}
 .middle{
+	padding-top:2px;
+	margin-top:8px;
 	width:100%;
 	height:500px;		
 	}
 .center{
+	
 	margin:0 auto;
 	width:40%;
 	height:100%;	
 	font-size:18pt;
-	border-spacing:2px;
-	background-color: rgba(0, 0, 0, 0.1);
-	border-radius:20px;
+	border-spacing:2px;	 
 	font-family:"微软雅黑";
 	
 	}
@@ -67,6 +68,17 @@ table{
 	
 
 }
+.mytop{
+       padding-bottom:40px;
+       border-bottom: 3px solid #4b4b4b;
+       border-top: 0px solid #4b4b4b;
+       height:150px;
+       ;
+       line-height:150px;   
+       margin-left: 15%;
+       margin-right: 15%;
+       color:#4b4b4b
+ }
 input[type=submit] {
 	font-size:16px;
 }
@@ -100,9 +112,13 @@ input[type=password]{
   
 <body class="body">
     <script type="text/javascript" src="js/vsoheader.js" charset="UTF-8"></script>
- <div class="top">
+ <div>
   ${message}
   <%session.removeAttribute("message") ;%>
+</div>
+<div class="mytop">
+<font size=15><B>珠海招聘网</B></font>
+简历多、覆盖广、互动强<font size="4">-->用户注册</font>
 </div>
 <div class="middle" >
 	<div class="center">
@@ -156,7 +172,7 @@ input[type=password]{
            <p align="center"><input type="submit" value="确认注册" style="height:35px;width:80px;"  />
             <input type="reset" value="重置" style="height:35px;width:80px;"/>   </p>
             <br/>        
-             <p align="left"><a href="Login.jsp"><font face="宋体" size="2">我不注册了，回到登录窗口</font></a></p>         
+             <p align="left"><a href="Login.jsp"><font face="宋体" size="4">我不注册了，回到登录窗口</font></a></p>         
         </form>
          
  </div>

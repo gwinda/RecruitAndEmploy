@@ -83,8 +83,6 @@
 				</table>
 			</c:if>
 		</c:when>
-
-
 		<c:otherwise>
 			<div class="middle">
 				<div
