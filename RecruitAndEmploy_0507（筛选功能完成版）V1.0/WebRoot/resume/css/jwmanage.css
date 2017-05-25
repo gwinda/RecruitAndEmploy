@@ -1067,14 +1067,14 @@
 }
 
 .ResumeItem .Top {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #428BCA;
 	height: 100px;
 	position: relative;
 }
 
 .ResumeItem .Top .Operating {
 	position: absolute;
-	top: 0;
+	top: 215px;
 	right: 0;
 }
 
@@ -1088,11 +1088,14 @@
 }
 
 .ResumeItem .Top .Info {
-	padding: 25px 0 10px;
+	/* padding: 8px 0 10px;
+	margin-top:2px; */
 	height: 65px;
-	line-height: 20px;
+	line-height: 34px;
 }
-
+a {
+	color:#428BCA;
+}
 .ResumeItem .Top .Info .Title {
 	font-weight: bold;
 	color: #1F84D4;
@@ -1125,7 +1128,7 @@
 }
 
 .ResumeItemChoose {
-	border: 1px solid #66CCFF;
+	border: 1px solid #428BCA;
 }
 
 .ResumeItemChoose .Sign {
@@ -1137,7 +1140,10 @@
 	height: 166px;
 	overflow: hidden;
 }
-
+table{
+	font-size:18px;
+	
+}
 .ArtZt a {
 	display: block;
 }

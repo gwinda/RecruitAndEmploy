@@ -34,8 +34,9 @@
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/referer_getter.js"></script>
 <style type="text/css">
+
 .over {
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 }
 .now {
@@ -46,10 +47,11 @@
 }
 
 .middle_left {
-	border-top: 4px solid #6cf;
-	height: 250px;
+	height: 1000px;
+	min-width:500px;
+	width:45%;
+	float: left;
 	margin-left: 15%;
-	margin-right: 15%;
 	margin-top: 5px;
 	background: white;
 	box-shadow: 0px 0px 8px white;
@@ -69,7 +71,6 @@
 .left {
 	display: block;
 	float: left;
-	width: 39%;
 	height: 100px;
 	font-family: 宋体;
 	font-size: 15px;
@@ -78,7 +79,7 @@
 .right {
 	display: block;
 	float: left;
-	width: 39%;
+	
 	height: 100px;
 	margin-left: 30px;
 	font-family: 宋体;
@@ -86,15 +87,29 @@
 }
 
 .Pager {
-	float:left;
-	width: 80px;
-	height: 33px;	
-	text-align: center;	
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	margin: 0 auto;
+	margin-left: 15px;
+	border-style :none;
 }
+my .Pager {
+	width: 180px;
+	height: 60px;
+	text-align: center;
+	margin: 0 auto;
+    margin-top: 15px;
+	background-color:#66ccff;
+	color:white;
+	font-family:黑体;
+}
+
 #topline {
 	height: 27px;
 	padding: 10px 0;
 }
+
 #topline p {
 	float: left;
 	margin: 0;
@@ -140,9 +155,10 @@
 }
 
 .middle_right {
-    margin-top: 0px;
+    margin-right: 15%;
     margin-bottom: 0px;
 	float: left;
+	margin-top: 35px;
 	display: block;
 	height: 520px;
 }
@@ -150,11 +166,12 @@
 .middle_right .top {
 	border: 4px white solid;
 	margin-top: 0px;
-	height: 200px;
+	height: 220px;
 	background: white;
 	text-align: left;
 	box-shadow: 0px 0px 3px white;
 	border: 1px solid #E2DFDF;
+	
 }
 
 .middle_right  ul li {
@@ -185,29 +202,54 @@ text-align: left;
 .remind {
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border: 1px solid #f00;
+	border: 1px solid #4b4b4b;
 	margin-top: 5px;
-	margin-left: 15%;
+	margin-left: 13%;
+	margin-right: 13%;
+}
+.remind1 {
+	padding-top: 5px;
+	padding-bottom: 5px;
 	margin-right: 15%;
 }
 
 .middle_three {
-	display:block;
-	margin-right:200px;
-	padding-top:1px;
-	height:60px;	
-	float:right;
+
+	float: right;
+	
 }
-.middle_three  input{
-	margin-left:3px;
-	display:block;
+.remindtop{
+    height:120px;
+    line-height:120px;  
+    margin-left: 15%;
+    margin-right: 15%;
+    color:#059BD8;
 }
+li{
+margin-top: 15px;
+}
+my li{
+margin-top: 15px;
+font-size:20px;
+}
+
+
 </style>
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	window.onload=function(){
 		var idfk=$("#infk").val();
-		//alert(idfk);
+		var today=new Date(); 
+		var month=today.getMonth()+1;
+		var now=today.getFullYear()+"-"+month+"-"+today.getDate();
+		var end=$("#endtime").val().split(" ");
+		if(end<=now){
+			$("#buttontou").attr("value","已过期");
+			$("#buttontou").attr({"disabled":"disabled"});
+		}
+		else{
+			$("#buttontou").attr("value","投递简历")
+		}
 		if(idfk!=null&&idfk!=""){
 		$.ajax({
 				url:"CollectionExist.action",
@@ -219,9 +261,10 @@ text-align: left;
                   alert("error");
              	},  
   				success: function(data){  				   
-				   		alert(data);
+				   		//alert(data);
 				   		if(data.indexOf("error")){		   		
 					   		$("#collectionbtn").attr("value","已收藏");
+					   		$("#collectionbtn").attr("style","color:blue");
 					   		$("#collectionbtn").attr({"disabled":"disabled"});
 				   		}               	
              	}
@@ -233,32 +276,53 @@ text-align: left;
 			alert("账号未登录");			
 		}else{
 			var idfk=$("#infk").val();
-			alert($("#infk").val());
-			alert($("#idEnterpriseRecruitment").val());
+			//alert($("#infk").val());
+			//alert($("#idEnterpriseRecruitment").val());
 			$.ajax({
 				url:"Collection.action",
 				type:"post",
 				data:"idfk="+idfk+"&recurimentid="+$("#idEnterpriseRecruitment").val(),
 				async:false,  
-                dataType:"json",   //接受数据格式             
+                dataType:"text",   //接受数据格式             
                 error: function(){  
                   alert("error");
              	},  
 				success: function(data){ 				   
 				   		alert("成功收藏");
 				   		$("#collectionbtn").attr("value","已收藏");
+				   		$("#collectionbtn").attr({"font-size":"72px"});
 				   		$("#collectionbtn").attr({"disabled":"disabled"});               	
              	}
            });				
-	}
+	};
+	 function duibi(a, b) {
+		    var arr = a.split("-");
+		    var starttime = new Date(arr[0], arr[1], arr[2]);
+		    var starttimes = starttime.getTime();
+		
+		    var arrs = b.split("-");
+		    var lktime = new Date(arrs[0], arrs[1], arrs[2]);
+		    var lktimes = lktime.getTime();
+		
+		    if (starttimes >= lktimes) {
+		
+		        alert("开始时间大于离开时间，请检查");
+		        return false;
+		    }
+		    else{
+		        return true;
+		        }
+
+}
 }
 </script>
 </head>
 
 <body>
 	<script type="text/javascript" src="js/vsoheader.js" charset="UTF-8"></script>
+	<div class="remindtop"><my style="font-size:40px">珠海招聘网</my><B>名企多、薪水高、找工作快</B></div>
 	<div class="remind">
-		<font size=2 color=red>@珠海招聘网提示您：用人单位以任何名义向应聘者收取费用都属违法行为（如押金、资料费、代收体检费、代收淘宝信誉等），请提高警惕并注意保护个人信息！</font>
+		<font size=2 color=#4b4b4b>@珠海招聘网提示您：用人单位以任何名义向应聘者收取费用都属违法行为（如押金、资料费、代收体检费、代收淘宝信誉等），请提高警惕并注意保护个人信息！</font>
 	</div>
 
 	<!-- ----------------版头栏：登录注册栏---------------- -->
@@ -278,70 +342,83 @@ text-align: left;
 
 
 		<!-- ----------------strat：具体招聘信息---------------- -->
+		<BR><BR>
 <div class="now">当前位置：<a href="indes2.jsp">首页</a>-><a  href="${einformation.address}">${einformation.name}公司</a>->招聘信息详情</div>
-		<div class="middle_three">
-			<input type="hidden" value="${IDFK}" name="infk" id="infk">
-			<input type="hidden" value="${jobmess.idEnterpriseRecruitment}" name="idEnterpriseRecruitment" id="idEnterpriseRecruitment">
-			
-				<%--  <a style="color:blue;text-decoration:none;background:#bdcabd;font-size:23px;border-radius:2px; border:2px solid  #bdcabd;" href="selectOneResumetosend.action?IDFK=${IDFK}" onclick="ckeck();return false;">投递简历</a> --%>
-				<input type="button" class="Pager" onclick="ckeck()" value="投递简历"> &nbsp;&nbsp;&nbsp;&nbsp;
-				
-				<input type="button" class="Pager" onclick="collection()" id="collectionbtn" value="收藏">
-				<br>			
-			</div>
+
 		<div class="middle_left">
-       
-			<h4 style="color:black">${jobmess.name}</h4>
+       <BR><br>
+			<my style="font-size:36px"><B>${jobmess.name}</B></my>
 			
+		   <BR><BR>
+		
 
 			<div class="middle_one">
 			
-				<h2 style="color:#059BD8;background:#E1E3E4">基本信息</h2>
+				<!--  <h2 style="color:#059BD8;background:#E1E3E4">基本信息</h2>-->
+				
 				<ul class="left">
-					<li>开始时间:<font color="black"><fmt:formatDate
-								value="${jobmess.startTime}" dateStyle="long" />
-					</font>
-					</li>
-					<li>结束时间:<font color="black">${jobmess.endTime}</font></li>
-					<li>招聘类型:<font color="black">${jobmess.position}</font>
-					</li>
+					<B><my><li>招${jobmess.number}人 &#12288;${jobmess.workingPlace} &#12288;月薪${jobmess.salary}
+					</li></my></B>
+					<B><li>${jobmess.startTime}&#12288;-&#12288;${jobmess.endTime}</li></B>
+					
 				</ul>
-				<ul class="right">
-					<li>招聘人数:<font color="black">${jobmess.number}</font>
-					</li>
-					<li>薪水:<font color="black">${jobmess.salary}</font>
-					</li>
-					<li>工作地点:<font color="black">${jobmess.workingPlace}</font>
-					</li>
-				</ul>
+				
+			</div>
+			<BR><BR>
+			<div class="remind1">
+			<input type="hidden" value="${jobmess.idEnterpriseRecruitment}" name="idEnterpriseRecruitment" id="idEnterpriseRecruitment">
+			<input type="hidden" value="${IDFK}" name="infk" id="infk">
+				<%--  <a style="color:blue;text-decoration:none;background:#bdcabd;font-size:23px;border-radius:2px; border:2px solid  #bdcabd;" href="selectOneResumetosend.action?IDFK=${IDFK}" onclick="ckeck();return false;">投递简历</a> --%>
+				<input type="hidden" value="${jobmess.endTime}" name="endtime" id="endtime">
+				
+					<my><input id="buttontou" type="button" class="Pager" onclick="ckeck()" value="投递简历"></my>
+				 <%-- <c:if test="${jobmess.endtime>=<%=date%>}" ></c:if>  --%>
+				<input type="button" class="Pager" value="马上留言">
+				<input type="button" class="Pager" value="收藏" onclick="collection()" id="collectionbtn">
 			</div>
 			
+			<br><br><br>
 			<div class="middle_two">
-				<h5 style="color:white;">aa</h5>
-				<h2 style="color:#059BD8;background:#E1E3E4">职位要求</h2>
+			
+				<h3 style="color:#059BD8;background:#E1E3E4"><B>职位要求</B></h3>
 				<br>
-				<font color="black" style="font-size:18px;">
-					${jobmess.requirement}</font>
-			</div>
+				 <textarea width="400" style = "border:none;" name="eduhistory" cols="60" rows="15" disabled="disabled">${jobmess.requirement}</textarea>
+			</div></div>
 			<br>
+			
+			
 			<div class="middle_right">
 				<div class="top">
-					<h2 style="color:#059BD8;background:#E1E3E4">企业信息</h2>
+					<!--  <h2 style="color:#059BD8;background:#E1E3E4">企业信息</h2>-->
 					<ul>
-						<li>企业名称：${einformation.name}</li>
-						<li>企业电话:${einformation.phone}</li>
-						<li>企业邮箱:${einformation.mailbox}</li>
-						<li>企业地址:${einformation.address}</li>
+						<li ><B style="font-size:24px;font-family:'黑体'"><a herf="">${einformation.name}</a></B></li>
+						<BR>
+						此处暂定公司介绍balabalabalabalabalabalabalabalabala<BR>
+						此处暂定公司介绍balabalabalabalabalabalabalabalabala<BR>
+						此处暂定公司介绍balabalabalabalabalabalabalabalabala<BR>
+						此处暂定公司介绍balabalabalabalabalabalabalabalabala<BR>
+						此处暂定公司介绍balabalabalabalabalabalabalabalabala<BR>
+						<BR><BR>
+						<li style="color: #867e7e;">联系方式&#12288;${einformation.phone}&#12288;&#12288;&#12288;联系人&#12288;陈书记<BR>企业邮箱&#12288;${einformation.mailbox}</li>
+						
+						
+							<BR><BR><BR><BR>
+						<li ><B style="font-size:30px;font-family:'黑体'">企业地址</B></li><br>
+						<li style="color: #867e7e;">${einformation.address}</li>
 					</ul>
 				</div>
+				<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
 				<!---企业招聘信息-->
 				<div class="down">
-					<h5 style="background:#E1E3E4">其它招聘信息</h5>
+					<B><h3 style="background:#E1E3E4;color:#000000" >职位推荐</h3></B>
+					<HR style=" height:2px;border:none;border-top:2px dotted #185598;">
 					<ul>
 						<c:forEach var="mentlist" items="${Recruitmentlist}">
-							<li>---<a
-								href="lookRecuriment!lookonejob.action?id=${mentlist.idEnterpriseRecruitment}&idEnterpriseInformation=${mentlist.idEnterpriseInformation}">${mentlist.name}</a>
+							<li><a href="lookRecuriment!lookonejob.action?id=${mentlist.idEnterpriseRecruitment}&idEnterpriseInformation=${mentlist.idEnterpriseInformation}">${mentlist.name}	月薪${mentlist.salary}</a>
+							
 							</li>
+							
+							<BR>
 						</c:forEach>
 					</ul>
 				</div>
@@ -350,7 +427,6 @@ text-align: left;
 		</div>
 
 	</div>
-	<!-----end：左侧具体招聘信息- -->
 
 	<!-- ---------------------------start--右侧企业信息简介-------------------------------------- -->
 	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
@@ -364,7 +440,7 @@ function ckeck(){
 	var id=document.getElementById("infk").value ;
 	var name=getCookie("userName");
 	//alert(name);
-	if(name==""||name==null){
+	if(name.length==0){
 		alert("未登录,请登录后再投递！");
 		return false;
 	}
@@ -378,7 +454,7 @@ function ckeck(){
 		return false;		
 	}	
 	
-	window.location.href="selectOneResumetosend.action?IDFK="+id;			
+		window.location.href="selectOneResumetosend.action?IDFK="+id;			
 }
 function getCookie(name)
 {
@@ -410,9 +486,10 @@ function getCookieVal(offset) {
    return decodeURIComponent (document.cookie.substring(offset, endstr));   
 }
     
-</SCRIPT>
+</SCRIPT>	
 	<script type="text/javascript" src="js/vsofooter.js"></script>
 	<!--add experience-->
 	<script type="text/javascript" src="js/experience.js"></script>
+	
 </body>
 </html>

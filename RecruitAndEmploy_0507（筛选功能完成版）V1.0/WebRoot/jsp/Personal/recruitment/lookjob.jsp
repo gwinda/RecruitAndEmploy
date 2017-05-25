@@ -56,8 +56,8 @@ function getAjax(positionkey,workkey,moneykey,pageNo){//点击获取列表的异
 	  				var obj = eval(data["jobkeylist"] ); //获取json
 	  				var obj2 = data["aa"]; //获取json
 	  				var obj3 = data["bb"]; //获取json
-	  				alert(data["aa"]);
-	  				alert(obj3);
+	  				//alert(data["aa"]);
+	  				//alert(obj3);
 	  				$.each(obj,function(i,value) {  
 	  					//alert(value.name);  				  		
 	                      $("#listtable").append("<tr>"+
@@ -137,7 +137,7 @@ function FenyeSendTo(pageNo){
  		$("#content").remove();
 		$("#content2").empty();
 		$("#fenye").empty();
-		alert(pageNo);
+		//alert(pageNo);
 		var positionkey=$("#positionkey").val();
 		var workkey=$("#workkey").val();
 		var moneykey=$("#moneykey").val();
@@ -185,7 +185,7 @@ function Findbynolimit(obj){
 //细分类型的div盒子显示实现，先清空，将点击过的数据变回原来的颜色
 function ShowDiv(objid)
 {
-	alert(objid);
+	//alert(objid);
 	//显示之前先循环将所有div的内容清空，将点击过的变色内容变回白色
 	for(var i = 0;i < 9; i++) {
 		$("#"+i+"t").empty();

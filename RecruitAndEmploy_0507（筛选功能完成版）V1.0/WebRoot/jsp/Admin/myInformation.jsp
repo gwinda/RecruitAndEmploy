@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <hr>
 <a href="lookEI?id=0">待验证企业用户</a><br>
 <a href="lookEI?id=1">已验证企业用户</a><br>
+<a href="lookEI?id=2">验证不通过企业用户</a><br>
 <a href="">举报等其他...</a><br>
 
 

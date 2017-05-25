@@ -34,29 +34,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/referer_getter.js"></script>
 <style>
 .alignright{text-align:right} 
+img{  margin-left: 400px;}
+
 </style>
   </head>
   
   <body>
-   <div class="alignright">
-        查看企业信息
-    </div>
- <hr>
+  <BR><BR><BR>
  <tr>
+
     <s:iterator value="#request.einformation" id="ei" status="status">  
                 
-     企业名字:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.name" /></br>
-     联系方式:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.phone" /></br>
-     邮箱帐号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.mailbox" /></br>
-     企业地址:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.address" /></br>
-     主页地址:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.homepage" /></br>
-     企业商标:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.trademark" /></br>
-     营业执照:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ei.BusinessLicense" /></br>
-    
+    <B style="font-size:28px"><s:property value="#ei.name" /></B></br></br></br>
+     联系方式:&nbsp;&nbsp;<s:property value="#ei.phone" /><img width="150" height="100"  src="uploadpic/<s:property value="#ei.trademark" />"></img></br></br>
+     邮箱帐号:&nbsp;&nbsp;<s:property value="#ei.mailbox" /></br></br>
+     主页地址:&nbsp;&nbsp;<s:property value="#ei.homepage" /></br></br>
+     企业地址:&nbsp;&nbsp;<s:property value="#ei.address" /></br></br>
+     <!--  企业商标:&nbsp;&nbsp;<s:property value="#ei.trademark" /></br></br>
+     营业执照:&nbsp;&nbsp;<s:property value="#ei.BusinessLicense" /></br></br>-->
+ 
   <hr>
-  <a href="">修改</a>
-    </s:iterator>
+   </s:iterator>
    </tr>
+    <B style="font-size:24px">公司介绍</B> &nbsp; &nbsp; &nbsp; &nbsp; <!--  <input type="Button"  value="修改" />--></br></br></br>
+       <textarea disabled="disabled" width="400" name="eduhistory" cols="130" rows="15" align="center">1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;1.示例文本&#10;</textarea>
     
   </body>
 </html>

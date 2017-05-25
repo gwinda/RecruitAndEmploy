@@ -25,8 +25,12 @@
 input[type="text"]{
        width:250px;
        height:35px;
-       margin-top: 5px;
+       margin-top: 9px;
+       
 	
+}
+textarea{
+	margin-top: 10px;
 }
 input[type="submit"]{
        
@@ -41,13 +45,33 @@ input[type="submit"]{
 
 
 	<form action="re!createResume.action" method="post">
-		<input type="hidden" name="mess" value="create"> 简历名称： <input
-			type="text" name="RName"><br> 兴趣爱好： <input type="text"
-			name="hobby"><br> 工作经验： <input type="text"
-			name="experience"><br> 获奖情况： <input type="text"
-			name="award"><br> 应聘职位： <input type="text" name="job"><br>
-		工作地点： <input type="text" name="workplace"><br> <input
-			type="submit" value="提交">
+		<input type="hidden" name="mess" value="create">
+		 	简历名称：
+		 	 <input type="text" name="RName">
+		  	<br> 
+		  	兴趣爱好：<textarea name="hobby" cols="25" rows="4"></textarea>
+		  	
+			<br> 
+			工作经验：<textarea  name="experience" cols="25" rows="4"></textarea>
+			<br>
+			 获奖情况：<textarea name="award" cols="25" rows="4"></textarea>
+			 <br>
+			  应聘职位： <input type="text" name="job" cols="25" rows="4">
+			 <br>
+			  <br/>
+			工作地点： 
+			 <select name="workplace" id="workplace"> 
+	            <option value="null">不限</option>
+	             <option value="香洲区"> 香洲区</option>
+	              <option value="金湾区">  金湾区</option>
+	               <option value="斗门区"> 斗门区</option>
+	                <option value="高新区">高新区</option>
+	                 <option value="万山区"> 万山区</option>
+	                  <option value="高栏港经济区"> 高栏港经济区</option>
+	                   <option value="保税区"> 保税区</option>	            
+	               	    <option value=" 横琴新区"> 横琴新区</option>	               
+      		 </select>
+			<br> <input type="submit" value="提交">
 
 	</form>
 </body>

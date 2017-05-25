@@ -98,7 +98,7 @@ table{
  }
 </style>
 <script src="js/jquery-1.11.3.js"></script>
- <script language="javascript" type="text/javascript" src="js/check.js"></script>
+ <script  type="text/javascript" src="js/check.js"></script>
 	
 	
   </head>
@@ -116,14 +116,14 @@ table{
 <div id="middle">
 	<div id="middle_center" >
 		
-		<form class="form" name="form" method="post" action="loginC!login.action" onsubmit="return turnto();" >
+		<form class="form" name="form" method="post" action="loginC!login.action" onsubmit="return checklogin();" >
 	
 		<table border="0" align="center"  cellpadding="10">
 		
 		<tr>
 			<td>邮箱      :
-			<input type="text" name="number" id="number" placeholder="请输入您的账号"  /></td>
-			<td><font id="num_fail" ></font></td>
+			<input type="text" name="emailbox" id="emailbox" placeholder="请输入您的账号"  /></td>
+			<td><font id="email_wrong" ></font></td>
 		</tr>
 		
 		<tr>
@@ -145,15 +145,16 @@ table{
 		<tr>
 	            <td></td>
 	            <td><div id="info"></div> </td>
-	    </tr>   
-		<tr align="center">
+	    </tr>  
+	    <!-- 记住我，自动登录 隐藏在这里 --> 
+		<!-- <tr align="center">
 			<td  class="remmber"><input type="checkbox" name="remberme" value="记住我">记住我 &nbsp;
 			<input type="checkbox" name="remberme" value="自动登录">自动登录</td> 			
-		</tr>
+		</tr> -->
 		
 		</table>
 			 <span id="button" >
-			<input type="submit" value="登录" onclick="return checklogin()" />
+			<input type="submit" value="登录"  />
 			<input type="reset" value="重置" /></span>
 			<br>
 			<div class="a_href">		

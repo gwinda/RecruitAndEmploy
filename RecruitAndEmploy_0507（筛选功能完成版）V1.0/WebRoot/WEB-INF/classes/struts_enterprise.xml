@@ -29,7 +29,7 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result name="user1">/jsp/Personal/ApplicationforrJsp.jsp</result>
 			<result name="OK">/jsp/Personal/resume/lookResume.jsp</result>
 			<result name="error">/index2.jsp</result>
-			<result name="success">/jsp/information/Mys.jsp</result>
+			<result name="success">/jsp/Personal/information/Mys.jsp</result>
 		</action>
 		<!-- -?????? -->
 		<action name="Rec" class="action.RecruitmentAction">

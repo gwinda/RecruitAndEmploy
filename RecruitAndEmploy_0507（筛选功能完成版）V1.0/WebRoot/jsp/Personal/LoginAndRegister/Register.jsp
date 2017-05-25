@@ -56,7 +56,7 @@ import="javax.imageio.*"
 .center{
 	
 	margin:0 auto;
-	width:40%;
+	width:50%;
 	height:100%;	
 	font-size:18pt;
 	border-spacing:2px;	 
@@ -127,10 +127,11 @@ input[type=password]{
         <form name="form1" action="registerC!register.action" method="post"  onsubmit="return check()" >
         	<table border="0"  >
         	<tr>
-            	<td>*手机号码: </td> 
-            	<td><input type="text"  name="number"  id ="number" height="22" /></td>
-            	<td><div id="num_fail"></div></td>
-            </tr>     
+           		<td> *Email  : </td>  
+             	<td><input type="text"  name="mailbox" id="mailbox" height="22"   placeholder="格式:XXXXX@XX.com(登录账号) "/></td>
+            	<td><div id="email_wrong"></div></td>
+            </tr>
+        	
             <tr>
             	<td> *真实姓名  :</td>  
             	<td><input type="text"  name="surname"  id="surname" height="22"   /></td>
@@ -142,11 +143,11 @@ input[type=password]{
              	 <input type="radio"  name="sex" id="sex" value="女" />女</td>
             	<td><div id="sex_wrong"></div></td>
             </tr>
-            <tr>
-           		<td> *Email  : </td>  
-             	<td><input type="text"  name="mailbox" id="mailbox" height="22"   placeholder="格式:XXXXX@XX.com"/></td>
-            	<td><div id="email_wrong"></div></td>
-            </tr>
+           	<tr>
+            	<td>*手机号码: </td> 
+            	<td><input type="text"  name="number"  id ="number" height="22" /></td>
+            	<td><div id="num_fail"></div></td>
+            </tr>     
            
             <tr>
             	<td>*密码 : </td>

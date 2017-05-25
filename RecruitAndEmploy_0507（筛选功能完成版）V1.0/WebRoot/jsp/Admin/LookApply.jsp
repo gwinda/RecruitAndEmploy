@@ -23,6 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  
+  <a href="jsp/Admin/myInformation.jsp">回到首页</a>
     <s:iterator value="#request.einformation" id="ei" status="status">  
                 
   name:<s:property value="#ei.name" /></br>
@@ -33,7 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     trademark:<s:property value="#ei.trademark" /></br>
 
      BusinessLicense:<s:property value="#ei.BusinessLicense" /></br>
-     <B>  <a href="Pass?passid=<s:property value="#ei.id" />">通过</a></B><br>
+     <B>  <a href="Pass?passid=<s:property value="#ei.id" />">通过</a></B>
+       <B>  <a href="Refuse?passid=<s:property value="#ei.id" />">拒绝</a></B>
   <hr>
    
     </s:iterator>

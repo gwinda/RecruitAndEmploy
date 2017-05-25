@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <B>成功结束！</B><hr>
-   <a href="index.jsp">回到主页</a></br>
    <a href="Rec?i=1">返回查看招聘</a></br>
   </body>
 </html>

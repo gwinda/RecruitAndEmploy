@@ -21,6 +21,12 @@ public class EinformationAction extends ActionSupport{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		String mailbox=(String) session.getAttribute("mailbox");
+		if(request.getParameter("eiid")!=null)
+		{
+			int eiid=Integer.parseInt(request.getParameter("eiid"));
+			
+			mailbox=dao.findyID(eiid).getMailbox();
+		}
 		System.out.println(mailbox);
 		einformation = dao.geteInformationsList(mailbox);
 	    request.setAttribute("einformation",einformation);  
@@ -45,7 +51,8 @@ public class EinformationAction extends ActionSupport{
 		    dao.updateA(id);
 		    Einformation einformation=dao.findyID(id);
 		    Send send=new Send();
-		    send.send(einformation,"m15219605797@163.com", 1);
+		    //send.send(einformation,"m15219605797@163.com", 1);
+		    send.send(einformation,"1051209415@qq.com", 1);
 			return "OK";  
 			}
 			catch(Exception e){
@@ -55,6 +62,25 @@ public class EinformationAction extends ActionSupport{
 		
 		
 		
+	}
+public String setRefuse() throws Exception{
+		
+		try{
+			EinformationDAO dao=new EinformationDAO(); 		
+			HttpServletRequest request = ServletActionContext.getRequest();
+		    int id=Integer.parseInt(request.getParameter("passid")); 
+		    System.out.println(id);
+		    dao.updateB(id);
+		    Einformation einformation=dao.findyID(id);
+		    Send send=new Send();
+		    //send.send(einformation,"m15219605797@163.com", 1);
+		    send.send(einformation,"1051209415@qq.com", 2);
+			return "OK";  
+			}
+			catch(Exception e){
+				e.printStackTrace();
+				return "error";
+			}
 	}
 	
 	public String getEIList() throws Exception {

@@ -19,6 +19,43 @@ public class EinformationDAO
 	/**
 	 * 		Í¶µÝ¼òÀú
 	*/
+	public boolean updateB(int id){		
+		Connection conn = null;
+		PreparedStatement pst=null;
+		String sql="update EnterpriseInformation set Authentication=?  where idEnterpriseInformation=? ";
+		try {			
+			conn = DataBaseConn.getCon();			
+			pst= conn.prepareStatement(sql);
+			
+			pst.setInt(1, 2);
+			pst.setInt(2,id);
+			
+			int i=pst.executeUpdate();
+			System.out.println("update dao right");
+			System.out.println(i);
+			if(i==1){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}finally {
+			if (pst != null)
+				try {
+					pst.close();
+
+				}catch (SQLException e) {
+			}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+	}
+		
+	}
 	public boolean updateA(int id){		
 		Connection conn = null;
 		PreparedStatement pst=null;

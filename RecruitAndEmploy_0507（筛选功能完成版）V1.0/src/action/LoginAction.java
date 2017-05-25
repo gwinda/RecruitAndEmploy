@@ -61,7 +61,7 @@ public class LoginAction extends ActionSupport{
 				//session.removeAttribute("IDFK");
 				ActionContext ctx=ActionContext.getContext();
 				
-				String number =request.getParameter("number");
+				String number =request.getParameter("emailbox");
 				String password =request.getParameter("password");
 				System.out.println(number);
 				//String password=(dao.findNewsByMail(getEinformation().getMailbox()));

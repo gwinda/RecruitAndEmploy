@@ -26,7 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <c:forEach items="${collectionlist}" var="collect">
-    	${collect.name} ${collect.name} ${collect.name}<br>
+    	${collect.name} 
+    	${collect.name} 
+    	${collect.name}
+    	<br>
     </c:forEach>
     
   </body>

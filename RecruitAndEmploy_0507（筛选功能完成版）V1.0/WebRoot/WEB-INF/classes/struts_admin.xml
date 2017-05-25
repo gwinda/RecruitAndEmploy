@@ -18,6 +18,10 @@
 			<result name="OK">/jsp/Admin/myInformation.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="Refuse" class="action.EinformationAction" method="setRefuse">
+			<result name="OK">/jsp/Admin/myInformation.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 <!-- Admin 管理员查看验证列表 -->
 		<action name="lookEI" class="action.EinformationAction" method="getEIList">
 			<result name="OK">/jsp/Admin/LookApply.jsp</result>

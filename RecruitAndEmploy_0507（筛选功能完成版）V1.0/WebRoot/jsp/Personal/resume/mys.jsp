@@ -46,9 +46,9 @@
 												onclick="javascript:if(window.confirm('删除简历后将无法进行恢复，你确定要进行删除吗？')==false) return false;">删除</a>
 										</div>
 										<div class="Info">
-											<br /> <span>创建时间：<fmt:formatDate
+											<br /> <span>&nbsp;&nbsp;创建时间：<fmt:formatDate
 													value="${list.createTime}" dateStyle="long" />
-											</span><br /> <span>最近更新时间：<fmt:formatDate
+											</span><br /> <span>&nbsp;&nbsp;最近更新时间：<fmt:formatDate
 													value="${list.updateTime}" dateStyle="long" />
 											</span><br />
 										</div>

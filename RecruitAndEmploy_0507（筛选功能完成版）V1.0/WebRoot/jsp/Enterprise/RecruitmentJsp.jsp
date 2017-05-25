@@ -34,6 +34,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/referer_getter.js"></script>
 <style>
 .alignright{text-align:right} 
+.mydiv{float:right;
+       height:50px;
+       width:120px;
+        border-style: solid;
+       border-color:  66ccff;       
+        text-align:center;
+       line-height:50px;
+       font-size:24px;
+       color: 66ccff;
+       font-family:"黑体";
+     }
+     
+     
+       mydiv1{float:left;
+      
+     }
 </style>
   </head>
   
@@ -46,9 +62,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <a href="Rec?i=2">已结束</a></br>
        </div>
         <hr>
+        
     <s:iterator value="#session.recruitmentlist" id="re" status="status">  
-                
-    工作职位:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.name" /></br>
+
+ <s:if test="#re.isending==1">            
+    工作职位:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><a href="ApplicationAction!selectRecruit?selectRecruit=<s:property value="#re.IdEnterpriseRecruitment" />"><s:property value="#re.name" /></a></B></br>
+    </s:if>   
+    <s:elseif test="#re.isending==2">
+    工作职位:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.name" /></br>  
+      <div class="mydiv"><B>已结束</B></div> 
+    </s:elseif>
      工作分类:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.position" /></br>
      职位要求:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.requirement" /></br>
      工作地点:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.workingPlace" /></br>
@@ -56,10 +79,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      招聘人数:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.number" /></br>
      开始时间:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.startTime" /></br>
      结束时间:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.endTime" /></br>
-     申请人数:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#re.n" /></br>
-     <B>  <a href="Rec!setEnd?endid=<s:property value="#re.id" />">结束</a></B>
+     申请人数:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><s:property value="#re.n" /></B></br>
+   <!--  <B>  <a href="Rec!setEnd?endid=<s:property value="#re.IdEnterpriseRecruitment" />">结束</a></B> --> 
   <hr>
-   
+  </div>
+ 
     </s:iterator>
    
     

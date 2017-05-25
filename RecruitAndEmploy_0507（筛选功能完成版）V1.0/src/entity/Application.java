@@ -5,13 +5,35 @@ import java.sql.Date;
 public class Application {
 	private int idApplication;
 	private Date time;
+	private Date endtime;
 	private String state;
 	private int idResume;
 	private int idEnterpriseRecruitment;
 	private String ename;
 	private String resumename;
 	private String recruitname;
+	private String remark;
+	private int eiid;
 	
+	
+	public int getEiid() {
+		return eiid;
+	}
+	public void setEiid(int eiid) {
+		this.eiid = eiid;
+	}
+	public Date getEndtime() {
+		return endtime;
+	}
+	public void setEndtime(Date endtime) {
+		this.endtime = endtime;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	public String getEname() {
 		return ename;
 	}

@@ -469,6 +469,10 @@ public boolean registerP(Personalinformation personalinformation){
 			}
 			 return id;	 
 	 }
+	//判断账号是否已存在
+	public boolean checkExit(int email){
+		return true;
+	}
 	//判断表中是否有空值
 	public boolean checknull(int id){
 		Personalinformation person=new Personalinformation();

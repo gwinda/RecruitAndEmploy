@@ -19,6 +19,28 @@ public class ApplicationDAO
 	/**
 	 * 		投递简历
 	*/
+	public void update(){
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try
+		{
+			conn = DataBaseConn.getCon();
+			
+			String sql = "update view2 set vstate='已结束'  where endtime < now();";
+			ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("投递失败........", e);
+		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
+	}
 	public void add(Application application)
 	{
 		Connection conn = null;
@@ -91,6 +113,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("查询申请列表", e);
 		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		
 		return applications;
 	}
@@ -100,6 +127,51 @@ public class ApplicationDAO
 	/**
 	 *		通过id查找一个指定的新闻 
 	*/
+	public List<Application> findNewsByIdI(int idE,int idR)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Application> applications = new ArrayList<Application>();
+		Application application = null;
+		try
+		{
+			
+			String sql = "select idapplication,time,state,idResume,idEnterpriseRecruitment from application where idEnterpriseRecruitment= ? and idResume=?";
+			
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idE);
+			ps.setInt(2, idR);
+			
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				application = new Application();
+				application.setIdApplication(rs.getInt(1));
+				application.setTime(rs.getDate(2)); 
+				application.setState(rs.getString(3));
+				application.setIdResume(rs.getInt(4));
+				application.setIdEnterpriseRecruitment(rs.getInt(5));
+				applications.add(application);
+				System.out.println("个数"+applications.size());
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("通过id查找......", e);
+		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
+		
+		return applications;
+	}
 	public List<Application> findNewsByIdI(int id)
 	{
 		Connection conn = null;
@@ -135,6 +207,11 @@ public class ApplicationDAO
 		catch (Exception e)
 		{
 			throw new RuntimeException("通过id查找......", e);
+		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
 		}
 		
 		return applications;
@@ -174,7 +251,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过id查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return applications;
 	}
 	
@@ -191,7 +272,7 @@ public class ApplicationDAO
 			
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
-					" from view2 where idEnterpriseInformation= ?";
+					" from view2 where idEnterpriseInformation= ? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -222,6 +303,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		
 		return aerrs;
 	}
@@ -237,7 +323,7 @@ public class ApplicationDAO
 			
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
-					" from view2 where idEnterpriseInformation= ? and startTime> ?  ";
+					" from view2 where idEnterpriseInformation= ? and startTime> ? and vstate<>'已结束' ";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -272,6 +358,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		
 		return aerrs;
 	}
@@ -287,7 +378,7 @@ public class ApplicationDAO
 			
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
-					" from view2 where startTime< ? and idEnterpriseInformation= ?" +
+					" from view2 where startTime< ? and idEnterpriseInformation= ? and vstate<>'已结束'" +
 					"";
 			
 			conn = DataBaseConn.getCon();
@@ -321,6 +412,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		
 		return aerrs;
 	}
@@ -337,7 +433,7 @@ public class ApplicationDAO
 			
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
-					" from view2 where idEnterpriseInformation= ? and startTime> ? and startTime< ?";
+					" from view2 where idEnterpriseInformation= ? and startTime> ? and startTime< ? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -371,7 +467,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return aerrs;
 	}
 	
@@ -387,7 +487,7 @@ public class ApplicationDAO
 			
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
-					" from view2 where idEnterpriseInformation= ? and idEnterpriseRecruitment= ? ";
+					" from view2 where idEnterpriseInformation= ? and idEnterpriseRecruitment= ? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -419,7 +519,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return aerrs;
 	}
 	public List<AERR> findNewsBySDN(int idi,int idr,String days)
@@ -434,7 +538,7 @@ public class ApplicationDAO
 			
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
-					" from view2 where idEnterpriseInformation= ? and startTime> ? and idEnterpriseRecruitment= ? ";
+					" from view2 where idEnterpriseInformation= ? and startTime> ? and idEnterpriseRecruitment= ? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -468,7 +572,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return aerrs;
 	}
 	public List<AERR> findNewsBySDN(String daye,int idi,int idr)
@@ -484,7 +592,7 @@ public class ApplicationDAO
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
 					" from view2 where idEnterpriseInformation= ?" +
-					" and startTime<? and idEnterpriseRecruitment=? ";
+					" and startTime<? and idEnterpriseRecruitment=? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -518,7 +626,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return aerrs;
 	}
 	public List<AERR> findNewsBySDN(int idi,String days,String daye,int idr)
@@ -534,12 +646,12 @@ public class ApplicationDAO
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
 					" from view2 where idEnterpriseInformation= ?" +
-					" and startTime>? and startTime<? and idEnterpriseRecruitment=? ";
+					" and startTime>? and startTime<? and idEnterpriseRecruitment=? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			if (idr==0){sql="select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
 					" from view2 where idEnterpriseInformation= ?" +
-					" and startTime>? and startTime<? and idEnterpriseRecruitment>? ";}
+					" and startTime>? and startTime<? and idEnterpriseRecruitment>? and vstate<>'已结束'";}
 			if(days.equals("")){days="0001-01-01 00:00:00";}
 			if(daye.equals("")){daye="9999-01-01 00:00:00";}
 			ps = conn.prepareStatement(sql);
@@ -575,7 +687,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return aerrs;
 	}
 	
@@ -592,13 +708,13 @@ public class ApplicationDAO
 			
 			String sql = "select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
 					" from view2 where vstate = ? and idEnterpriseInformation= ?" +
-					" and startTime>? and startTime<? and idEnterpriseRecruitment=?";
+					" and startTime>? and startTime<? and idEnterpriseRecruitment=? and vstate<>'已结束'";
 			
 			conn = DataBaseConn.getCon();
 			
 			if (idr==0){sql="select vtime,vstate,einame,ecname,startTime,endtime,rname,idEnterpriseRecruitment,IdResume" +
 					" from view2 where vstate = ? and idEnterpriseInformation= ?" +
-					" and startTime>? and startTime<? and idEnterpriseRecruitment>?";}
+					" and startTime>? and startTime<? and idEnterpriseRecruitment>? and vstate<>'已结束'";}
 			if(days.equals("")){days="0001-01-01 00:00:00";}
 			if(daye.equals("")){daye="9999-01-01 00:00:00";}
 			
@@ -634,7 +750,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return aerrs;
 	}
 	
@@ -648,7 +768,7 @@ public class ApplicationDAO
 		try
 		{
 			
-			String sql = "select idapplication,time,state,idResume,idEnterpriseRecruitment from view1 where state = ? and idEnterpriseInformation= ? order by Time desc";
+			String sql = "select idapplication,time,state,idResume,idEnterpriseRecruitment from view1 where state = ? and idEnterpriseInformation= ? and vstate<>'已结束' order by Time desc";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -677,7 +797,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return applications;
 	}
 	
@@ -698,6 +822,7 @@ public class ApplicationDAO
 			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, s);
+
 			ps.setInt(2, r);
 			ps.setInt(3,re);
 			System.out.println("操作正确");
@@ -709,7 +834,43 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("更新新闻出错......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
+	}
+	public void updateApplication(String s,int r,int re,String remark)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try
+		{
+			System.out.println("进入更新");
+			
+			String sql = "update application set state = ? , remark=? where idResume = ? and idEnterpriseRecruitment = ? ";
+			System.out.println("语句正确");
+			conn = DataBaseConn.getCon();
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, s);
+			ps.setString(2, remark);
+			ps.setInt(3, r);
+			ps.setInt(4,re);
+			System.out.println("操作正确");
+			ps.executeUpdate();
+			System.out.println("更新成功");
+			
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("更新新闻出错......", e);
+		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 	}
 	
 	
@@ -746,41 +907,52 @@ public class ApplicationDAO
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 		List<Application> applications = new ArrayList<Application>();
-		Application application = null;
+		ResultSet rs = null;
+		
 		try
 		{
 			
-			String sql = "select idapplication,time,state,Resume.idResume,idEnterpriseRecruitment from Resume,view1 where idPersonalInformation= ? and Resume.idResume=view1.idResume";
+			String sql = "select time,state,remark,einame,ername,rname,endtime,idEnterpriseInformation from view3  where   idPersonalInformation= ? order by Time desc";
 			
 			conn = DataBaseConn.getCon();
 			
 			ps = conn.prepareStatement(sql);
+			//ps.setString(1, state);
 			ps.setInt(1, id);
 			
 			
 			rs = ps.executeQuery();
 			
+			
 			while(rs.next())
 			{
-				application = new Application();
-				application.setIdApplication(rs.getInt(1));
-				application.setTime(rs.getDate(2)); 
-				application.setState(rs.getString(3));
-				application.setIdResume(rs.getInt(4));
-				application.setIdEnterpriseRecruitment(rs.getInt(5));
+				Application application = new Application();
+				application.setTime(rs.getDate(1));
+				application.setState(rs.getString(2)); 
+				application.setRemark(rs.getString(3));
+				application.setEname(rs.getString(4));
+				application.setRecruitname(rs.getString(5));
+				application.setResumename(rs.getString(6));
+				application.setEndtime(rs.getDate(7));
+				application.setEiid(rs.getInt(8));
 				applications.add(application);
-				System.out.println("个数"+applications.size());
+				
 			}
 		}
 		catch (Exception e)
 		{
-			throw new RuntimeException("通过id查找......", e);
+			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return applications;
 	}
+		
+	
 //	public List<Application> findNewsById(int id)
 //	{
 //		Connection conn = null;
@@ -829,7 +1001,7 @@ public class ApplicationDAO
 		try
 		{
 			
-			String sql = "select idapplication,time,state,view1.idResume,idEnterpriseRecruitment from Resume,view1  where Resume.idResume=view1.idResume and  state = ? and idPersonalInformation= ? order by Time desc";
+			String sql = "select time,state,remark,einame,ername,rname,endtime,idEnterpriseInformation from view3  where  state = ? and idPersonalInformation= ? order by Time desc";
 			
 			conn = DataBaseConn.getCon();
 			
@@ -844,11 +1016,14 @@ public class ApplicationDAO
 			while(rs.next())
 			{
 				Application application = new Application();
-				application.setIdApplication(rs.getInt(1));
-				application.setTime(rs.getDate(2)); 
-				application.setState(rs.getString(3));
-				application.setIdResume(rs.getInt(4));
-				application.setIdEnterpriseRecruitment(rs.getInt(5));
+				application.setTime(rs.getDate(1));
+				application.setState(rs.getString(2)); 
+				application.setRemark(rs.getString(3));
+				application.setEname(rs.getString(4));
+				application.setRecruitname(rs.getString(5));
+				application.setResumename(rs.getString(6));
+				application.setEndtime(rs.getDate(7));
+				application.setEiid(rs.getInt(8));
 				applications.add(application);
 				
 			}
@@ -857,7 +1032,11 @@ public class ApplicationDAO
 		{
 			throw new RuntimeException("通过state查找......", e);
 		}
-		
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
 		return applications;
 	}
 	

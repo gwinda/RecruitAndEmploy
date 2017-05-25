@@ -16,6 +16,28 @@ public class RecruitmentDAO {
 	/**
 	 * 企业发布招聘信息
 	 */
+	public void update(){
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try
+		{
+			conn = DataBaseConn.getCon();
+			
+			String sql = "update EnterpriseRecruitment set isending=2  where endtime < now();";
+			ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException("投递失败........", e);
+		}
+		finally
+		{
+			//关闭连接
+			DataBaseConn.close(conn,ps,null);
+		}
+	}
 	
 	public boolean updateEnd(int id){		
 		Connection conn = null;
@@ -262,7 +284,7 @@ public List<Recruitment> getrecruitmentsList(int id){
 	try{
 		conn = DataBaseConn.getCon();
 		
-		String sql="select * from  enterpriserecruitment where idEnterpriseInformation=?";
+		String sql="select * from  enterpriserecruitment where idEnterpriseInformation=? order by isending asc" ;
 		
 		ps = conn.prepareStatement(sql);
 	
@@ -314,7 +336,7 @@ public List<Recruitment> getrecruitmentsList(int id,int i){
 	try{
 		conn = DataBaseConn.getCon();
 		
-		String sql="select * from  enterpriserecruitment where idEnterpriseInformation=? and isending=?";
+		String sql="select * from  enterpriserecruitment where idEnterpriseInformation=? and isending=? ";
 		
 		ps = conn.prepareStatement(sql);
 	
@@ -364,7 +386,7 @@ public Recruitment getrecruitment(int id){
 	Connection conn = null;
 	PreparedStatement pst=null;
 	ResultSet rs=null;
-	String sql="select * from  enterpriserecruitment where idEnterpriseRecruitment=? ";
+	String sql="select * from  enterpriserecruitment where idEnterpriseRecruitment=? order by isending";
 	try {			
 		conn = DataBaseConn.getCon();			
 		pst=  conn.prepareStatement(sql);
@@ -455,24 +477,17 @@ public List<Recruitment> searchbykey(String positionkey,String workkey,String mo
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	PreparedStatement ps2 = null;
-	ResultSet rs2 = null;
 	int pageSize=12;
 	int page=(pageNo-1)*12;	
-	int sunmcount = 0;
 	try{
 		conn = DataBaseConn.getCon();
 		//name,requirement,startTime,endTime,isending,position,workingPlace,idEnterpriseInformation,salary,number
 		String sql="select * from  enterpriserecruitment where  1=1";	
-		String sql2="select count(*) from  enterpriserecruitment where  1=1";	
-		
 		if(positionkey!=null&&positionkey!=""){
 			sql+=" and workingplace='"+positionkey+"'";
-			sql2+=" and workingplace='"+positionkey+"'";
 		}
 		if(workkey!=null&&workkey!=""){
 			sql+=" and position="+workkey;
-			sql2+=" and position="+workkey;
 		}
 		if(moneykey!=null&&moneykey!=""){
 			if(moneykey.contains("-")){
@@ -499,13 +514,8 @@ public List<Recruitment> searchbykey(String positionkey,String workkey,String mo
 	    ps.setInt(1, page);
 		ps.setInt(2, pageSize);
 	    rs = ps.executeQuery();		   
-	    ps2 = conn.prepareStatement(sql2);			       
-	    rs2 = ps2.executeQuery();
-	    while(rs2.next()){
-	    	sunmcount=rs2.getInt(1);
-	    }
 	    while(rs.next())
-		{//Requirement StartTimePosition WorkingPlace
+		{
 	    	Recruitment  recruitment = new Recruitment();
 	        recruitment.setIdEnterpriseRecruitment(rs.getInt(1));
 	    	recruitment.setName(rs.getString(2));
@@ -517,7 +527,6 @@ public List<Recruitment> searchbykey(String positionkey,String workkey,String mo
 	    	recruitment.setIdEnterpriseInformation(rs.getInt(9));
 	    	recruitment.setSalary(rs.getInt(10));
 	    	recruitment.setNumber(rs.getInt(11));
-	    	recruitment.setSumcount(sunmcount);	    	
 	    	recruitments.add(recruitment);
 	    	System.out.println("haha");
 		}

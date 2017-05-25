@@ -1,5 +1,7 @@
 package action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -134,7 +136,7 @@ public class PersonalinformationAction extends ActionSupport{
 		//session.removeAttribute("IDFK");
 		boolean result=false;
 		PersonalinformationDAO persondao=new PersonalinformationDAO();
-		String number=request.getParameter("number");//获取输入的账号
+		String number=request.getParameter("emailbox");//获取输入的账号
 		System.out.println(number);
 		String password=request.getParameter("password");//获取输入的密码
 		System.out.println(password);
@@ -200,6 +202,27 @@ public class PersonalinformationAction extends ActionSupport{
 			e.printStackTrace();
 			return "error";
 		}
+		
+	}
+	public String CheckPersonExit() throws Exception{
+		PrintWriter out = ServletActionContext.getResponse().getWriter();
+		System.out.println("CheckPersonExit()");
+		String mail=request.getParameter("mail");
+		PersonalinformationDAO dao=new PersonalinformationDAO();
+		int i=dao.findIDByMail(mail);
+		String text = "";
+		System.out.println(i);
+		if(dao.findIDByMail(mail)==0){
+			System.out.println(dao.findIDByMail(mail));
+			text="ture";
+			out.print(text);
+		}
+		else{
+			text="false";
+			out.print(text);
+		}
+		out.flush();	
+		return "success";
 		
 	}
 }

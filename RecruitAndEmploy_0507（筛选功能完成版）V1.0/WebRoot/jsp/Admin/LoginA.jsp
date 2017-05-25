@@ -31,10 +31,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <h1>管理员登录界面</h1>
   <div class="form"> 
     <s:form action="LoginAdmin!LoginAdmin">
         <s:textfield name="admin.number" label="账号" />
-        <s:textfield name="admin.password" label="密码" />
+        <s:password name="admin.password" label="密码" />
         <s:submit value="登录" />
     </s:form>
    </div>

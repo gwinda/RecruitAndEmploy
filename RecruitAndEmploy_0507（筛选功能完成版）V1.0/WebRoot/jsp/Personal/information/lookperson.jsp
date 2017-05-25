@@ -34,6 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
      <link rel="stylesheet" href="resume/js/style.css" >
      <style type="text/css">
+     body{
+     	background:white;
+     	font-size:20px;
+     }
      .right_photo{
 	
 	display:block;
@@ -67,23 +71,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <section class="section brd-btm">   		
             <div class="row">
                 <div class="col-sm-6 clear-mrg">
-                    <h4 class="title-thin text-muted">基本资料</h4>
+                    <h4  class="title-thin text-muted">基本资料</h4>
                     <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">姓    名</dt>
+                        <dt class="text-upper">姓    名:</dt>
                         <dd>${OnePerson.name}</dd>
                         
-                        <dt class="text-upper">籍贯</dt>
+                        <dt class="text-upper">籍    贯:</dt>
                         <dd>${OnePerson.householdRegister}</dd>
                         
-                        <dt class="text-upper">政治面貌</dt>
+                        <dt class="text-upper">政治面貌:</dt>
                         <dd>${OnePerson.politicalStatus}</dd>
 
-                        <dt class="text-upper">学历</dt>
+                        <dt class="text-upper">学    历:</dt>
                         <dd>${OnePerson.education}</dd>
 
-                        <dt class="text-upper">毕业院校</dt>
+                        <dt class="text-upper">毕业院校:</dt>
                         <dd>${OnePerson.school}</dd>
-                       <dt class="text-upper">住址</dt>
+                       <dt class="text-upper"> 住    址:</dt>
                         <dd>${OnePerson.address}</dd>   
                         
                     </dl>
@@ -93,19 +97,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-sm-6 clear-mrg">
                     <h2 class="title-thin text-muted"><font color="#FFFFFF">基本资料</font></h2>
                        <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">性    别</dt>
+                        <dt class="text-upper">性    别:</dt>
                         <dd>${OnePerson.sex}</dd>
                         
-                        <dt class="text-upper">种族</dt>
+                        <dt class="text-upper">种    族:</dt>
                         <dd >${OnePerson.nation}</dd>
 
-                        <dt class="text-upper">电话</dt>
+                        <dt class="text-upper">电    话:</dt>
                         <dd>${OnePerson.phone}</dd>
 
-                        <dt class="text-upper">邮箱</dt>
+                        <dt class="text-upper">邮    箱:</dt>
                         <dd>${OnePerson.mailbox}</dd>
 
-                       <dt class="text-upper">出生日期</dt>
+                       <dt class="text-upper">出生日期:</dt>
                         <dd>${OnePerson.birth}</dd>
 
                                             

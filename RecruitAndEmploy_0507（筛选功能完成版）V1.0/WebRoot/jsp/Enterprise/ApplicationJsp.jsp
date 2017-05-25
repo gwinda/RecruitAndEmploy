@@ -56,14 +56,6 @@
 
 		var checkbox = document.getElementsByName("kk");
 		var checkboxnew = "";
-		if (Button.value == "邀请") {
-			var button = "1";
-		} else if (Button.value == "拒绝") {
-			var button = "2";
-		} else
-		{
-			var button = "3";
-		}
 
 		for (i = 0; i < checkbox.length; i++) {
 			//判断是否选中
@@ -71,11 +63,38 @@
 				checkboxnew = checkboxnew + checkbox[i].value + ",";
 			}
 		}
-		document.getElementsByName("kk");
-		alert(button);
-		document.allopration.action = "ApplicationAction!allopration?checkboxnew="
-				+ checkboxnew + "&mybutton=" + button;
-		document.allopration.submit();
+
+		if (checkboxnew != "") {
+			if (Button.value == "邀请") {
+				var button = "1";
+				var name = prompt("请输入面试时间与地点：", "");//将输入的内容赋给变量 name ，
+				if(name!=null&&name!=null)
+				{
+				document.allopration.action = "ApplicationAction!allopration?checkboxnew="
+						+ checkboxnew + "&mybutton=" + button + "&name=" +name;
+				document.allopration.submit();
+				}
+			} else if (Button.value == "拒绝") {
+				var button = "2";
+				var name = prompt("请输入拒绝理由：", "");//将输入的内容赋给变量 name ，
+				if(name!=null)
+				{
+				document.allopration.action = "ApplicationAction!allopration?checkboxnew="
+						+ checkboxnew + "&mybutton=" + button+ "&name=" +name;
+				document.allopration.submit();
+				}
+				//这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+
+			} else {
+				var button = "3";
+				document.allopration.action = "ApplicationAction!allopration?checkboxnew="
+						+ checkboxnew + "&mybutton=" + button;
+				document.allopration.submit();
+			}
+
+		} else {
+			alert("你没有选中任何信息!");
+		}
 	}
 </script>
 <style>
@@ -120,6 +139,7 @@ my1 input[type="submit"] {
 
 
 <body>
+<div class="alertdiv"></div>
 	<div class="alignleft">
 		<form action="ApplicationAction!selectRecruit">
 			<font color=gray>筛选：</font> <B>招聘名称:</B>&nbsp;&nbsp; <select
@@ -147,9 +167,8 @@ my1 input[type="submit"] {
 		<input type="checkbox" name="all" onclick="allCheck(this)"><B>全选</B>
 		<input type="button" value="邀请" onclick="post(this);" id="mybutton"
 			name="mybutton" /> <input type="button" value="拒绝"
-			onclick="post(this);" name="button">
-			<input type="button" value="下载"
-			onclick="post(this);" name="button">
+			onclick="post(this);" name="button"> <input type="button"
+			value="下载" onclick="post(this);" name="button">
 	</div>
 
 	<div class="alignright">
@@ -157,7 +176,10 @@ my1 input[type="submit"] {
 			href="ApplicationAction.action?opera=notsee&user=2">未查看</a> <a
 			href="ApplicationAction.action?opera=see&user=2">已查看</a> <a
 			href="ApplicationAction.action?opera=invite&user=2">职位邀请</a> <a
-			href="ApplicationAction.action?opera=refuse&user=2">拒绝</a> <a herf="">已结束</a><br>
+			href="ApplicationAction.action?opera=refuse&user=2">拒绝</a>
+		<!--  <a
+			href="ApplicationAction.action?opera=over&user=2">已结束</a>-->
+		<br>
 		<hr>
 	</div>
 	<!-- <s:iterator value="#request.applitionlist" id="myapplition" status="status">  
@@ -236,17 +258,19 @@ my1 input[type="submit"] {
                    &#12288;结束时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     <s:property value="#AERR.endtime" />
 		<br>
+		<!--<s:if test='{#<s:property value="#AERR.vstate" />!="邀请"||<s:property value="#AERR.vstate" />!="拒绝"}'>
 		<a
 			href="ApplicationAction!lookResumeByR.action?mess=inviteclick&idResume=<s:property value="#AERR.idResume"/>&idRecruitemnt=<s:property value="#AERR.idEnterpriseRecruitment"/>">
 			&#12288;邀请面试</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
      <a
 			href="ApplicationAction!lookResumeByR.action?mess=rufuseclick&idResume=<s:property value="#AERR.idResume"/>&idRecruitemnt=<s:property value="#AERR.idEnterpriseRecruitment"/>">
 			拒绝</a>
+			</s:if>-->
 		</div>
 		<hr>
 	</s:iterator>
 	<B><s:property value="#request.pr" /> </B>
-	 <B><s:property value="#request.download" /> </B>
+	<B><s:property value="#request.download" /> </B>
 	<br>
 	<form action="ApplicationAction!pagination">
 		<my1> <s:if test="#request.AERR!= null">

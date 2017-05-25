@@ -35,6 +35,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <link href="resume/js/style.css" rel="stylesheet">
  
  <style type="text/css">
+ body{
+     	background:white;
+     	font-size:19px;
+     	     }
+     select{
+     	margin-top:4px;
+     }
  	input[type=text]{
  		border:1px solid black;
  		width:300px;
@@ -87,7 +94,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   
-  <br>
     	 <h2  align="center">基本资料</h2>
    <form action="afterupdteperson.action" method="post" enctype="multipart/form-data">
   
@@ -111,20 +117,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <dd><input type="text" name=" personalinformation.name" value="${OnePerson.name}"></dd>
                         
                         <dt class="text-upper">籍贯</dt>
-                        <dd><input type="text" name=" personalinformation.householdRegister" value="${OnePerson.householdRegister}"></dd>
+                        <dd> <input type="text" name=" personalinformation.householdRegister" value="${OnePerson.householdRegister}"></dd>
                         
                         <dt class="text-upper">政治面貌</dt>
-                        <dd><input type="text" name=" personalinformation.politicalStatus" value="${OnePerson.politicalStatus}"></dd>
+                        <dd>
+                        	<select style="background:#BABBC3;height:38px;" name="personalinformation.politicalStatus" id="personalinformation.politicalStatus"> 
+					             <option value="${OnePerson.politicalStatus}">${OnePerson.politicalStatus}</option>
+					             <option value="中共党员" check="checked"> 中共党员</option>
+					             <option value="预备党员"> 预备党员</option>
+					             <option value="共青团员"> 共青团员</option>
+					             <option value="群众"> 群众</option>     
+					             <option value="其他党派"> 其他党派</option>
+					            
+					         </select>
+						</dd>
 
                         <dt class="text-upper">学历</dt>
-                        <dd><input type="text" name=" personalinformation.education" value="${OnePerson.education}"></dd>
+                        <dd>
+                        <select style="background:#BABBC3;height:38px;" name=" personalinformation.education" id="personalinformation.education"> 
+					             <option value="${OnePerson.education}">${OnePerson.education}</option>
+					             <option value="博士生及以上">博士生及以上</option>
+					             <option value="研究生">研究生</option>
+					             <option value="本科">本科</option>
+					             <option value="大专">大专</option>
+					             <option value="中专">中专</option>     
+					             <option value="高中">高中</option>
+					             <option value="高中以下">高中以下</option>
+					         </select>
+                       </dd>
 
                         <dt class="text-upper">毕业院校</dt>
                         <dd><input type="text" name=" personalinformation.school" value="${OnePerson.school}"></dd>
                         
-                        <dt class="text-upper">未知参数</dt>
-                        <dd><input type="text" name="" value="###"></dd>
-                   </dl>
+                   
                    </div><!-- .col-sm-6 -->
 				</div>
 				<div class="row">
