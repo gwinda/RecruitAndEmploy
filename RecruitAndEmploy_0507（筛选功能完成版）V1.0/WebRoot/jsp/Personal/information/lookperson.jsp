@@ -36,87 +36,100 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <style type="text/css">
      body{
      	background:white;
-     	font-size:20px;
+     	font-size:15px;
+     	     }
+     select{
+     	margin-top:4px;
      }
+ 	input[type=text]{
+ 		border:1px solid black;
+ 		width:200px;
+ 		height:25px;
+ 		
+ 	}
+ my	P {
+	background: #A77C47;
+	width: 150px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 13px;
+	color: white;
+ }
+ 	.right_photowai{
+	 position:relative;
+		display:block;
+		float:right;
+		margin-right:80px;
+		width:140px;
+		height:200px;
+	} 
      .right_photo{
-	
+	border:1px black solid;
 	display:block;
-	float:right;
-	width:140px;
-	height:160px;
+	float:right;	
+	width:120px;
+	height:150px;
 	background:url("resume/img/nop.jpg");
 	background-size:100%;	
+	}  
+.img{
+		 width:120px;
+		  height:149px;
 	} 
-	.img{
-		 width:140px;
-		  height:159px;
+	dt{
+		font-size:20px;
 	}
- 
      </style>
   </head>  
   <body>
-   <a href="beforeupdateperson!look.action?idPerson=${OnePerson.idPersonalInformation}"><font style="font-size:16px; color:blue;">编辑基本信息</font></a>
+  <my> <p>基本资料</p></my>
+   <a style="margin-left:20%;" href="beforeupdateperson!look.action?idPerson=${OnePerson.idPersonalInformation}"><font style="font-size:16px; color:blue;">编辑基本信息</font></a>
  		<div class="right_photo">
 		 	<c:choose>
 		    	<c:when test="${OnePerson.picture!=null}">
-		     		<img class="img" src="personPicture/${OnePerson.picture}" />
+		     		<img class="img"  src="personPicture/${OnePerson.picture}" />
 		   		</c:when>
 		    	<c:otherwise>
 		    		 <a href="beforeupdateperson!look.action?idPerson=${OnePerson.idPersonalInformation}" class="right_photo"></a>
 		   		</c:otherwise>
 			</c:choose>
 		</div>	
-		
-						
-    <section class="section brd-btm">   		
-            <div class="row">
-                <div class="col-sm-6 clear-mrg">
-                    <h4  class="title-thin text-muted">基本资料</h4>
-                    <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">姓    名:</dt>
-                        <dd>${OnePerson.name}</dd>
+			
+    	<div style="margin-left:27%;color:#796B59;">
+                   <br>
+                        <dt class="text-upper">姓    名:&nbsp;${OnePerson.name}</dt>
                         
-                        <dt class="text-upper">籍    贯:</dt>
-                        <dd>${OnePerson.householdRegister}</dd>
                         
-                        <dt class="text-upper">政治面貌:</dt>
-                        <dd>${OnePerson.politicalStatus}</dd>
-
-                        <dt class="text-upper">学    历:</dt>
-                        <dd>${OnePerson.education}</dd>
-
-                        <dt class="text-upper">毕业院校:</dt>
-                        <dd>${OnePerson.school}</dd>
-                       <dt class="text-upper"> 住    址:</dt>
-                        <dd>${OnePerson.address}</dd>   
+                        <dt class="text-upper">籍    贯:&nbsp;${OnePerson.householdRegister}</dt>
+                       
                         
-                    </dl>
-           
-                </div><!-- .col-sm-6 -->
+                        <dt class="text-upper">政治面貌:&nbsp;${OnePerson.politicalStatus}</dt>
+                       
 
-                <div class="col-sm-6 clear-mrg">
-                    <h2 class="title-thin text-muted"><font color="#FFFFFF">基本资料</font></h2>
-                       <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">性    别:</dt>
-                        <dd>${OnePerson.sex}</dd>
+                        <dt class="text-upper">学    历:&nbsp;${OnePerson.education}</dt>
+   
+
+                        <dt class="text-upper">毕业院校:&nbsp;${OnePerson.school}</dt>
+
+                       <dt class="text-upper"> 住    址:&nbsp;${OnePerson.address}</dt>
+                        <dt class="text-upper">性    别:&nbsp;${OnePerson.sex}</dt>
+
                         
-                        <dt class="text-upper">种    族:</dt>
-                        <dd >${OnePerson.nation}</dd>
+                        <dt class="text-upper">种    族:&nbsp;${OnePerson.nation}</dt>
 
-                        <dt class="text-upper">电    话:</dt>
-                        <dd>${OnePerson.phone}</dd>
 
-                        <dt class="text-upper">邮    箱:</dt>
-                        <dd>${OnePerson.mailbox}</dd>
+                        <dt class="text-upper">电    话:&nbsp;${OnePerson.phone}</dt>
 
-                       <dt class="text-upper">出生日期:</dt>
-                        <dd>${OnePerson.birth}</dd>
+
+                        <dt class="text-upper">邮    箱:&nbsp;${OnePerson.mailbox}</dt>
+
+                       <dt class="text-upper">出生日期:&nbsp;${OnePerson.birth}</dt>
+     
 
                                             
-                    </dl>
+               </dl>
+               </div>
                    
-                </div><!-- .col-sm-6 -->
-            </div><!-- .row -->
-        </section><!-- .section -->
   </body>
 </html>

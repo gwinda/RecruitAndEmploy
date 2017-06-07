@@ -10,7 +10,36 @@ public class AERR {
 	private String rname;
 	private int idResume;
 	private int idEnterpriseRecruitment;
+	private int idEnterpriseInformation;
+	private String picture;
+	private String school;
+	private String education;
 	
+	
+	public int getIdEnterpriseInformation() {
+		return idEnterpriseInformation;
+	}
+	public void setIdEnterpriseInformation(int idEnterpriseInformation) {
+		this.idEnterpriseInformation = idEnterpriseInformation;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
+	}
+	public String getEducation() {
+		return education;
+	}
+	public void setEducation(String education) {
+		this.education = education;
+	}
 	public int getIdEnterpriseRecruitment() {
 		return idEnterpriseRecruitment;
 	}

@@ -6,6 +6,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<link type="text/css" rel="stylesheet" href="css/common.css?v=20150807" />
+<!--css-->
+<link type="text/css" rel="stylesheet" href="css/common.css?v=20150807" />
+<!--css-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/rc_index.css">
+<!--jquery-->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--cookie domain-->
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/referer_getter.js"></script>
+<script language="javascript" type="text/javascript"
+	src="DatePicker/WdatePicker.js"></script>
   <head>
     <base href="<%=basePath%>">
     
@@ -23,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <B>成功结束！</B><hr>
+  已结束该招聘<BR>
    <a href="Rec?i=1">返回查看招聘</a></br>
   </body>
 </html>

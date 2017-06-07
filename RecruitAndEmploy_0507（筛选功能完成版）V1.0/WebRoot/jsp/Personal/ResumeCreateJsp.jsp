@@ -30,6 +30,7 @@ input[type="text"]{
 	
 }
 textarea{
+    width:250px;
 	margin-top: 10px;
 }
 input[type="submit"]{
@@ -37,6 +38,9 @@ input[type="submit"]{
        width:80px;
        height:35px;
        margin-top: 10px;
+}
+select{
+ height:35px;
 }
 </style>
 </head>
@@ -46,21 +50,12 @@ input[type="submit"]{
 
 	<form action="re!createResume.action" method="post">
 		<input type="hidden" name="mess" value="create">
-		 	简历名称：
-		 	 <input type="text" name="RName">
-		  	<br> 
-		  	兴趣爱好：<textarea name="hobby" cols="25" rows="4"></textarea>
-		  	
-			<br> 
-			工作经验：<textarea  name="experience" cols="25" rows="4"></textarea>
-			<br>
-			 获奖情况：<textarea name="award" cols="25" rows="4"></textarea>
-			 <br>
-			  应聘职位： <input type="text" name="job" cols="25" rows="4">
-			 <br>
-			  <br/>
-			工作地点： 
-			 <select name="workplace" id="workplace"> 
+简历名称：<input type="text" name="RName"><br> 
+兴趣爱好：<textarea name="hobby" cols="25" rows="4"></textarea><br> 
+工作经验：<textarea  name="experience" cols="25" rows="4"></textarea><br>
+获奖情况：<textarea name="award" cols="25" rows="4"></textarea><br>
+应聘职位：<input type="text" name="job" cols="25" rows="4"><br><br>
+工作地点：<select name="workplace" id="workplace"> 
 	            <option value="null">不限</option>
 	             <option value="香洲区"> 香洲区</option>
 	              <option value="金湾区">  金湾区</option>

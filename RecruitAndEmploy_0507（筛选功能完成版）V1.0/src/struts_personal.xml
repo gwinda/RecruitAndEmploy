@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts 
 
 Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
@@ -21,12 +21,12 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result name="OK">/index2.jsp</result>
 			<result name="ERROR">/error.jsp</result>
 		</action>
-		<!--查看简历 -->
+		<!--新建简历 -->
 		<action name="re" class="action.ResumeAction">
 			<result name="ERROR">/error.jsp</result>
 			<result name="SUCCESS">/jsp/Personal/jsp/Personal/resume/mys.jsp
 			</result>
-			<result name="OK" type="redirectAction">look</result>
+			<result name="OK" >jsp/OK.jsp</result>
 		</action>
 
 		<!-- 查看用户的所有简历 -->
@@ -34,9 +34,14 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result>/index.jsp</result>
 			<result name="ERROR">/error.jsp</result>
 			<result name="OK">/jsp/Personal/resume/mys.jsp</result>
+			<result name="OK2">/jsp/Personal/new/msubscriplook.jsp</result>
 		</action>
 		<!-- 查看用户的某条具体简历 -->
-		<action name="lookResume" class="action.ResumeAction">
+		<action name="lookResume" class="action.ResumeAction" >
+			<result>index.jsp</result>
+			<result name="OK">/jsp/Personal/resume/lookResume.jsp</result>
+		</action>
+		<action name="lookResumeEc" class="action.ResumeAction" method="lookOneEc">
 			<result>index.jsp</result>
 			<result name="OK">/jsp/Personal/resume/lookResume.jsp</result>
 		</action>
@@ -48,12 +53,12 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 		<!-- 更新某条简历 -->
 		<action name="update" class="action.ResumeAction">
 			<result name="ERROR">/error.jsp</result>
-			<result name="SUCCESS">/jsp/newOK.jsp</result>
+			<result name="SUCCESS">jsp/OK.jsp</result>
 		</action>
 		<!-- 删除单条简历 -->
 		<action name="delresume" class="action.ResumeAction">
 			<result name="ERROR">/error.jsp</result>
-			<result name="SUCCESS" >/jsp/newOK.jsp</result>
+			<result name="SUCCESS" >jsp/OK.jsp</result>
 		</action>
 		<!-- 查看用户个人信息 -->
 		<action name="lookpersoninformation" class="action.PersonalinformationAction">
@@ -78,7 +83,7 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
         <interceptor-ref name="defaultStack"></interceptor-ref>   			
 		    <param name="savePath">/personPicture</param>
 			<result name="ERROR">/error.jsp</result>
-			<result name="OK">jsp/newOK.jsp</result>
+			<result name="OK">jsp/OK.jsp</result>
 			<result name="input">/jsp/Personal/information/updateperson.jsp</result>
 		</action>
 	    <!-- 选择简历进行投递 -->
@@ -117,6 +122,19 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result name="error">/error.jsp</result>
 			<result name="success" >/jsp/Personal/information/LookCollection.jsp</result>
 		</action>
+		<!--删除收藏操作 -->
+		<action name="deleteCollection" class="action.PersonalinformationAction" method="deleteCollection">
+			<result name="error">/error.jsp</result>
+			<result name="success" >jsp/OK.jsp</result>
+		</action>
 		
+		<action name="newlookfor" class="action.PersonalinformationAction" method="look">
+			<result name="ERROR">/error.jsp</result>
+			<result name="OK" type="redirect">/jsp/Personal/newperonlook.jsp</result>
+			<result name="success" type="redirect">/jsp/Personal/newperonlook.jsp</result>
+		</action>
+		<action name="delOneCollection" class="action.PersonalinformationAction" method="delOne">
+			<result  type="json"></result>
+		</action>
 	</package>
 </struts>

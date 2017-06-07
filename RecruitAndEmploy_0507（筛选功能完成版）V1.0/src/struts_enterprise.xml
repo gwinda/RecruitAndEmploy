@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts 
 
 Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
@@ -26,10 +26,16 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 		</action>
 		<action name="ApplicationAction" class="action.ApplicationAction">
 			<result name="user2">/jsp/Enterprise/ApplicationJsp.jsp</result>
-			<result name="user1">/jsp/Personal/ApplicationforrJsp.jsp</result>
+			<!-- <result name="user1">/jsp/Personal/ApplicationforrJsp.jsp</result> -->
+			<result name="user1">/jsp/Personal/new/feedback.jsp</result>
 			<result name="OK">/jsp/Personal/resume/lookResume.jsp</result>
 			<result name="error">/index2.jsp</result>
 			<result name="success">/jsp/Personal/information/Mys.jsp</result>
+		</action>
+		<!-- xin 界面测试 -->
+		<action name="ApplicationAction1" class="action.ApplicationAction">
+			
+			<result name="user1">/jsp/Personal/newperonlook.jsp</result>
 		</action>
 		<!-- -?????? -->
 		<action name="Rec" class="action.RecruitmentAction">
@@ -38,7 +44,8 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result name="OK">jsp/newOK.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-
+		
+		
 		<action name="Ei" class="action.EinformationAction">
 			<result name="OK">/jsp/Enterprise/Einformation.jsp</result>
 			<result name="error">/error.jsp</result>
@@ -71,16 +78,46 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 			<result name="error">/error.jsp</result>
 			<result name="success">/jsp/Personal/recruitment/lookjob.jsp</result>
 		</action>
+		
+		<action name="Recc" class="action.RecruitmentAction" method="createRecruitment">
+			<result name="look">/jsp/Enterprise/RecruitmentJsp.jsp</result>
+			<result name="tolook">/jsp/Enterprise/OK.jsp </result>
+			<result name="input">/jsp/Enterprise/OK.jsp </result>
+			<result name="OK">jsp/newOK.jsp</result>
+			<result name="ERROR">/error.jsp</result>
+		</action>
+		
 		<action name="SearchByposition" class="action.RecruitmentAction"
-			method="searchbyposition22">
-			
+			method="searchbyposition22">			
 		</action>
 		<action name="findjobByThreekey" class="action.RecruitmentAction"
 			method="findjobByThreekey">
 			
 		</action>
+		<!-- 首页获取招聘信息 -->
+		<action name="index_look" class="action.RecruitmentAction" method="index_look"> 
+			<result name="success" type="redirect">index2.jsp</result>
+		</action>
+		<action name="EcollectionClass" class="EcollectionClassAction" method="queryList">
+		<result name="SUCCESS">/jsp/Enterprise/EcollectionClass.jsp</result>
+		</action>
+		<action name="EcollectionClassCreate" class="EcollectionClassAction" method="create">
+		<result name="SUCCESS">/jsp/Enterprise/EcollectionClass.jsp</result>
+		</action>
+		<action name="EcollectionClassDelete" class="EcollectionClassAction" method="delete">
+		<result name="SUCCESS">/jsp/Enterprise/EcollectionClass.jsp</result>
+		</action>
+		<action name="EcollectionClassUpdate" class="EcollectionClassAction" method="update">
+		<result name="SUCCESS">/jsp/Enterprise/EcollectionClass.jsp</result>
+		</action>
+				
+		<action name="Ecollection" class="EcollectionAction" method="queryList">
+		<result name="SUCCESS">/jsp/Enterprise/EcollectionClass.jsp</result>
+		</action>
+		<action name="EcollectionDelete" class="EcollectionAction" method="delete">
+		<result name="SUCCESS">/jsp/Enterprise/EcollectionClass.jsp</result>
+		</action>
 		
-			
 	</package>
 </struts>
 

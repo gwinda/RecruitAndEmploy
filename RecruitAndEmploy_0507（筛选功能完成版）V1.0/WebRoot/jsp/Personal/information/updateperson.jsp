@@ -20,10 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link type="text/css" rel="stylesheet" href="css/common.css?v=20150807"/>
+	
     <!--css-->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/rc_index.css">
+  
     <!--jquery-->
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -31,22 +30,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/cookie.js"></script>
     <script type="text/javascript" src="js/referer_getter.js"></script>
 	<script src="js/check.js"></script>
-	 <link type="text/css" rel="stylesheet" href="css/common.css?v=20150807"/>
- <link href="resume/js/style.css" rel="stylesheet">
+
  
  <style type="text/css">
  body{
      	background:white;
-     	font-size:19px;
+     	font-size:15px;
      	     }
      select{
      	margin-top:4px;
      }
  	input[type=text]{
  		border:1px solid black;
- 		width:300px;
+ 		width:200px;
  		height:25px;
+ 		
  	}
+ my	P {
+	background: #A77C47;
+	width: 150px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 13px;
+	color: white;
+ }
  	.right_photowai{
 	 position:relative;
 		display:block;
@@ -94,11 +102,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   
-    	 <h2  align="center">基本资料</h2>
+    	<my> <p>编辑资料</p></my>
    <form action="afterupdteperson.action" method="post" enctype="multipart/form-data">
   
     <section class="section brd-btm">
     <div class="right_photowai">
+               <span align="center">我的照片</span>
     	 <div class="right_photo" id="photo">
     		<c:choose>
 		    	<c:when test="${OnePerson.picture!=null}">
@@ -106,22 +115,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   		</c:when>
 			</c:choose>
     	 </div>   	
-    	 <br> 
+    	
+    	  
     	<input type="file" name="upload" id="file" class="file" > </a>
+ 
     	<s:fielderror/>
     	 </div>
-            <div class="row">
-               <div class="col-sm-6 clear-mrg">
-                 <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">姓    名</dt>
-                        <dd><input type="text" name=" personalinformation.name" value="${OnePerson.name}"></dd>
-                        
-                        <dt class="text-upper">籍贯</dt>
-                        <dd> <input type="text" name=" personalinformation.householdRegister" value="${OnePerson.householdRegister}"></dd>
-                        
-                        <dt class="text-upper">政治面貌</dt>
-                        <dd>
-                        	<select style="background:#BABBC3;height:38px;" name="personalinformation.politicalStatus" id="personalinformation.politicalStatus"> 
+    	 <div style="margin-left:20%;">
+           <table class="text-upper">
+           		<tr>
+           			<td>姓    名: </td>
+           			<td><input type="text" name=" personalinformation.name" value="${OnePerson.name}"></td>
+           		</tr>
+           		<tr>
+           			<td>籍    贯:</td>
+           			<td> <input type="text" name=" personalinformation.householdRegister" value="${OnePerson.householdRegister}"></td>
+           		</tr>
+           		<tr>
+           			<td>政治面貌:</td>
+           			<td>
+           				<select style="background:#F4F5FB;height:30px;" name="personalinformation.politicalStatus" id="personalinformation.politicalStatus"> 
 					             <option value="${OnePerson.politicalStatus}">${OnePerson.politicalStatus}</option>
 					             <option value="中共党员" check="checked"> 中共党员</option>
 					             <option value="预备党员"> 预备党员</option>
@@ -130,11 +143,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					             <option value="其他党派"> 其他党派</option>
 					            
 					         </select>
-						</dd>
-
-                        <dt class="text-upper">学历</dt>
-                        <dd>
-                        <select style="background:#BABBC3;height:38px;" name=" personalinformation.education" id="personalinformation.education"> 
+           			</td>
+           		</tr>
+           		<tr>
+           			<td>学    历:</td>
+           			<td>
+           				<select style="background:#F4F5FB;height:30px;" name=" personalinformation.education" id="personalinformation.education"> 
 					             <option value="${OnePerson.education}">${OnePerson.education}</option>
 					             <option value="博士生及以上">博士生及以上</option>
 					             <option value="研究生">研究生</option>
@@ -144,39 +158,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					             <option value="高中">高中</option>
 					             <option value="高中以下">高中以下</option>
 					         </select>
-                       </dd>
-
-                        <dt class="text-upper">毕业院校</dt>
-                        <dd><input type="text" name=" personalinformation.school" value="${OnePerson.school}"></dd>
-                        
-                   
-                   </div><!-- .col-sm-6 -->
-				</div>
-				<div class="row">
-                <div class="col-sm-6 clear-mrg">                
-                       <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">性    别</dt>
-                        <dd><input type="text" name=" personalinformation.sex" value="${OnePerson.sex}"></dd>
-							
-						<dt class="text-upper">种族</dt>
-                        <dd><input type="text" name=" personalinformation.nation" value="${OnePerson.nation}"></dd>
-                        
-                        <dt class="text-upper">电话</dt>
-                        <dd><input type="text" name=" personalinformation.phone" value="${OnePerson.phone}"></dd>
-
-                        <dt class="text-upper">邮箱</dt>
-                        <dd><input type="text" name=" personalinformation.mailbox" value="${OnePerson.mailbox}"></dd>
-
-                        <dt class="text-upper">出生日期</dt>
-                        <dd><input type="text" name=" personalinformation.birth" value="${OnePerson.birth}"></dd>
-
-                        <dt class="text-upper">住址</dt>
-                        <dd><input type="text" name=" personalinformation.address" value="${OnePerson.address}"></dd>
-                  </dl>              
-                </div><!-- .col-sm-6 -->
-            </div><!-- .row -->
-            </div>
-        </section><!-- .section -->
+           				
+           			</td>
+           		</tr>
+           		<tr>
+           			<td>毕业院校:</td>
+           			<td> <input type="text" name=" personalinformation.school" value="${OnePerson.school}"></td>
+           		</tr>
+           		<tr>
+           			<td>性    别:</td>
+           			
+           			<td><input type="text" name=" personalinformation.sex" value="${OnePerson.sex}"></td>
+           		</tr>
+           		<tr>
+           			<td>种    族:</td>
+           			<td> <input type="text" name=" personalinformation.nation" value="${OnePerson.nation}"></td>
+           		</tr>
+           		<tr>
+           			<td>电    话:</td>
+           			<td> <input type="text" name=" personalinformation.phone" value="${OnePerson.phone}"></td>
+           		</tr>
+           		<tr>
+           			<td>邮    箱:</td>
+           			<td><input type="text" name=" personalinformation.mailbox" value="${OnePerson.mailbox}"></td>
+           		</tr>
+           		<tr>
+           			<td>出生日期:</td>
+           			<td> <input type="date" name="personalinformation.birth" value="${OnePerson.birth}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}"> </td>
+           			<%-- <td><input type="text" name=" personalinformation.birth" value="${OnePerson.birth}"></td> --%>
+           		</tr>
+           		<tr>
+           			<td>住    址:</td>
+           			<td> <input type="text" name=" personalinformation.address" value="${OnePerson.address}"></td>
+           		</tr>
+           
+           
+           </table>
+        </div>               
+                                 
         <input type="hidden" name="personalinformation.idPersonalInformation" value="${OnePerson.idPersonalInformation}"/>
        		<p align="center"> 
        				<input type="submit" value="确认修改">

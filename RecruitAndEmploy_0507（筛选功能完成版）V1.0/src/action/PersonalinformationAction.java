@@ -15,8 +15,8 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.CollectionDAO;
-import dao.PersonalinformationDAO;
+import daoImpl.CollectionDAO;
+import daoImpl.PersonalinformationDAO;
 
 
 
@@ -224,5 +224,41 @@ public class PersonalinformationAction extends ActionSupport{
 		out.flush();	
 		return "success";
 		
+	}
+	
+	public String deleteCollection(){
+		
+		String[] ChkSelect = request.getParameterValues("ChkSelect");
+		if(ChkSelect!=null){
+			int select[] =new int[ChkSelect.length];
+			for(int i=0;i<ChkSelect.length;i++){
+				System.out.print(ChkSelect[i]);
+				select[i]=Integer.parseInt(ChkSelect[i]);
+			}
+			System.out.println("ChkSelect"+ChkSelect.length);
+			CollectionDAO dao=new CollectionDAO();
+			boolean result=dao.deleteMuchOF(select);
+			if(result==true){
+				return "success";
+			}	
+		}
+		return "error";
+	}
+	public String delOne(){
+				
+		System.out.println("Collection()");
+		String recurimentid= request.getParameter("recurimentid");		
+		String idfk;
+		if(request.getParameter("idfk")==null){
+			
+			return "success";
+		}
+		else{
+			idfk=request.getParameter("idfk");			
+			CollectionDAO collectionDAO=new CollectionDAO();		
+			collectionDAO.delOneBy(Integer.parseInt(idfk), Integer.parseInt(recurimentid));
+			System.out.println("success");			
+			return "success";
+		}
 	}
 }

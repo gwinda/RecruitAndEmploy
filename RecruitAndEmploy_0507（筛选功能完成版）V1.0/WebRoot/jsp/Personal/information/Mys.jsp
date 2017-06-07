@@ -57,23 +57,39 @@ function zhuxiao(){
   .wrapper{
 	margin-top: 5px;
 	margin-left: 15%;
-	margin-right: 15%;}
-	 .column{
-	 padding-top:5px;
-
-    border-bottom : 1px solid #6cf;
-	margin-top: 5px;}
-	 .container{
-   
-	margin-top: 5px;
-	margin-left: 0px;
-	margin-right: 15%;}
+	}
+ .column{	
+	 padding-top:20px;
+	 float:left;
+	 background:#fff;
+	 width:10%;
+	 margin-top: 5px;
+	}
+	.container{
+		margin-top: 20px;
+		margin-top: 5px;
+		margin-left: 0px;
+		width:100%;
+	}
 	.content{
-   
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-right: 15%;}
+		padding-left:40px;
+		border-left:1px solid #5D5D5D;
+	    float:left;
+	    width:85%;
+		margin-top: 20px;
+		margin-left: 30px;
+	}
 
+my a{display:block;
+     height:20px;
+   }
+
+
+
+</style>
+<script type="text/javascript">
+
+</script>
   </style>
   <body>
   <div id="append_parent"> </div>
@@ -152,10 +168,9 @@ function zhuxiao(){
     </c:when>
     <c:otherwise>  
                     <a href="Login.jsp">登录</a>
-
                     <a  href="jsp/Personal/LoginAndRegister/Register.jsp" class="m-orange-bg">用户注册</a>
                     <a  href="jsp/Enterprise/LoginAndRegister/RegisterR.jsp" class="m-orange-bg">企业注册</a>
- </c:otherwise>
+ 	</c:otherwise>
 </c:choose>
                 </li>
             </ul>
@@ -169,17 +184,19 @@ function zhuxiao(){
       <div class="subnav">  
       <c:choose>
       	<c:when test="${IDFK!=null}">
-	           <a href="jsp/Personal/ResumeCreateJsp.jsp" target="rightlook">新建简历</a> &nbsp &nbsp 
-	           <a href="look.action" target="rightlook">查看所有简历</a> &nbsp &nbsp 
-	           <a href="ApplicationAction.action?opera=invite&user=1" target="rightlook">查看以投递简历</a> &nbsp &nbsp 
-	           <a href="lookpersoninformation!look.action?idFK=${IDFK}" target="rightlook">查看个人基本信息</a>  &nbsp &nbsp  
-	           <a href="LookMyCollection.action?IDFK=${IDFK}" target="rightlook">查看我的收藏</a>  &nbsp &nbsp      
+      	<%response.sendRedirect("newlookfor");%>    
+	        <%--   <my><a href="jsp/Personal/ResumeCreateJsp.jsp" target="rightlook">&nbsp;新建简历</a></my><BR> &nbsp; &nbsp;
+	          <my> <a href="look.action" target="rightlook">查看所有简历</a><BR>  &nbsp &nbsp 
+	           <my><a href="ApplicationAction.action?opera=invite&user=1" target="rightlook">查看以投递简历</a></my> <BR> &nbsp &nbsp 
+	          <my> <a href="lookpersoninformation!look.action?idFK=${IDFK}" target="rightlook">查看个人基本信息</a></my> <BR>  &nbsp &nbsp  
+	          <my> <a href="LookMyCollection.action?IDFK=${IDFK}" target="rightlook">查看我的收藏</a></my> <BR>  &nbsp &nbsp    --%>
     	</c:when>
-    	<c:otherwise>
-           <a href="jsp/Enterprise/RecruitmentCreateJsp.jsp" target="rightlook">发布招聘</a> &nbsp &nbsp 
-           <a href="Rec?i=1" target="rightlook">查看招聘</a></h3> &nbsp &nbsp 
-           <a href="ApplicationAction.action?opera=notsee&user=2" target="rightlook">查看以投递简历</a> &nbsp &nbsp 
-           <a href="Ei" target="rightlook">查看企业信息</a></h3> &nbsp &nbsp 
+    	 <c:otherwise>
+    	<%response.sendRedirect("Ei");%>
+         <!--  <a href="jsp/Enterprise/RecruitmentCreateJsp.jsp" target="rightlook">发布招聘</a> 
+         <a href="Rec?i=1" target="rightlook">查看招聘</a>
+         <a href="ApplicationAction.action?opera=notsee&user=2" target="rightlook">查看以投递简历</a>
+         <a href="Ei" target="rightlook">查看企业信息</a>&nbsp &nbsp -->
     	</c:otherwise>
      </c:choose>
       </div>     
@@ -187,7 +204,15 @@ function zhuxiao(){
     </div>
   <div class="container">
     <div class="content">
-      <iframe class="ifame_right" frameborder="0" height="800px"  width="100%" name="rightlook"src="images/ico.jpg">
+     <c:choose>
+      	<c:when test="${IDFK!=null}">
+      		 <iframe class="ifame_right" frameborder="0" height="1000px"  width="80%" name="rightlook" src="lookpersoninformation!look.action?idFK=${IDFK}">
+      	<%--	<iframe class="ifame_right" frameborder="0" height="1000px"  width="100%" name="rightlook" src="jsp/Personal/newperonlook.jsp"> --%>
+      	</c:when>
+    	<c:otherwise>
+    		<iframe class="ifame_right" frameborder="0" height="1000px"  width="80%" name="rightlook" src="Ei">
+    	</c:otherwise>
+    </c:choose>
       </iframe>
      
       </div>

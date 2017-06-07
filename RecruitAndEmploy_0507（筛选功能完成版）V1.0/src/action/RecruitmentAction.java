@@ -23,12 +23,12 @@ import entity.Job;
 import entity.Collection;
 import entity.Recruitment;
 import entity.Resume;
-import dao.ApplicationDAO;
-import dao.CollectionDAO;
-import dao.EinformationDAO;
-import dao.PositionDao;
-import dao.RecruitmentDAO;
-import dao.ResumeDAO;
+import daoImpl.ApplicationDAO;
+import daoImpl.CollectionDAO;
+import daoImpl.EinformationDAO;
+import daoImpl.PositionDao;
+import daoImpl.RecruitmentDAO;
+import daoImpl.ResumeDAO;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -60,7 +60,18 @@ public class RecruitmentAction extends ActionSupport{
 		
 	} 
 	
-	
+	public String index_look() throws Exception{
+		List<Recruitment> list=new ArrayList<Recruitment>();
+		List<Recruitment> list2=new ArrayList<Recruitment>();
+		RecruitmentDAO dao=new RecruitmentDAO();
+		list=dao.lookSomeAbout(8);	
+		System.out.println(list);
+		list2=dao.lookSomeAbout(1);
+		session.setAttribute("indexlistOfIT", list);
+		session.setAttribute("indexlistOfM", list2);
+		return "success";
+		
+	}
 	
 	
 	
@@ -124,21 +135,65 @@ public class RecruitmentAction extends ActionSupport{
 	}
 	
 	//发布招聘
-	public String createRecruitment(){
+	public String createRecruitment() throws Exception{
+		String R;
 		String name=request.getParameter("name");
 		String requirement=request.getParameter("requirement");
 		String starttime=request.getParameter("starttime");
         String endtime=request.getParameter("endtime");
-		int position=Integer.parseInt(request.getParameter("position"));
+        String workplace=request.getParameter("workplace");
+        if(name.equals(""))
+        {
+        	R="招聘名不能为空";
+        	request.setAttribute("R", R);
+        	return "ERROR";
+        }else if(requirement.equals("")){
+        	
+        	R="要求不能为空";
+        	request.setAttribute("R", R);
+        	return "ERROR";
+        }else if(endtime.equals("")){
+        	R="结束时间不能为空";
+        	request.setAttribute("R", R);
+        	return "ERROR";
+        }
+        else if(workplace.equals("")){
+        	R="工作地点";
+        	request.setAttribute("R", R);
+        	return "ERROR";
+        }else{}
+        int position;
+        int number;
+        int salary;
+        try{
+		 position=Integer.parseInt(request.getParameter("position"));
 		System.out.println("position"+position);
-		String workplace=request.getParameter("workplace");
-		int salary=Integer.parseInt(request.getParameter("salary"));
-		int number=Integer.parseInt(request.getParameter("number"));
-		System.out.println(request.getParameter("position"));
+        }catch(Exception e){
+        	R="种类不能为空";
+        	request.setAttribute("R", R);
+        	return "ERROR";
+        }
+        try{
+        	salary=Integer.parseInt(request.getParameter("salary"));
+        	
+           }catch(Exception e){
+        		R="工资不能为空";
+            	request.setAttribute("R", R);
+           	return "ERROR";
+           }
+        try{
+   		 number=Integer.parseInt(request.getParameter("number"));
+           }catch(Exception e){
+        		R="招聘人数不能为空";
+            	request.setAttribute("R", R);
+           	return "ERROR";
+           }
+        
 		
+		System.out.println(request.getParameter("position"));
 		String s=(String)session.getAttribute("mailbox");
 		System.out.println("1111111111111"+s);
-	
+        
 	    int id=new EinformationDAO().findIDByMail( (String)session.getAttribute("mailbox"));
 		Recruitment recruitment = new Recruitment(name,requirement,endtime,position,workplace,id,salary,number);				
 		
@@ -162,39 +217,31 @@ public class RecruitmentAction extends ActionSupport{
 	}
 	
 	//模糊搜索职位
+	
 	public String searchjob(){
-		try{
-		
-		String key2= request.getParameter("keyword");
+		try{		
+		String key= request.getParameter("keyword");
+		String key2=new String(key.getBytes("ISO-8859-1"),"utf-8");
 		System.out.println(key2);
 		String pid=request.getParameter("pageNos");
 		System.out.println("hh id"+pid);		
-		int pageNo;				
-		if(pid!=null){
-			pageNo=Integer.parseInt(pid);
-			System.out.println("pageqq"+pageNo);
-		}
-		else{
-			pageNo=1;
-		}
-		if(key2!=null){
-			List<Recruitment> list=new ArrayList<Recruitment>();
-			RecruitmentDAO dao=new RecruitmentDAO();
-			list=dao.searchbyname(key2,pageNo);
-			int count=dao.getPage(key2);
-			System.out.println(list);
-			System.out.println(count);
-			ctx.getSession().put("joblist", list);
-			ctx.getSession().put("recordCount", count);
-			ctx.getSession().put("pageNos", pageNo);
-			ctx.getSession().put("key", key2);
-			//session.setAttribute("joblist", list);
-			return "success";
-		}else{
-			return "error";
-		}
-		
+		int pageNo=1;						
+		pageNo=pid!=null?Integer.parseInt(pid):1;
+		System.out.println("pageqq"+pageNo);		
+		List<Recruitment> list=new ArrayList<Recruitment>();
+		RecruitmentDAO dao=new RecruitmentDAO();
+		list=dao.searchbyname(key2,pageNo);
+		int count=dao.getPage(key2);
+		System.out.println(list);
+		System.out.println(count);
+		ctx.getSession().put("joblist", list);
+		ctx.getSession().put("recordCount", count);
+		ctx.getSession().put("pageNos", pageNo);
+		ctx.getSession().put("key", key2);
+		//session.setAttribute("joblist", list);
+		return "success";
 		}catch(Exception e){
+			e.printStackTrace();
 			return "error";
 		}
 		
@@ -290,32 +337,37 @@ public class RecruitmentAction extends ActionSupport{
 	}
 	public String findjobByThreekey() throws IOException{
 		try{		
-		System.out.println("jobByThreekey");
-		session.removeAttribute("joblist");
-		String positionkey= request.getParameter("positionkey");		
-		String workkey= request.getParameter("workkey")==null?null: request.getParameter("workkey");
-		String moneykey= request.getParameter("moneykey");
-		System.out.println(positionkey);
-		System.out.println(workkey);
-		System.out.println(moneykey);		
-		RecruitmentDAO dao= new RecruitmentDAO();
-		List<Recruitment> joblist=dao.searchbykey(positionkey,workkey, moneykey, 1);
-		System.out.println(joblist);
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=utf-8"); 	 
-		//JSONArray jsonArray = JSONArray.fromObject(Industry); 
-		 JSONObject json = new JSONObject();
-		 json.put("jobkeylist", joblist);
-		 System.out.println(json.get("jobkeylist").toString());
-		 PrintWriter out = response.getWriter(); 
-		 out.print(json.toString());	
-		 out.flush();
+			System.out.println("jobByThreekey");
+			session.removeAttribute("joblist");
+			String keyword=session.getAttribute("key")==null?"":(String) session.getAttribute("key");		
+			int pageno=Integer.parseInt(request.getParameter("pageNo"));
+			String positionkey= request.getParameter("positionkey")==null?"": request.getParameter("positionkey");		
+			String workkey= request.getParameter("workkey")==null?"": request.getParameter("workkey");
+			String moneykey= request.getParameter("moneykey")==null?"": request.getParameter("moneykey");	
+			System.out.println("keyword"+keyword);		
+			RecruitmentDAO dao= new RecruitmentDAO();
+			List<Recruitment> joblist=null;		
+			joblist=dao.searchbykeys(keyword,positionkey,workkey, moneykey, pageno);
+			System.out.println(joblist);
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html;charset=utf-8"); 	 
+			//JSONArray jsonArray = JSONArray.fromObject(Industry); 
+			 JSONObject json = new JSONObject();
+			 json.put("jobkeylist", joblist);
+			 System.out.println(joblist.size()==0?0:joblist.get(0).getSumcount());
+			 json.put("sumcount",joblist.size()==0?0:joblist.get(0).getSumcount());	
+			 json.put("jobkeylist", joblist);
+			// System.out.println(json.get("jobkeylist").toString());
+			 PrintWriter out = response.getWriter(); 
+			 out.print(json.toString());	
+			 out.flush();
 		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		 return null;	
 	}
+	
 	public String Collection() throws Exception{
 		PrintWriter out = response.getWriter(); 		
 		System.out.println("Collection()");
@@ -366,4 +418,6 @@ public class RecruitmentAction extends ActionSupport{
 		}		
 		return "success";
 	}
+	
+	
 }

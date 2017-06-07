@@ -11,8 +11,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.EinformationDAO;
-import dao.PersonalinformationDAO;
+import daoImpl.EinformationDAO;
+import daoImpl.PersonalinformationDAO;
 import entity.Admin;
 import entity.Einformation;
 import entity.Personalinformation;
@@ -64,7 +64,7 @@ public class LoginAction extends ActionSupport{
 				String number =request.getParameter("emailbox");
 				String password =request.getParameter("password");
 				System.out.println(number);
-				//String password=(dao.findNewsByMail(getEinformation().getMailbox()));
+				//String password=(daoImpl.findNewsByMail(getEinformation().getMailbox()));
 				String name=dao.findNameByMail(number);
 				if(password.equals(dao.findNewsByMail(number))&&dao.findAByMail(number).equals("1"))
 			    {
@@ -75,6 +75,8 @@ public class LoginAction extends ActionSupport{
 					ServletActionContext.getResponse().addCookie(cookie);
 				   //System.out.println(IDFK);
 					session.setAttribute ("mailbox", number);
+					int eiid=dao.findIDByMail(number);
+					session.setAttribute ("eiid", eiid);
 					session.setAttribute ("userName", name+"∆Û“µ");
 					return "OK";	
 					
@@ -86,10 +88,10 @@ public class LoginAction extends ActionSupport{
 				}
 			return "error";
 		
-//			EinformationDAO dao=new EinformationDAO();
+//			EinformationDAO daoImpl=new EinformationDAO();
 //			try{
 //
-//				String password=(dao.findNewsByMail(getEinformation().getMailbox()));
+//				String password=(daoImpl.findNewsByMail(getEinformation().getMailbox()));
 //				
 //	
 //				if(password.equals(getEinformation().getPassword()))

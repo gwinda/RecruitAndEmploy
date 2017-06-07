@@ -16,6 +16,14 @@ public class Recruitment {
 	private int number;
 	private int n;//招聘人数
 	private int sumcount;//总数
+	private String company;//公司名称
+	
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
 	public int getSumcount() {
 		return sumcount;
 	}

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-<constant name="struts.custom.il8n.resourse" value="mess"></constant>
-<constant name="struts.il8n.encoding" value="GBK"></constant>
+	<constant name="struts.custom.il8n.resourse" value="mess"></constant>
+	<constant name="struts.il8n.encoding" value="GBK"></constant>
 
 
-<package name="action2" extends="struts-default,json-default" >
+	<package name="action2" extends="struts-default,json-default">
 
 
-<!-- 管理员登录 -->
+		<!-- 管理员登录 -->
 		<action name="LoginAdmin" class="action.LoginAction">
 			<result name="success">/jsp/Admin/myInformation.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-<!-- 管理员通过企业验证 -->
+		<!-- 管理员通过企业验证 -->
 		<action name="Pass" class="action.EinformationAction" method="setPass">
 			<result name="OK">/jsp/Admin/myInformation.jsp</result>
 			<result name="error">/error.jsp</result>
@@ -22,11 +22,16 @@
 			<result name="OK">/jsp/Admin/myInformation.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-<!-- Admin 管理员查看验证列表 -->
+		<action name="ad" class="action.UploadAction" method="savead">
+			<result name="OK">/jsp/Admin/myInformation.jsp</result>
+			<result name="input">/error.jsp</result>
+			<result name="ERROR">/error.jsp</result>
+		</action>
+		<!-- Admin 管理员查看验证列表 -->
 		<action name="lookEI" class="action.EinformationAction" method="getEIList">
 			<result name="OK">/jsp/Admin/LookApply.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-</package>
+	</package>
 
 </struts>

@@ -7,7 +7,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.EinformationDAO;
+import daoImpl.ApplicationDAO;
+import daoImpl.EinformationDAO;
+import daoImpl.RecruitmentDAO;
 
 
 import email.Send;
@@ -29,6 +31,14 @@ public class EinformationAction extends ActionSupport{
 		}
 		System.out.println(mailbox);
 		einformation = dao.geteInformationsList(mailbox);
+		RecruitmentDAO redao=new RecruitmentDAO();
+		ApplicationDAO appdao=new ApplicationDAO();
+		int resize=	redao.getrecruitmentsList(einformation.get(0).getId()).size();
+		int nowsize=redao.getrecruitmentsList(einformation.get(0).getId(),1).size();
+		int nosee=appdao.findNewsByState("δ�鿴",einformation.get(0).getId()).size();
+		request.setAttribute("nosee", nosee);  
+		request.setAttribute("nowsize",nowsize);  
+		request.setAttribute("resize",resize);  
 	    request.setAttribute("einformation",einformation);  
 
 		return "OK";  
@@ -51,8 +61,8 @@ public class EinformationAction extends ActionSupport{
 		    dao.updateA(id);
 		    Einformation einformation=dao.findyID(id);
 		    Send send=new Send();
-		    //send.send(einformation,"m15219605797@163.com", 1);
-		    send.send(einformation,"1051209415@qq.com", 1);
+		    send.send(einformation,"m15219605797@163.com", 1);
+		    //send.send(einformation,"1051209415@qq.com", 1);
 			return "OK";  
 			}
 			catch(Exception e){
@@ -73,8 +83,8 @@ public String setRefuse() throws Exception{
 		    dao.updateB(id);
 		    Einformation einformation=dao.findyID(id);
 		    Send send=new Send();
-		    //send.send(einformation,"m15219605797@163.com", 1);
-		    send.send(einformation,"1051209415@qq.com", 2);
+		    send.send(einformation,"m15219605797@163.com", 1);
+		    //send.send(einformation,"1051209415@qq.com", 2);
 			return "OK";  
 			}
 			catch(Exception e){

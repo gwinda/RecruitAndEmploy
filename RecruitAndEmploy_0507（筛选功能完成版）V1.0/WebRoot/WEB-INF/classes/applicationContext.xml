@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<bean id="EcollectionClassAction" class="action.EcollectionClassAction" scope="prototype" p:ecollectionClassService-ref="ecollectionClassService" />
+
+<bean id="ecollectionClassService" class="serviceImpl.EcollectionClassServiceImpl" scope="prototype" p:ecollectionClassDAOImpl-ref="ecollectionClassDAO"/>
+
+
+<bean id="ecollectionClassDAO" class="daoImpl.EcollectionClassDAOImpl"></bean> 
+
+
+<bean id="EcollectionAction" class="action.EcollectionAction" scope="prototype" p:ecollectionService-ref="ecollectionService" />
+
+<bean id="ecollectionService" class="serviceImpl.EcollectionServiceImpl" scope="prototype" p:ecollectionDAOImpl-ref="ecollectionDAO"/>
+
+
+<bean id="ecollectionDAO" class="daoImpl.EcollectionDAOImpl"></bean> 
+
+
+</beans>

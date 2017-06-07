@@ -103,16 +103,25 @@ textarea{
 	
 }
 input[type="submit"]{
-       
+     
        width:80px;
        height:35px;
        margin-top: 10px;
 }
+P{   background:#6f6;
+width:150px;
+height:35px;
+line-height:35px;
+text-align: center;
+font-size:13px;
+color:white;}
 </style>
   </head>
   
   <body>
-    <form name="form1" method="post" action="Rec!createRecruitment">
+  <P>发布招聘</P><BR><BR>
+ ${R}
+    <form name="form1" method="post" action="Recc">
 	      职位名称：
 	      <input type="text" name="name"/><br>
 	   <!--  <input type="text" name="name"><br>   -->
@@ -151,8 +160,8 @@ input[type="submit"]{
 	    职位月薪：
 	    <input type="text" name="salary"><br> 
 	    招聘人数：
-	    <input type="text" name="number"><br>   
-     	<input type="submit" value="确定发布"/>
+	    <input type="text" name="number"><br>   <br> 
+     	<input type="submit" value="确定发布"/><font color="red">&#12288;&#12288;&#12288;&#12288;(*全部数据皆为必填)</font>
     </form>
   </body>
 </html>

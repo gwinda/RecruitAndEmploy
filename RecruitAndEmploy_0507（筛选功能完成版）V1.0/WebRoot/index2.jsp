@@ -26,6 +26,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/cookie.js"></script>
     <script type="text/javascript" src="js/referer_getter.js"></script>
     <style>
+    
+    .apull-left{
+    	display:block;
+    	float:left;
+    	width:550px;
+    	height:200px;
+    	border:1px #EAE6E6 solid;
+    	border-radius:4px;
+    	margin-left:20px;
+    }
+    .apull-right{
+    	display:block;
+    	float:left;
+    	width:550px;
+    	height:200px;
+    	margin-left:20px;
+    	border:1px #EAE6E6 solid;
+    	border-radius:4px;
+    	margin-right:40px;
+    }
         img {
             display: inline-block;
         }
@@ -164,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <c:choose>
 	<c:when test="${mailbox!=null}">
                 ${userName}	已登录
-	         <a  href="jsp/Personal/information/Mys.jsp" class="m-orange-bg"  >我的</a>
+	      <a  href="jsp/Personal/information/Mys.jsp" class="m-orange-bg"  >我的</a>
 	         <a   class="m-orange-bg" onclick="zhuxiao()" >注销</a>
     </c:when>
     <c:otherwise>  
@@ -295,10 +315,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="m-warp">
         <ul class="clearfix">
             <li class="talent-nav-first">行业分类</li>                                                                                                                                                                                                                                            
-            <li class="active"><a href="" >建筑行业</a><b>/</b></li>
+           <!--  <li class="active"><a href="" >建筑行业</a><b>/</b></li>
             <li ><a href="" >IT行业</a><b>/</b></li>
             <li class="active"><a href="" >传媒行业</a><b>/</b></li>
-            <li ><a href="" >旅游行业</a></li>
+            <li ><a href="" >旅游行业</a></li>--> 
             <li class="talent-nav-last"><img src="images/1758843513564bec3ee83d5.png" alt=""></li>        
         </ul>
     </div>
@@ -307,11 +327,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--banner-->
 <div class="talent-banner" style="position: relative; overflow: hidden;">
     <ul class="rslides">
-                    <li style="background-color: #000000;"><a><img src="images/2113357229564d9fe4243d8.jpg" alt="创意云新版人才库上线" /></a></li>                    
-                    <li style="background-color: #9a9899;"><a><img src="images/355435970564da0249d097.jpg" alt="路盛章大师入驻创意云" /></a></li>                    
-                    <li style="background-color: #2b2b2b;"><a><img src="images/413335463564da078bf077.jpg" alt="创意云主题曲演唱者诚翔兄弟" /></a></li>                    
-                    <li style="background-color: #0d141a;"><a><img src="images/2022231486564da0d7033aa.jpg" alt="创意云百万创意大赛启动" /></a></li>                    
-                    <li style="background-color: #fae3af;"><a><img src="images/1160315759564da116ad388.jpg" alt="骄傲的番茄主场人员创意云专访" /></a></li>                                                                        
+                   <li style="background-color: #000000;"><a><img src="personPicture/f.jpg" alt="创意云新版人才库上线" /></a></li>                    
+                    <li style="background-color: #9a9899;"><a><img src="personPicture/b.jpg" alt="路盛章大师入驻创意云" /></a></li>                    
+                    <li style="background-color: #2b2b2b;"><a><img src="personPicture/c.jpg" alt="创意云主题曲演唱者诚翔兄弟" /></a></li>                    
+                    <li style="background-color: #0d141a;"><a><img src="personPicture/d.jpg" alt="创意云百万创意大赛启动" /></a></li>                    
+                    <li style="background-color: #fae3af;"><a><img src="personPicture/e.jpg" alt="骄傲的番茄主场人员创意云专访" /></a></li>                                                                                                                               
      </ul>
     <div class="m-warp">
         <!--分类-->
@@ -360,7 +380,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <i class="icon-18 icon-more"></i>                                                                                                                                                                                                    
-                    <a href="#more_partner" >推荐服务商</a>                
+                    <a href="#more_partner" >推荐招聘信息</a>                
                 </li>
             </ul>
         </div>
@@ -767,59 +787,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div>
 <!--/banner-->
-<!--推荐服务商-->
 <div class="talent-fac" name="more_partner" id="more_partner">
     <div class="m-warp">
         <p class="talent-fac-title">
-                        <i class="icon-20"><img src="images/1220546174564b5f48c6762.png"></i>            <span class="maintitle">推荐服务商</span>            <i class="subtitle">HOT BRANDS</i>        </p>
+                        <i class="icon-20"><img src="images/1220546174564b5f48c6762.png"></i>            <span class="maintitle">推荐招聘信息</span>            <i class="subtitle">HOT RECRUITMENT</i>        </p>
         <div class="talent-fac-box clearfix">
-            <div class="talent-fac-left pull-left">
-                <a href="http://www.vsochina.com/index.php?do=talent_detail&member_id=32766"  target="_blank" ><img src="images/516669990564be3c4e90cb.jpg" alt="西游记之大圣归来"></a>                
-                <p class="talent-fac-name"><a  href="http://www.vsochina.com/index.php?do=talent_detail&member_id=32766">西游记之大圣归来</a></p>                <p class="talent-fac-origin">来源：沈阳猛玛动画 影视/动画</p>            </div>
-            <ul class="talent-fac-ul pull-right">
-                                    <li><a ><img src="images/258172595564be79125890.jpg" alt="猛玛动画"></a></li>                                    
-                                    <li><a><img src="images/1733279199564c302eb2aab.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1236136900564c303875a2f.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/170930353564c30c65a860.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1410386594564c31226d1e7.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1240406711564c313fbf30d.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1290440699564c305dd257f.jpg" alt="山东中动"></a></li>                                    
-                                    <li><a><img src="images/496435962564c3052a2423.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/764239069564c3091489d1.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1775059936564c30d506fb2.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1758788663564c3154e44b7.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1032854167564c31af6fb0b.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1546468850564c309cdc2fc.jpg" alt="易舍设计"></a></li>                                    
-                                    <li><a><img src="images/1448628395564c3106dd13c.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/182149193564c316878ea1.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/821063908564c31c31a40e.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1130810128564c318ca92bb.jpg" alt=""></a></li>                                    
-                                    <li><a><img src="images/1518858334564c31a31c755.jpg" alt=""></a></li>                            
-                                    </ul>
+        
+            <div class="apull-left">
+            <table border="0" width="100%" align="center" style="font-size:14px;">
+             <tr ><td colspan="3"><div style="height:25px;background:#F1ECF9;"><span class="talent-fac-title"><font class="maintitle"> 传媒 </font></span> <div style="width:100px;height:18px;float:right;text-align:right;font-weight:bold;"><a href="jsp/Personal/recruitment/lookjob.jsp" style="bold:weight">查看更多-></a></div></div></td></tr>
+	        	<tr style="font-size:16px;height:20px;" align="center">
+	        		<td>职位名称</td>
+	        		<td>公司名称</td>
+	        		<td>发布时间</td>
+	        	</tr>                 
+            		<c:forEach var="list1" items="${indexlistOfIT}" end="4" >
+            			<tr align="center"  style="font-size:16px;height:30px;">
+	            			<td><a href="lookRecuriment!lookonejob.action?id=${list1.idEnterpriseRecruitment}&idEnterpriseInformation=${list1.idEnterpriseInformation}"
+						target="_blank">${list1.name}</a></td>
+	            			<td><a href="lookRecuriment!lookonejob.action?id=${list1.idEnterpriseRecruitment}&idEnterpriseInformation=${list1.idEnterpriseInformation}"
+						target="_blank">${list1.company}</a></td>
+	            			<td>${list1.startTime}</td>            			
+            			</tr>
+            		</c:forEach>    
+              </table>
+             </div>
+            <div class="apull-right">
+             <table border="0" width="100%" align="center" style="font-size:14px;">
+             <tr ><td colspan="3"><div style="height:25px;background:#F1ECF9;"><span class="talent-fac-title"><font class="maintitle">IT</font></span> <div style="width:100px;height:18px;float:right;text-align:right;font-weight:bold;"><a href="jsp/Personal/recruitment/lookjob.jsp" >查看更多-></a></div></div></td></tr>
+	        	<tr style="font-size:16px;height:20px;" align="center">
+	        		<td>职位名称</td>
+	        		<td>公司名称</td>
+	        		<td>发布时间</td>
+	        	</tr>    
+         		<c:forEach var="lsit2" items="${indexlistOfM}" end="4" >
+            			<tr align="center"  style="font-size:16px;height:30px;">
+	            			<td><a href="lookRecuriment!lookonejob.action?id=${list2.idEnterpriseRecruitment}&idEnterpriseInformation=${list2.idEnterpriseInformation}"
+						target="_blank">${lsit2.name}</a></td>
+	            			<td><a href="lookRecuriment!lookonejob.action?id=${list2.idEnterpriseRecruitment}&idEnterpriseInformation=${list2.idEnterpriseInformation}"
+						target="_blank">${lsit2.company}</a></td>
+	            			<td>${lsit2.startTime}</td>            			
+            			</tr>
+            		</c:forEach>    
+              </table>
+            </div>
         </div>
         <div style="height:auto;overflow: hidden"><a href="#" class="talent-banner-ad"target="_blank"><img
                     src="images/213494351564d860512939.jpg" width="1200" height="90" /></a></div>
     </div>
 </div>
-
-<!--新闻 -->
-<div class="talent-news">
-    <div class="m-warp">
-        <dl class="talent-news-dl">
-            <dt><img src="images/1281111149564eb20b907e0.png" alt="网易新闻"></dt>            
-            <dd><a target="_blank" >“蓝海创意云”是定位于文化创意产业垂直领域的一个创业创新服务平台,由中国传媒大学旗下高科技公司蓝海彤翔和“天河”超算中心合作共建,有着……</a></dd>        </dl>
-        <dl class="talent-news-dl">
-            <dt><img src="images/1154515086564eb2186460a.png" alt=""></dt>            
-            <dd><a target="_blank" >4月16日，国内知名的文化创意产业公共服务云平台“创意云”与毅达资本旗下紫金文化基金举行战略合作签约仪式，首次引入数千万元战略资本。</a></dd>        </dl>
-        <dl class="talent-news-dl">
-            <dt><img src="images/505612079564eb23077605.png" alt="今日头条"></dt>            
-            <dd><a target="_blank" >春晚使抢红包成为新的潮流,成为时下年轻人最时尚最风靡的娱乐活动。“双节”将至,文化创意创业平台蓝海创意云启动红色风暴,广撒红包回馈用户……</a></dd>        </dl>
-    </div>
-</div>
 <!--/新闻-->
 <!--logo -->
 <div class="talent-logos">
-    <p class="font22">他们都在使用珠海人才库<i class="icon-work-online"></i></p>    <p>珠海人才库上聚集了海量的人才，通过平台系统选择您喜欢的公司</p>
+    <p class="font22">珠海人才库<i class="icon-work-online"></i></p>    <p>珠海人才库上聚集了海量的人才，通过平台系统选择您喜欢的公司</p>
     <div class="m-warp">
         <table class="talent-logos-table">
         </table>

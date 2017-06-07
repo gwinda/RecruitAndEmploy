@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   
-   <h1>  新建/更新成功！点击导航栏进行查看</h1>
+   发布成功！
+   <a href="Rec?i=1">返回查看招聘</a></br>
   </body>
 </html>

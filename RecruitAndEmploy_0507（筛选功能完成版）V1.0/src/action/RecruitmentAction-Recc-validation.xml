@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+    "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+    
+		String requirement=request.getParameter("requirement");
+		String starttime=request.getParameter("starttime");
+        String endtime=request.getParameter("endtime");
+		int position=Integer.parseInt(request.getParameter("position"));
+		System.out.println("position"+position);
+		String workplace=request.getParameter("workplace");
+		int salary=Integer.parseInt(request.getParameter("salary"));
+		int number=Integer.parseInt(request.getParameter("number"));
+		System.out.println(request.getParameter("position"));
+    
+    
+    
+    
+     <validators> 
+      <field name="name">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    <field-validator type="email">
+            <message>邮箱格式不正确</message>
+        </field-validator>
+          <field name="requirement">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="starttime">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="endtime">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="position">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="workplace">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="salary">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="number">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+    
+     <field name="position">
+    <field-validator type="requiredstring">
+     <param name="trim">true</param>
+     <message>邮箱不能为空</message>
+    </field-validator>
+   
+  
+  
+  </validators>

@@ -18,12 +18,18 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.ApplicationDAO;
-import dao.EinformationDAO;
-import dao.PersonalinformationDAO;
-import dao.RecruitmentDAO;
-import dao.ResumeDAO;
+import dao.EcollectionClassDAO;
+import dao.EcollectionDAO;
+import daoImpl.ApplicationDAO;
+import daoImpl.EcollectionClassDAOImpl;
+import daoImpl.EcollectionDAOImpl;
+import daoImpl.EinformationDAO;
+import daoImpl.PersonalinformationDAO;
+import daoImpl.RecruitmentDAO;
+import daoImpl.ResumeDAO;
 import doc.DocUtil;
+import domain.Ecollection;
+import domain.EcollectionClass;
 import entity.AERR;
 import entity.Application;
 import entity.Personalinformation;
@@ -47,7 +53,9 @@ public class ApplicationAction extends ActionSupport {
 		String values=request.getParameter("checkboxnew");
 		String mybutton=request.getParameter("mybutton");
 		String applicationr=request.getParameter("name");
+		if(request.getParameter("name")!=null){
 		applicationr=new String(applicationr.getBytes("ISO8859_1"), "UTF8");
+		}
 		System.out.println(applicationr+"--------------------------------------------");
 		System.out.println(mybutton);
 		System.out.println("进入批量操作");
@@ -131,7 +139,23 @@ public class ApplicationAction extends ActionSupport {
 	        	    request.setAttribute("download", download);
 	        	
 			}
-	        else{}
+	        else if(mybutton.equals("4")){
+	        	EcollectionDAO ecollectionDAOImpl =new EcollectionDAOImpl();
+	        	int eclass=Integer.parseInt(request.getParameter("eclass"));
+	        	int eiid= (Integer) session.getAttribute("eiid");
+	        	for(int i=0;i<pt.size();i++)
+				{
+	        		Ecollection ecollection =new Ecollection();
+					System.out.println(pt.get(i).getX());
+					ecollection.setResumeId(pt.get(i).getX());
+					ecollection.setEiid(eiid);
+					ecollection.setEclass(eclass);
+					
+					ecollectionDAOImpl.create(ecollection);
+				}
+	        	
+	        	
+	        }else{}
 			
 			
 			
@@ -365,7 +389,7 @@ public class ApplicationAction extends ActionSupport {
 		// -----------------------------------------------------------------------------------------
 		// System.out.println(opera);
 		//
-		// ResumeDAO dao=new ResumeDAO();
+		// ResumeDAO daoImpl=new ResumeDAO();
 		// java.util.List<Application> applications=null;
 		// if(user==2)
 		//
@@ -406,7 +430,7 @@ public class ApplicationAction extends ActionSupport {
 		//
 		// for(int i=0;i<applications.size();i++)
 		// {
-		// applications.get(i).setResumename(dao.OnesearchByID(
+		// applications.get(i).setResumename(daoImpl.OnesearchByID(
 		// applications.get(i).getIdResume()).getName());
 		//
 		//
@@ -481,8 +505,17 @@ public class ApplicationAction extends ActionSupport {
 		List<AERR> aerr=null;
 		HashMap<String, List<AERR>> hashmap=(HashMap<String, List<AERR>>) session.getAttribute("hashmap");
 		int size=hashmap.size();
-		int page = Integer.parseInt(request.getParameter("page"));
 		String pr=null;
+		int page=0;
+		try{
+		page = Integer.parseInt(request.getParameter("page"));
+		}
+		catch(Exception e){
+			pr="请输入数字";
+			request.setAttribute("pr", pr);
+			return "user2";
+		}
+		
 		if(page<=0||page>size)
 		{
 			pr="页码不符合要求";
@@ -639,7 +672,7 @@ public class ApplicationAction extends ActionSupport {
 //				for (int i = 0; i < applications.size(); i++) {
 //					applications.get(i)
 //							.setResumename(
-//									dao.OnesearchByID(
+//									daoImpl.OnesearchByID(
 //											applications.get(i).getIdResume())
 //											.getName());
 //
@@ -647,6 +680,9 @@ public class ApplicationAction extends ActionSupport {
 //			} else {
 //			}
 //		}
+		EcollectionClassDAO ecollectionClassDAO=new EcollectionClassDAOImpl();
+		List<EcollectionClass> listEcollectionClass = ecollectionClassDAO.queryList();
+		session.setAttribute("listEcollectionClass", listEcollectionClass);
 		
 		
 		request.setAttribute("applitionlist", applications);

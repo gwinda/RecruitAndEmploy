@@ -162,8 +162,7 @@ input[type=password]{
             <tr>
             <td> *验证码 : </td>  
             <td><input id="veryCode" name="veryCode" type="text" /> </td>
-       				<td> <img src="SecurityCodeImageAction.action" id="Verify"  style="cursor:hand;" alt="看不清，换一张"/></td>
-        		
+       				<td> <img src="SecurityCodeImageAction.action" id="Verify"  style="cursor:hand;" alt="看不清，换一张"/></td>	
             </tr>
             <tr>
 	            <td></td>
@@ -171,7 +170,7 @@ input[type=password]{
         	</table>
           
            <p align="center"><input type="submit" value="确认注册" style="height:35px;width:80px;"  />
-            <input type="reset" value="重置" style="height:35px;width:80px;"/>   </p>
+            <input type="reset" value="重置" style="height:35px;width:80px;"/></p>
             <br/>        
              <p align="left"><a href="Login.jsp"><font face="宋体" size="4">我不注册了，回到登录窗口</font></a></p>         
         </form>

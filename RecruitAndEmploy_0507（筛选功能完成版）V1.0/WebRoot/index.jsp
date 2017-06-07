@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <%response.sendRedirect("index_look"); %>
   <a href="index2.jsp">shouye</a>
   <h2>个人用户</h2>
            <h3><a href="jsp/Personal/ResumeCreateJsp.jsp">新建简历</a></h3>

@@ -10,8 +10,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import dao.EinformationDAO;
-import dao.PersonalinformationDAO;
+import daoImpl.EinformationDAO;
+import daoImpl.PersonalinformationDAO;
 
 import entity.Einformation;
 import entity.Personalinformation;

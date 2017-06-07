@@ -45,7 +45,7 @@ body{
 	height:30px;
 }
 #middle{
-	padding-top:32px;
+	padding-top:50px;
 	width:30%;	
 	margin-left:32%;	
 	height:300px;
@@ -54,10 +54,8 @@ body{
 #middle_center{
 	width:100%;
 	margin-left:50px;		
-	border-spacing:2px;
 	background-color: rgba(82, 117, 212, 0.2);
 	border-radius:10px;
- 	box-shadow:3px 3px 3px 3px;  
 
 }
 #button{
@@ -87,15 +85,34 @@ table{
   	padding-left:57%;
   }
  .mytop{
-       padding-bottom:40px;
+  padding-bottom:40px;
        border-bottom: 3px solid #4b4b4b;
        border-top: 0px solid #4b4b4b;
-       height:80px;
-       line-height:50px;   
+       height:150px;
+       margin-top: 10px;
+       line-height:150px;   
        margin-left: 15%;
        margin-right: 15%;
-       color:#4b4b4b
+       color:#4b4b4b}
  }
+table tr td input[type="text"]{
+       width:250px;
+       height:35px;
+       margin-top: 5px;
+	
+}
+input[type="submit"]{
+       
+       width:80px;
+       height:35px;
+       margin-top: 10px;
+}
+input[type="reset"]{
+       
+       width:80px;
+       height:35px;
+       margin-top: 10px;
+}
 </style>
 <script src="js/jquery-1.11.3.js"></script>
  <script  type="text/javascript" src="js/check.js"></script>
@@ -109,8 +126,8 @@ table{
     <script type="text/javascript" src="js/vsoheader.js" charset="UTF-8"></script>
 
 <div class="mytop" >
-<font size=15><B>珠海招聘网</B></font>
-简历多、覆盖广、互动强
+<font size=15><B>珠海招聘网</B></font>简历多、覆盖广、互动强
+
 </div>
 
 <div id="middle">
@@ -121,13 +138,13 @@ table{
 		<table border="0" align="center"  cellpadding="10">
 		
 		<tr>
-			<td>邮箱      :
+			<td>邮&#12288;箱:
 			<input type="text" name="emailbox" id="emailbox" placeholder="请输入您的账号"  /></td>
 			<td><font id="email_wrong" ></font></td>
 		</tr>
-		
+		<BR>
 		<tr>
-			<td>密码         : <input type="password" id="password" name="password" /></td>
+			<td>密&#12288;码: <input type="password" id="password" name="password" heighe="35px"/></td>
 			<td><font id="psd1_wrong" ></font></td>
 		</tr>
 		<tr align="center">

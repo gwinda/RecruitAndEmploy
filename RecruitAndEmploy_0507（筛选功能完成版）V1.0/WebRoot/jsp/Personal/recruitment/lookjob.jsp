@@ -33,6 +33,7 @@
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/referer_getter.js"></script>
 <script type="text/javascript">
+
 function getAjax(positionkey,workkey,moneykey,pageNo){//点击获取列表的异步操作
 	$.ajax({  //异步刷新，可不要
                 url :"findjobByThreekey.action",  //后台处理程序          
@@ -44,6 +45,7 @@ function getAjax(positionkey,workkey,moneykey,pageNo){//点击获取列表的异
                   alert("error");
              	},  
   				success: function(data){  
+  				//alert("rightsuccess");
   				  $("#content2").append("<table border='0' id='listtable'>"+
 						"<tr>"+
 						"<td>招聘名称</td>"+
@@ -54,52 +56,58 @@ function getAjax(positionkey,workkey,moneykey,pageNo){//点击获取列表的异
 						"</table>");					
 	  				var d=eval(data);
 	  				var obj = eval(data["jobkeylist"] ); //获取json
-	  				var obj2 = data["aa"]; //获取json
+	  				var obj2 = data["sumcount"]; //获取json
 	  				var obj3 = data["bb"]; //获取json
-	  				//alert(data["aa"]);
-	  				//alert(obj3);
+	  				///alert( obj2 );
 	  				$.each(obj,function(i,value) {  
 	  					//alert(value.name);  				  		
 	                      $("#listtable").append("<tr>"+
 	                        "<td>"+
 	                        "<a href='lookRecuriment!lookonejob.action?id="+value.idEnterpriseRecruitment+"&idEnterpriseInformation="+value.idEnterpriseInformation+" ' target='_blank'>"+value.name+
 	                        "</a></td>"+
-							"<td>"+value.idEnterpriseInformation+"</td>"+
+							"<td>"+value.company+"</td>"+
 							"<td>"+value.workingPlace+"</td>"+
 							"<td>"+value.salary+"</td>"+
 						"</tr>");    
 	                });   
-	                 var moye=parseInt(parseInt(obj3)%12==0?parseInt(obj3)/12:parseInt(obj3)/12+1);
+	                 var moye=parseInt(parseInt(obj2)%12==0?parseInt(obj2)/12:parseInt(obj2)/12+1);	          
+	                // alert(pageNo);
+	                 //alert("moye"+moye);
 	                 var nextOne=parseInt(pageNo)+1;
 	                 var lastOne=parseInt(pageNo)-1;
-	                 $("#sumcount").html(obj3); 
-	                // $("#sumpage").html(moye);
-	                 document.getElementById("content2").style.display="block" ;	                 		  
-	                  if(obj3>12&&parseInt(pageNo)<moye&&parseInt(pageNo)>1){                                    
+	                 $("#sumcount").html(obj2); 
+	                 $("#sumpage").html(moye);
+	                 document.getElementById("content2").style.display="block" 
+	                 //$("#content2").toggle();;
+	                 //$("#fenye").empty();	 
+	                 $("#fenye").empty();                		  
+	                  if(obj2>12&&parseInt(pageNo)<moye&&parseInt(pageNo)>1){                                    
 			    		$("#fenye").append(""+
-			    			"<a href='#' onclick='return  FenyeSendTo(1)'>首页</a>"+
-			    			"<a href='#' onclick='return FenyeSendTo("+lastOne+")'>上一页</a>"+
-							"<a href='#' onclick='return FenyeSendTo("+nextOne+")'>下一页</a>"+
-							"<a href='#' onclick='return FenyeSendTo("+moye+")'>末页</a>");
+			    			'<a href="javascript:void(0);" onclick=" fenyeSendTo(1)">首页</a>'+
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+lastOne+')">上一页</a>'+
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+nextOne+')">下一页</a>'+
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+moye+')">末页</a>');
+							
 			    		}
-			    		if(obj3>12&&parseInt(pageNo)==moye){                                    
-			    		$("#fenye").append(""+
-			    			"<a href='#' onclick='return  FenyeSendTo(1)'>首页</a>"+
-							"<a href='#' onclick='return FenyeSendTo("+lastOne+")'>上一页</a>"+
-							"<a href='#' onclick='return  FenyeSendTo("+moye+")'>末页</a>");
+			    		if(obj2>12&&parseInt(pageNo)==moye){                                    
+			    		$("#fenye").append(
+			    			'<a href="javascript:void(0);" onclick=" fenyeSendTo(1)">首页</a>'+
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+lastOne+')">上一页</a>'+	
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+moye+')">末页</a>');
 			    		}
-			    		if(obj3>12&&parseInt(pageNo)==1){                                    
-			    		$("#fenye").append(""+
-			    			"<a href='' onclick='return  FenyeSendTo(1)'>首页</a>"+
-							"<a href='#' onclick='return FenyeSendTo("+nextOne+")'>下一页</a>"+
-							"<a href='#' onclick='return  FenyeSendTo("+moye+")'>末页</a>");
-			    		}
-			    		                        
-           		 }  
+			    		if(obj2>12&&parseInt(pageNo)==1){ 
+			    		$("#fenye").append(                                   
+			    			'<a href="javascript:void(0);" onclick=" fenyeSendTo(1)">首页</a>'+
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+nextOne+')">下一页</a>'+
+							'<a href="javascript:void(0);" onclick=" fenyeSendTo('+moye+')">末页</a>');
+							}
+			    			    		                        
+           		 } 
                            	 
     	});	
-    }	
-    				
+    }
+
+ 				
 $(function () { 
 	var alink04 = $("#position").find("a"); 
 	alink04.click(function () { 
@@ -133,16 +141,22 @@ $(function () {
 	}); 
 	
 });
-function FenyeSendTo(pageNo){
- 		$("#content").remove();
+function fenyeSendTo(pageNo){
+		///alert("jjjjjjjjjjj");		
 		$("#content2").empty();
-		$("#fenye").empty();
-		//alert(pageNo);
+		//$("#fenye").empty();		
+		//alert("aa"+pageNo);
 		var positionkey=$("#positionkey").val();
 		var workkey=$("#workkey").val();
 		var moneykey=$("#moneykey").val();
+		//alert( positionkey);
+		//alert( workkey);
+		//alert( moneykey);
+		//alert(pageNo);
 		getAjax(positionkey,workkey,moneykey,pageNo);
-		return false;	
+		
+		//return false;
+			
 }
 function Findbyjobname(workkey){
 		//alert("aa");
@@ -157,8 +171,6 @@ function Findbyjobname(workkey){
 		var moneykey=$("#moneykey").val();
 		 $("#content").remove();
 		 $("#content2").empty();	
-		//alert(positionkey);
-		//alert(workkey);
 		getAjax(positionkey,workkey,moneykey,1);
 		return false;	
 } 
@@ -225,12 +237,13 @@ function ShowDiv(objid)
       // document.getElementById(objid).style.display="block"; 
    }
 }
+
 </script>
 
 <style type="text/css">
 .fenye{
 	float:left;
-	padding-left:40%;
+	padding-left:45%;
 	height:100px;
 }
 tr {
@@ -246,24 +259,24 @@ td {
 }
 
 .vso-copyright-wrap {
-	margin-bottom: 11px;
+	
 }
 
 #bottom_footer {
-	margin-top: 100px;
+	margin-top: 200px;
 }
 
 .iunputkey {
 	margin-top: 10px;
 	font-size: 18px;
 	width: 200px;
-	height: 25px;
+	height: 30px;
 }
 
 .iunputbutton {
 	font-size: 18px;
-	width: 70px;
-	height: 25px;
+	width: 80px;
+	height: 30px;
 }
 
 .input-group {
@@ -271,7 +284,7 @@ td {
 }
 
 #content {
-	height: 80%;
+	
 	border-top: 1px solid #6cf;
 	margin-top: 5px;
 	margin-left: 15%;
@@ -280,7 +293,7 @@ td {
 }
 
 #content2 {
-	height: 80%;
+	
 	border-top: 1px solid #6cf;
 	margin-top: 5px;
 	margin-left: 15%;
@@ -290,13 +303,14 @@ td {
 }
 
 .position {
+	color:rgba(68, 68, 74, 0.96);
 	height: 30px;
-	margin-top: 50px;
+	margin-top: 40px;
 	margin-left: 2%;
 }
 
 .position a {
-	color: #FFFFFF;
+	color: rgba(68, 68, 74, 0.96);
 }
 
 .work {
@@ -304,7 +318,7 @@ td {
 }
 
 .work a {
-	color: #FFFFFF;
+	color: rgba(68, 68, 74, 0.96);
 }
 
 .money {
@@ -314,7 +328,7 @@ td {
 }
 
 .money a {
-	color: #FFFFFF;
+	color: rgba(68, 68, 74, 0.96);
 }
 
 .positionbottom {
@@ -326,7 +340,7 @@ td {
 table {
 	width: 100%;
 	border-collapse: separate;
-	border-spacing: 15px;
+	border-spacing: 28px;
 }
 
 td {
@@ -334,16 +348,19 @@ td {
 }
 
 .mytop {
-	background: #4b4b4b;
+	color:rgba(68, 68, 74, 0.96);
+    background :white/* rgb(90, 56, 121) */;
 	height: 200px;
 	margin-top: 15px;
 	margin-left: 15%;
 	margin-right: 15%;
+	border:1px #E0D6D6 solid;
 }
 
 .templinkactive {
 	text-decoration: none;
-	background-color: #2788DA;
+	
+	border-bottom:1px solid rgba(68, 68, 74, 0.96);
 }
 
 .templink {
@@ -359,6 +376,21 @@ td {
 .listtable {
 	height: 600px;
 }
+
+my input[type="submit"] {
+	width: 65px;
+	height: 25px;
+	color:#FFF;
+	background: #2281cb;
+	margin-bottom: 40px;
+}
+my input[type="text"] {
+	width: 50px;
+	height: 25px;
+	color:#2281cb;
+	background: #fff;
+	margin-bottom: 40px;
+}
 </style>
 
 </head>
@@ -366,17 +398,17 @@ td {
 <body>
 	<script type="text/javascript" src="js/vsoheader.js" charset="UTF-8"></script>
 	<div class="mytop">
-		<div class="input-group _web_ad_" ad_data="{'b_id':5, 'row_num':1}">
+		<div  class="input-group _web_ad_" ad_data="{'b_id':5, 'row_num':1}" style="font-family:宋体;">
 			<form name="search" id="search" method="get"
 				action="searchjob!searchjob.action" onSubmit="return checkParams()">
 				<input type="text" name="keyword" id="keyword" class="iunputkey"
 					placeholder="职位搜索" onKeyUp="help(event)"
-					aria-describedby="basic-addon2" value="" autocomplete="off">
+					aria-describedby="basic-addon2" value="${key}" autocomplete="off">
 				<input type="submit" class="iunputbutton" id="" value="搜索" />
 			</form>
 		</div>
 		<div class="position" id="position">
-			<font size=2 color=gray>工作地点：</font> <a herf=""
+			<font size=2 >工作地点：</font> <a herf=""
 				class="templinkactive" id="">不限</a> &nbsp; &nbsp; <a herf=""
 				class="templink" id="香洲区">香洲区</a> &nbsp; &nbsp; <a herf=""
 				class="templink" id="斗门区">斗门区</a> &nbsp; &nbsp; <a herf=""
@@ -389,7 +421,7 @@ td {
 		</div>
 		<div class="work" id="work">
 			<!-- 点击大类弹出小分类 -->
-			<font size=2 color=gray>职位类别：</font> <a herf="#" id="0i"
+			<font size=2 >职位类别：</font> <a herf="#" id="0i"
 				class="templinkactive" onclick="return Findbynolimit('0i')">不限</a>
 			&nbsp; &nbsp; <a herf="#" id="1i" onclick="ShowDiv('1t')">IT</a>
 			&nbsp; &nbsp; <a herf="#" id="2i" onclick="ShowDiv('2t')">传媒</a>
@@ -412,7 +444,7 @@ td {
 			</div>
 		</div>
 		<div class="money" id="money">
-			<font size=2 color=gray>薪资水平： <a herf=""
+			<font size=2 >薪资水平： <a herf=""
 				class="templinkactive" id="不限">不限</a> &nbsp; &nbsp; <a herf=""
 				class="templink" id="1000以下">1000以下</a> &nbsp; &nbsp; <a herf=""
 				class="templink" id="1001-2000">1001-2000</a> &nbsp; &nbsp; <a
@@ -429,7 +461,7 @@ td {
 	<input type="hidden" name="workkey" id="workkey">
 	<input type="hidden" name="moneykey" id="moneykey">
 	<div class="positionbottom">
-		<font size=2 color=black>共找到<span id="sumcount">n</span>个职位满足条件</font>
+		 <font size=2 color=black>共找到<span id="sumcount">${Count}</span>个职位满足条件</font>
 	</div>
 	<div id="content">
 		<table border="0">
@@ -445,7 +477,7 @@ td {
 						href="lookRecuriment!lookonejob.action?id=${list.idEnterpriseRecruitment}&idEnterpriseInformation=${list.idEnterpriseInformation}"
 						target="_blank">${list.name}</a>
 					</td>
-					<td>${list.idEnterpriseInformation}</td>
+					<td>${list.company}</td>
 					<td>${list.workingPlace}</td>
 					<td>${list.salary}</td>
 				</tr>
@@ -460,50 +492,57 @@ td {
 	<!-- ----------------------当当前页数等于总页数时，出现首上末---------------------------------------- -->
 	<!-- ----------------------当当前页数等于首页时，出现首下末---------------------------------------- -->
 	<div class="fenye" id="fenye">
-		<c:if test="${recordCount==1 && pageNos==1}">
-		</c:if>
-		<c:if test="${recordCount>1 && pageNos==1}">
-			<a href="searchjob!searchjob.action?pageNos=1&keyword=${key}">首页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${pageNos+1}&keyword=${key}">下一页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${recordCount}&keyword=${key}">末页</a>
-		</c:if>
-		<c:if test="${recordCount!=1 && pageNos==recordCount}">
-			<a href="searchjob!searchjob.action?pageNos=1&keyword=${key}">首页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${pageNos-1}&keyword=${key}">上一页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${recordCount}&keyword=${key}">末页</a>
-		</c:if>
-		<c:if test="${pageNos>1  && pageNos<recordCount}">
-			<a href="searchjob!searchjob.action?pageNos=1&keyword=${key}">首页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${pageNos-1}&keyword=${key}">上一页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${pageNos+1}&keyword=${key}">下一页</a>
-			<a
-				href="searchjob!searchjob.action?pageNos=${recordCount}&keyword=${key}">末页</a>
-		</c:if>
 		<form action="searchjob!searchjob.action" method="post">
-			<h4 align="center">
-				共<span id="sumpage">${recordCount}</span>页
+		
+		<c:choose>
+		<c:when test= "${recordCount==0 ||pageNos==0}">
+			<p style="font-weight:bold;">暂无信息</p>
+			<hr>
+			
+		</c:when>
+		<c:when test="${recordCount>1 && pageNos==1}">
+			<a href="searchjob!searchjob.action?pageNos=1&keyword=${key}">首页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${pageNos+1}&keyword=${key}">下一页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${recordCount}&keyword=${key}">末页</a>
+		</c:when>
+		<c:when test="${recordCount!=1 && pageNos==recordCount}">
+			<a href="searchjob!searchjob.action?pageNos=1&keyword=${key}">首页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${pageNos-1}&keyword=${key}">上一页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${recordCount}&keyword=${key}">末页</a>
+		</c:when>
+		<c:when test="${pageNos>1  && pageNos<recordCount}">
+			<a href="searchjob!searchjob.action?pageNos=1&keyword=${key}">首页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${pageNos-1}&keyword=${key}">上一页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${pageNos+1}&keyword=${key}">下一页</a>
+			<a
+				href="searchjob!searchjob.action?pageNos=${recordCount}&keyword=${key}">末页</a>
+		</c:when>
+		</c:choose>
+</div>
+			<font align="center" color=black>
+				&#12288;&#12288;共<span id="sumpage">${recordCount}</span>页</font>
 				<c:choose>
 					<c:when test="${recordCount==1}">
 
 					</c:when>
 					<c:otherwise>
-						<input type="text" value="${pageNos}" name="pageNos" size="2"
-							id="pageNos">页
+					<my>	<input type="text" value="${pageNos}" name="pageNos" size="2"
+							id="pageNos">
 					 <input type="submit" value="到达" onclick="return checknumber()">
 					</c:otherwise>
 				</c:choose>
 				<input type="hidden" value="${recordCount}" name="recordCount"
 					id="recordCount"> <input type="hidden" value="${key}"
-					name="keyword">
-			</h4>
+					name="keyword"></my>
+		
 		</form>
-	</div>
+	
 	</div>
 	<div id="bottom_footer">
 		<script type="text/javascript" src="js/vsofooter.js"></script>

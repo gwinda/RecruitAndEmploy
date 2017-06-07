@@ -14,8 +14,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.PersonalinformationDAO;
-import dao.ResumeDAO;
+import daoImpl.PersonalinformationDAO;
+import daoImpl.ResumeDAO;
 import doc.DocUtil;
 
 import entity.Personalinformation;
@@ -39,7 +39,7 @@ public class ResumeAction extends ActionSupport{
 		//int fid=Integer.parseInt(cookies[0].getValue().trim());
 			//System.out.println(cookies[0].getValue());
 		int fid= (Integer) session.getAttribute("IDFK");
-		
+		String form=request.getParameter("form")==null?"null":request.getParameter("form");
 			session.removeAttribute("resumelist");//将以前保存在session中的数据删除
 			System.out.println("haha excute =l");	//测试						
 			List<Resume> list=new ArrayList<Resume>();//实例化对象
@@ -48,7 +48,9 @@ public class ResumeAction extends ActionSupport{
 			System.out.println(list);//测试输出list
 			session.setAttribute("resumelist", list);//将数据存在session中
 			//session.setAttribute("Pid", which);
-			
+			if(form.equals("new")){
+				return "OK2";
+			}
 			return "OK";
 		
 	}
@@ -123,6 +125,26 @@ public class ResumeAction extends ActionSupport{
 		}
 	}
 	//查看单条简历
+	public String lookOneEc(){
+		int idR=Integer.parseInt(request.getParameter("idResume"));
+		Resume list=new Resume();//实例化model对象
+		ResumeDAO dao=new ResumeDAO();//实例化dao 类
+		list=dao.OnesearchByID(idR);//查看一条简历
+		Personalinformation person =new Personalinformation();//实例化
+		PersonalinformationDAO persondao=new PersonalinformationDAO();
+		try {
+			person=persondao.lookOne(dao.OnesearchByID(idR).getIdPersonalInformation());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(list.getAwardSituation());			
+		session.setAttribute("Oneresume",list);
+		session.setAttribute("OnePerson",person);
+		return "OK";
+		
+	}
+	
 	public String lookOne(){
 		int idR=Integer.parseInt(request.getParameter("idResume"));
 		int idFK=Integer.parseInt(request.getParameter("idFK"));
